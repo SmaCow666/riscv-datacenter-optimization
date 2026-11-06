@@ -1,0 +1,2 @@
+TRSV_CHECK {"cases":5120,"double_max_error":0,"single_max_error":0,"bitwise_equal":true,"guard":true,"matrix_unchanged":true}
+TRSV_CHECK_EXIT=0

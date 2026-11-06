@@ -1,0 +1,24 @@
+  0 SNES Function norm 1.205586030731e-01
+  1 SNES Function norm 3.016497574229e-02
+  2 SNES Function norm 8.682446477354e-03
+  3 SNES Function norm 7.699391053616e-03
+  4 SNES Function norm 6.178931694209e-03
+  5 SNES Function norm 5.577053477836e-03
+  6 SNES Function norm 5.035790709478e-03
+  7 SNES Function norm 4.552203922190e-03
+  8 SNES Function norm 4.116130594639e-03
+  9 SNES Function norm 3.718963475008e-03
+ 10 SNES Function norm 3.405935623942e-03
+ 11 SNES Function norm 3.089214414734e-03
+ 12 SNES Function norm 2.788966014979e-03
+ 13 SNES Function norm 2.532248283032e-03
+ 14 SNES Function norm 2.288582722670e-03
+ 15 SNES Function norm 2.072109229159e-03
+ 16 SNES Function norm 1.868442185531e-03
+ 17 SNES Function norm 1.623676513396e-03
+ 18 SNES Function norm 1.352703904941e-03
+ 19 SNES Function norm 1.730360392772e-04
+ 20 SNES Function norm 4.167887970332e-06
+ 21 SNES Function norm 2.246533874907e-09
+ 22 SNES Function norm 9.925373327131e-15
+CONVERGED_FNORM_RELATIVE Number of nonlinear iterations = 22

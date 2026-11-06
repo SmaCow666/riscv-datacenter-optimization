@@ -1,0 +1,19 @@
+X86_AFFINITY thread=0 tid=230 mask=0
+X86_AFFINITY thread=1 tid=231 mask=1
+FIB_RUNTIME {"library":"/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/llvm/batch/install/lib/libomp.so","team":2}
+Fibonacci result for 28 is 317811
+FIB_BENCH {"round":-1,"n":28,"cutoff":10,"expected":317811,"actual_team":2,"wall_ns":739642,"cpu_ns":1360980,"check":1}
+Fibonacci result for 28 is 317811
+FIB_BENCH {"round":0,"n":28,"cutoff":10,"expected":317811,"actual_team":2,"wall_ns":674476,"cpu_ns":675053,"check":1}
+Fibonacci result for 28 is 317811
+FIB_BENCH {"round":1,"n":28,"cutoff":10,"expected":317811,"actual_team":2,"wall_ns":720957,"cpu_ns":1639685,"check":1}
+Fibonacci result for 28 is 317811
+FIB_BENCH {"round":2,"n":28,"cutoff":10,"expected":317811,"actual_team":2,"wall_ns":707963,"cpu_ns":1754313,"check":1}
+
+Program             = Fibonacci
+Parameters          = N=28
+Model               = OpenMP (using tasks)
+Embedded cut-off    = manual (10)
+# of Threads        = 2
+Verification        = successful
+Time Program        = 0.003000 seconds

@@ -1,0 +1,20 @@
+CMake Warning at CMakeLists.txt:4 (message):
+  Your CMake version is 3.22.1.  Starting with LLVM 24, the minimum version
+  of CMake required to build LLVM will become 3.31.0, and using an older
+  CMake will become an error.  Please upgrade your CMake to at least 3.31.0
+  now to avoid issues in the future.
+
+
+CMake Warning at /home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/source/openmp/CMakeLists.txt:3 (message):
+  Your CMake version is 3.22.1.  Starting with LLVM 24, the minimum version
+  of CMake required to build LLVM will become 3.31.0, and using an older
+  CMake will become an error.  Please upgrade your CMake to at least 3.31.0
+  now to avoid issues in the future.
+
+
+CMake Warning at /home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/source/openmp/cmake/OpenMPTesting.cmake:8 (message):
+  The check targets will not be available!
+Call Stack (most recent call first):
+  /home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/source/openmp/CMakeLists.txt:127 (include)
+
+

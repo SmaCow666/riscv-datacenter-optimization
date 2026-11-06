@@ -1,0 +1,31 @@
+COST_RUNTIME {"library":"/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/llvm/core/install/lib/libomp.so","base":"0x7d28c14cd000"}
+Computing multisort algorithm (n=1048576) X86_AFFINITY thread=0 tid=386 mask=0
+X86_AFFINITY thread=2 tid=388 mask=2
+X86_AFFINITY thread=1 tid=387 mask=1
+X86_AFFINITY thread=3 tid=389 mask=3
+ completed!
+TASK_BENCH {"round":-1,"n":1048576,"input_hash":"207f83ec6ab0b619","wall_ns":17339266,"cpu_ns":68343088,"check":1}
+Computing multisort algorithm (n=1048576)  completed!
+TASK_BENCH {"round":0,"n":1048576,"input_hash":"207f83ec6ab0b619","wall_ns":16145086,"cpu_ns":64590815,"check":1}
+Computing multisort algorithm (n=1048576)  completed!
+TASK_BENCH {"round":1,"n":1048576,"input_hash":"207f83ec6ab0b619","wall_ns":16157253,"cpu_ns":64645860,"check":1}
+Computing multisort algorithm (n=1048576)  completed!
+TASK_BENCH {"round":2,"n":1048576,"input_hash":"207f83ec6ab0b619","wall_ns":16144296,"cpu_ns":64594102,"check":1}
+
+Program             = Sort
+Parameters          = N=1048576:Q=2048:I=20:M=2048
+Model               = OpenMP (using tasks)
+Embedded cut-off    = none
+# of Threads        = 4
+Verification        = successful
+Time Program        = 0.080941 seconds
+Execution Date      = 2026/11/03;13:46
+Execution Message   = 
+Architecture        = Linux-x86_64;8
+Load Avg [1:5:15]   = 0.85;0.67;0.28
+Compilation Date    = frozen-source
+Compilation Message = x86 counterpart
+Compiler            = Clang 21
+Compiler Flags      = O3
+Linker              = Clang 21
+Linker Flags        = libomp

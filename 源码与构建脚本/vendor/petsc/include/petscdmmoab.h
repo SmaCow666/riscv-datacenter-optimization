@@ -1,0 +1,170 @@
+#pragma once
+
+#include <petscvec.h> /*I      "petscvec.h"    I*/
+#include <petscmat.h> /*I      "petscmat.h"    I*/
+#include <petscdm.h>  /*I      "petscdm.h"     I*/
+#include <petscdt.h>  /*I      "petscdt.h"     I*/
+
+/* MANSEC = DM */
+/* SUBMANSEC = DMMOAB */
+
+#include <string>
+#if defined(__clang__)
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wunknown-warning-option"
+  #pragma clang diagnostic ignored "-Wnontrivial-memcall"
+#endif
+#include <moab/Core.hpp> /*I      "moab/Core.hpp"    I*/
+#if defined(__clang__)
+  #pragma clang diagnostic pop
+#endif
+#if defined(MOAB_HAVE_MPI)
+  #include <moab/ParallelComm.hpp> /*I      "moab/ParallelComm.hpp"    I*/
+#endif
+
+/*MC
+  PetscCallMOAB - Calls a MOAB function and then checks the resulting error code, if it is
+  non-zero it calls the error handler and returns from the current function with the error
+  code `PETSC_ERR_LIB`.
+
+  Synopsis:
+  #include <petscdmmoab.h>
+  void PetscCallMOAB(MOABFunction(...))
+
+  Not Collective
+
+  Input Parameter:
+. MOABFunction - any MOAB function that returns an error code
+
+  Level: beginner
+
+.seealso: `PetscCall()`, `SETERRQ()`, `PetscCheck()`, `PetscTraceBackErrorHandler()`, `PetscCallMPI()`,
+          `PetscPushErrorHandler()`, `PetscError()`
+M*/
+#define PetscCallMOAB(...) \
+  do { \
+    moab::ErrorCode ierr_moab_call_q; \
+    PetscStackUpdateLine; \
+    ierr_moab_call_q = __VA_ARGS__; \
+    PetscCheck(ierr_moab_call_q == moab::MB_SUCCESS, PETSC_COMM_SELF, PETSC_ERR_LIB, "MOAB ERROR (%i)", (int)ierr_moab_call_q); \
+  } while (0)
+
+/* define enums for options to read and write MOAB files in parallel */
+
+/*E
+  MoabReadMode - Parallel I/O strategy passed to MOAB when reading a mesh file through `DMMOAB`
+
+  Values:
++ `READ_PART`    - each MPI rank reads only the portion of the file describing its partition (requires a partition-aware file)
+. `READ_DELETE`  - every rank reads the entire file and then deletes the entities it does not own
+- `BCAST_DELETE` - rank 0 reads the file and broadcasts it, then every rank deletes the entities it does not own
+
+  Level: intermediate
+
+.seealso: `DMMOAB`, `MoabWriteMode`, `DMMoabCreate()`
+E*/
+typedef enum {
+  READ_PART,
+  READ_DELETE,
+  BCAST_DELETE
+} MoabReadMode;
+static const char *const MoabReadModes[] = {"READ_PART", "READ_DELETE", "BCAST_DELETE", "MoabReadMode", "", 0};
+
+/*E
+  MoabWriteMode - Parallel I/O strategy passed to MOAB when writing a mesh file through `DMMOAB`
+
+  Values:
++ `WRITE_PART` - write a partitioned file with one section per MPI rank
+- `FORMAT`     - write a single non-partitioned file in the requested MOAB output format
+
+  Level: intermediate
+
+.seealso: `DMMOAB`, `MoabReadMode`, `DMMoabOutput()`
+E*/
+typedef enum {
+  WRITE_PART,
+  FORMAT
+} MoabWriteMode;
+static const char *const MoabWriteModes[] = {"WRITE_PART", "FORMAT", "MoabWriteMode", "", 0};
+
+PETSC_EXTERN PetscErrorCode DMMoabCreate(MPI_Comm, DM *);
+PETSC_EXTERN PetscErrorCode DMMoabCreateMoab(MPI_Comm, moab::Interface *, moab::Tag *, moab::Range *, DM *);
+PETSC_EXTERN PetscErrorCode DMMoabOutput(DM, const char *, const char *);
+
+PETSC_EXTERN PetscErrorCode DMMoabSetInterface(DM, moab::Interface *);
+PETSC_EXTERN PetscErrorCode DMMoabGetInterface(DM, moab::Interface **);
+#if defined(MOAB_HAVE_MPI)
+PETSC_EXTERN PetscErrorCode DMMoabGetParallelComm(DM, moab::ParallelComm **);
+#endif
+
+PETSC_EXTERN PetscErrorCode DMMoabSetLocalVertices(DM, moab::Range *);
+PETSC_EXTERN PetscErrorCode DMMoabGetAllVertices(DM, moab::Range *);
+PETSC_EXTERN PetscErrorCode DMMoabGetLocalVertices(DM, const moab::Range **, const moab::Range **);
+PETSC_EXTERN PetscErrorCode DMMoabSetLocalElements(DM, moab::Range *);
+PETSC_EXTERN PetscErrorCode DMMoabGetLocalElements(DM, const moab::Range **);
+PETSC_EXTERN PetscErrorCode DMMoabSetLocalToGlobalTag(DM, moab::Tag);
+PETSC_EXTERN PetscErrorCode DMMoabGetLocalToGlobalTag(DM, moab::Tag *);
+PETSC_EXTERN PetscErrorCode DMMoabSetBlockSize(DM, PetscInt);
+PETSC_EXTERN PetscErrorCode DMMoabGetBlockSize(DM, PetscInt *);
+PETSC_EXTERN PetscErrorCode DMMoabSetBlockFills(DM, const PetscInt *, const PetscInt *);
+PETSC_EXTERN PetscErrorCode DMMoabGetHierarchyLevel(DM, PetscInt *);
+
+PETSC_EXTERN PetscErrorCode DMMoabGetDimension(DM, PetscInt *);
+PETSC_EXTERN PetscErrorCode DMMoabGetMaterialBlock(DM, const moab::EntityHandle, PetscInt *);
+
+PETSC_EXTERN PetscErrorCode DMMoabGetSize(DM, PetscInt *, PetscInt *);
+PETSC_EXTERN PetscErrorCode DMMoabGetLocalSize(DM, PetscInt *, PetscInt *, PetscInt *, PetscInt *);
+PETSC_EXTERN PetscErrorCode DMMoabGetOffset(DM, PetscInt *);
+
+PETSC_EXTERN PetscErrorCode DMMoabVecGetArrayRead(DM, Vec, void *);
+PETSC_EXTERN PetscErrorCode DMMoabVecRestoreArrayRead(DM, Vec, void *);
+PETSC_EXTERN PetscErrorCode DMMoabVecGetArray(DM, Vec, void *);
+PETSC_EXTERN PetscErrorCode DMMoabVecRestoreArray(DM, Vec, void *);
+
+PETSC_EXTERN PetscErrorCode DMMoabCreateVector(DM, moab::Tag, const moab::Range *, PetscBool, PetscBool, Vec *);
+PETSC_EXTERN PetscErrorCode DMMoabGetVecTag(Vec, moab::Tag *);
+PETSC_EXTERN PetscErrorCode DMMoabGetVecRange(Vec, moab::Range *);
+
+PETSC_EXTERN PetscErrorCode DMMoabSetFieldVector(DM, PetscInt, Vec);
+PETSC_EXTERN PetscErrorCode DMMoabSetGlobalFieldVector(DM, Vec);
+
+PETSC_EXTERN PetscErrorCode DMMoabCreateVertices(DM, const PetscReal *, PetscInt, moab::Range *);
+PETSC_EXTERN PetscErrorCode DMMoabCreateElement(DM, const moab::EntityType, const moab::EntityHandle *, PetscInt, moab::EntityHandle *);
+PETSC_EXTERN PetscErrorCode DMMoabCreateSubmesh(DM, DM *);
+PETSC_EXTERN PetscErrorCode DMMoabRenumberMeshEntities(DM);
+
+PETSC_EXTERN PetscErrorCode DMMoabGetFieldName(DM, PetscInt, const char *[]);
+PETSC_EXTERN PetscErrorCode DMMoabSetFieldName(DM, PetscInt, const char *);
+PETSC_EXTERN PetscErrorCode DMMoabSetFieldNames(DM, PetscInt, const char *[]);
+PETSC_EXTERN PetscErrorCode DMMoabGetFieldDof(DM, moab::EntityHandle, PetscInt, PetscInt *);
+PETSC_EXTERN PetscErrorCode DMMoabGetFieldDofs(DM, PetscInt, const moab::EntityHandle *, PetscInt, PetscInt *);
+PETSC_EXTERN PetscErrorCode DMMoabGetFieldDofsLocal(DM, PetscInt, const moab::EntityHandle *, PetscInt, PetscInt *);
+PETSC_EXTERN PetscErrorCode DMMoabGetDofs(DM, PetscInt, const moab::EntityHandle *, PetscInt *);
+PETSC_EXTERN PetscErrorCode DMMoabGetDofsLocal(DM, PetscInt, const moab::EntityHandle *, PetscInt *);
+PETSC_EXTERN PetscErrorCode DMMoabGetDofsBlocked(DM, PetscInt, const moab::EntityHandle *, PetscInt *);
+PETSC_EXTERN PetscErrorCode DMMoabGetDofsBlockedLocal(DM, PetscInt, const moab::EntityHandle *, PetscInt *);
+
+PETSC_EXTERN PetscErrorCode DMMoabGetVertexDofsBlocked(DM, PetscInt **);
+PETSC_EXTERN PetscErrorCode DMMoabGetVertexDofsBlockedLocal(DM, PetscInt **);
+
+/* discretization and assembly specific DMMoab interface functions */
+PETSC_EXTERN PetscErrorCode DMMoabGetElementConnectivity(DM, moab::EntityHandle, PetscInt *, const moab::EntityHandle **);
+PETSC_EXTERN PetscErrorCode DMMoabGetVertexConnectivity(DM, moab::EntityHandle, PetscInt *, moab::EntityHandle **);
+PETSC_EXTERN PetscErrorCode DMMoabRestoreVertexConnectivity(DM, moab::EntityHandle, PetscInt *, moab::EntityHandle **);
+PETSC_EXTERN PetscErrorCode DMMoabGetVertexCoordinates(DM, PetscInt, const moab::EntityHandle *, PetscReal *);
+PETSC_EXTERN PetscErrorCode DMMoabIsEntityOnBoundary(DM, const moab::EntityHandle, PetscBool *);
+PETSC_EXTERN PetscErrorCode DMMoabCheckBoundaryVertices(DM, PetscInt, const moab::EntityHandle *, PetscBool *);
+PETSC_EXTERN PetscErrorCode DMMoabGetBoundaryMarkers(DM, const moab::Range **, const moab::Range **, const moab::Range **);
+
+/* TODO: Replace nverts/coords with just moab::EntityHandle -- can also eliminate dim */
+/* TODO: Replace quad/npts with PetscDT */
+PETSC_EXTERN PetscErrorCode DMMoabFEMCreateQuadratureDefault(const PetscInt, const PetscInt, PetscQuadrature *);
+PETSC_EXTERN PetscErrorCode DMMoabFEMComputeBasis(const PetscInt, const PetscInt, const PetscReal *, const PetscQuadrature, PetscReal *, PetscReal *, PetscReal *, PetscReal **);
+PETSC_EXTERN PetscErrorCode DMMoabPToRMapping(const PetscInt, const PetscInt, const PetscReal *, const PetscReal *, PetscReal *, PetscReal *);
+
+/* DM utility creation interface */
+PETSC_EXTERN PetscErrorCode DMMoabCreateBoxMesh(MPI_Comm, PetscInt, PetscBool, const PetscReal *, PetscInt, PetscInt, DM *);
+PETSC_EXTERN PetscErrorCode DMMoabLoadFromFile(MPI_Comm, PetscInt, PetscInt, const char *, const char *, DM *);
+
+/* Uniform refinement hierarchy interface */
+PETSC_EXTERN PetscErrorCode DMMoabGenerateHierarchy(DM, PetscInt, PetscInt *);

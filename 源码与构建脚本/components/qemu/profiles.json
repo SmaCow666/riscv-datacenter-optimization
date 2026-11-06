@@ -1,0 +1,17 @@
+{
+  "base": {
+    "project": "QEMU",
+    "release": "9.1.0",
+    "upstream_tag": "v9.1.0",
+    "upstream_commit": "a609a1f94cf08264ee863f21bf59a1eaaacb056d",
+    "source": "qemu/source"
+  },
+  "profiles": {
+    "baseline": {"description": "Unmodified upstream baseline.", "patches": []},
+    "qom-filter": {"description": "Filter unrelated QOM classes before class initialization.", "patches": ["patches/qemu/01-qom-class-filter.patch"]},
+    "virt-mmio-batch": {"description": "Batch RISC-V virt VirtIO MMIO mapping updates.", "patches": ["patches/qemu/02-riscv-virt-mmio-batch.patch"]},
+    "rvv-vsetvl-fastpath": {"description": "Specialize validated RV64 LMUL=1 vector configuration translation.", "patches": ["patches/qemu/03-rvv-vsetvl-fast-path.patch"]},
+    "startup": {"description": "Startup-related QOM and RISC-V virt initialization changes.", "patches": ["patches/qemu/01-qom-class-filter.patch", "patches/qemu/02-riscv-virt-mmio-batch.patch"]},
+    "composite": {"description": "All current QEMU optimizations applied in order.", "patches": ["patches/qemu/01-qom-class-filter.patch", "patches/qemu/02-riscv-virt-mmio-batch.patch", "patches/qemu/03-rvv-vsetvl-fast-path.patch"]}
+  }
+}

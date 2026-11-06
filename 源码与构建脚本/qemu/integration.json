@@ -1,0 +1,63 @@
+{
+  "status": "SOURCE_AND_PATCH_READY",
+  "version": "qemu-9.1.0-riscv-profiles",
+  "source": {
+    "path": "qemu/source",
+    "project": "QEMU",
+    "release": "9.1.0",
+    "upstream_tag": "v9.1.0",
+    "upstream_commit": "a609a1f94cf08264ee863f21bf59a1eaaacb056d",
+    "baseline": "Unmodified upstream QEMU 9.1.0; project EDAC changes are absent"
+  },
+  "patch_series": [
+    {
+      "order": 1,
+      "file": "patches/qemu/01-qom-class-filter.patch",
+      "sha256": "d085ec4e1f8db84aabadde39e6fa1d345b451a65c6c81fa170ee4ba5a587cb08"
+    },
+    {
+      "order": 2,
+      "file": "patches/qemu/02-riscv-virt-mmio-batch.patch",
+      "sha256": "8dc17c960f070b7c5ab3b94fc68c86880597708766ac715a27d66d04f15af8c2"
+    },
+    {
+      "order": 3,
+      "file": "patches/qemu/03-rvv-vsetvl-fast-path.patch",
+      "sha256": "c35bed2fa143f9423e5c07bbe54e1cc66b4dc8618727a1337755c15aa9b48a29"
+    }
+  ],
+  "profiles": "components/qemu/profiles.json",
+  "build_script": "qemu/scripts/build.sh",
+  "generic_build_entry": "scripts/build.py --component qemu --qemu-profile <profile>",
+  "build_host": "RISC-V 64-bit Linux natively, or Linux x86_64 with a RISC-V GNU cross-toolchain",
+  "guest_architecture": "riscv64",
+  "configure_arguments_shared_by_both_builds": [
+    "--cpu=riscv64",
+    "--target-list=riscv64-softmmu",
+    "--without-default-features",
+    "--enable-tcg",
+    "--enable-fdt=internal",
+    "--disable-kvm",
+    "--disable-plugins",
+    "--disable-download",
+    "--disable-docs",
+    "--disable-werror",
+    "--disable-tools",
+    "--disable-guest-agent",
+    "--disable-install-blobs",
+    "--disable-pixman",
+    "--disable-gio",
+    "--prefix=/opt/riscv-qemu"
+  ],
+  "outputs": {
+    "baseline_binary": "build/qemu/baseline/qemu-system-riscv64",
+    "optimized_binary": "build/qemu/optimized/qemu-system-riscv64",
+    "build_artifacts_in_source_package": false
+  },
+  "guest_environment_provided": false,
+  "cross_compile_mode": {
+    "host": "Linux x86_64 with RISC-V GNU cross-toolchain",
+    "environment": "Set CROSS_PREFIX=riscv64-linux-gnu-; set PKG_CONFIG_LIBDIR for target libraries",
+    "validation": "Builds RISC-V ELF; execution requires a RISC-V Linux host."
+  }
+}

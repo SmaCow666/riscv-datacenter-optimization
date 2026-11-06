@@ -1,0 +1,37 @@
+[
+  {
+    "stage": "original",
+    "commands": 552,
+    "rows": 1520,
+    "windows": {
+      "warmup": 392,
+      "calibration": 392,
+      "comparison": 736
+    },
+    "timed_framework_children": 128,
+    "exit_codes": {
+      "0": 546,
+      "1": 1,
+      "86": 1,
+      "137": 4
+    },
+    "launchers_reaped": true,
+    "source": "experiments/final-acceptance/results/2026-10-29_native-review-r1/results"
+  },
+  {
+    "stage": "completion",
+    "commands": 747,
+    "rows": 2304,
+    "windows": {
+      "warmup": 576,
+      "calibration": 600,
+      "comparison": 1128
+    },
+    "timed_framework_children": 192,
+    "exit_codes": {
+      "0": 747
+    },
+    "launchers_reaped": true,
+    "source": "experiments/final-acceptance/results/2026-10-29_completion-native-review-r1/results"
+  }
+]

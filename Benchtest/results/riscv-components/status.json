@@ -1,0 +1,35 @@
+{
+  "status": "FINAL_NATIVE_ACCEPTANCE_EVIDENCE_COMPLETE",
+  "archive_sha256": "50e63602e30d9fcd6e3c2ade47a7372f301090af19a9eab613f5659e5e957bc1",
+  "parent_archive_sha256": "1eb554812a6c03258b1dd49a9458421bd2251be1ee4e2037f1e6f49b06d05ceb",
+  "functional_total": 78,
+  "functional_pass": 77,
+  "expected_baseline_negative": 1,
+  "candidate_numerical_failures": 0,
+  "official_completion_pass": 4,
+  "official_computational_checks": 128,
+  "performance_complete": 41,
+  "old_cases_preserved": 16,
+  "newly_completed": 25,
+  "performance_directions": {
+    "REPEATED_GAIN": 32,
+    "NEGATIVE_TREND": 2,
+    "ORDER_SENSITIVE": 3,
+    "REPEATED_SLOWDOWN": 4
+  },
+  "raw_rounds": 3824,
+  "round_counts": {
+    "warmup": 968,
+    "calibration": 992,
+    "comparison": 1864
+  },
+  "commands": 1299,
+  "timed_framework_children": 320,
+  "functional_framework_cases": 7,
+  "all_launchers_reaped": true,
+  "statistical_pooling": false,
+  "minimum_required_gain_percent": null,
+  "existing_sources_libraries_modified": false,
+  "automatic_board_connections": 0,
+  "board_private_directories": "retained; automatic removal not performed"
+}

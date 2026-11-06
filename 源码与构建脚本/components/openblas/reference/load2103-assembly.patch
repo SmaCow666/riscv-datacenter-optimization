@@ -1,0 +1,29 @@
+--- a/dgemv_n.s
++++ b/dgemv_n.s
+@@ -250,10 +250,10 @@
+ .Ltmp21:
+ 	#DEBUG_VALUE: dgemv_n:y_ptr <- $x31
+ 	.loc	2 93 60                         # experiments/openblas-rvv/results/2026-10-26_r192-schedule-counter-r1/llvm-tuning/build-r2/gemv_n_vector.c:93:60
+-	add	a2, t3, s0
++	add	a2, t2, s0
+ .Ltmp22:
+ 	.loc	2 93 45 is_stmt 0               # experiments/openblas-rvv/results/2026-10-26_r192-schedule-counter-r1/llvm-tuning/build-r2/gemv_n_vector.c:93:45
+-	vle64.v	v8, (a2)
++	vle64.v	v0, (a2)
+ 	.loc	2 94 60 is_stmt 1               # experiments/openblas-rvv/results/2026-10-26_r192-schedule-counter-r1/llvm-tuning/build-r2/gemv_n_vector.c:94:60
+ 	add	a2, t4, s0
+ 	.loc	2 92 22                         # experiments/openblas-rvv/results/2026-10-26_r192-schedule-counter-r1/llvm-tuning/build-r2/gemv_n_vector.c:92:22
+@@ -263,11 +263,11 @@
+ 	.loc	2 94 45                         # experiments/openblas-rvv/results/2026-10-26_r192-schedule-counter-r1/llvm-tuning/build-r2/gemv_n_vector.c:94:45
+ 	vle64.v	v16, (a2)
+ 	.loc	2 95 60                         # experiments/openblas-rvv/results/2026-10-26_r192-schedule-counter-r1/llvm-tuning/build-r2/gemv_n_vector.c:95:60
+-	add	a2, t2, s0
++	add	a2, t3, s0
+ 	.loc	2 96 60                         # experiments/openblas-rvv/results/2026-10-26_r192-schedule-counter-r1/llvm-tuning/build-r2/gemv_n_vector.c:96:60
+ 	add	s0, s0, t1
+ 	.loc	2 95 45                         # experiments/openblas-rvv/results/2026-10-26_r192-schedule-counter-r1/llvm-tuning/build-r2/gemv_n_vector.c:95:45
+-	vle64.v	v0, (a2)
++	vle64.v	v8, (a2)
+ 	.loc	2 93 22                         # experiments/openblas-rvv/results/2026-10-26_r192-schedule-counter-r1/llvm-tuning/build-r2/gemv_n_vector.c:93:22
+ 	vfmadd.vf	v8, fa3, v24
+ 	.loc	2 96 45                         # experiments/openblas-rvv/results/2026-10-26_r192-schedule-counter-r1/llvm-tuning/build-r2/gemv_n_vector.c:96:45

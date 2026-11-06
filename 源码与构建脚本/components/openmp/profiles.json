@@ -1,0 +1,59 @@
+{
+  "baseline": {
+    "source": "vendor/llvm-runtime",
+    "patches": [],
+    "changed_files": [],
+    "role": "independent performance configuration; not all community patches combined"
+  },
+  "general": {
+    "source": "vendor/llvm-runtime",
+    "patches": [
+      "patches/openmp/general.patch"
+    ],
+    "changed_files": [
+      "openmp/runtime/src/kmp_global.cpp",
+      "openmp/runtime/src/kmp_runtime.cpp",
+      "openmp/runtime/src/z_Linux_asm.S",
+      "openmp/runtime/src/kmp.h",
+      "openmp/runtime/src/kmp_settings.cpp",
+      "openmp/docs/design/Runtimes.rst"
+    ],
+    "role": "independent performance configuration; not all community patches combined"
+  },
+  "batch": {
+    "source": "vendor/llvm-runtime",
+    "patches": [
+      "patches/openmp/batch.patch"
+    ],
+    "changed_files": [
+      "openmp/runtime/src/kmp_global.cpp",
+      "openmp/runtime/src/kmp_runtime.cpp",
+      "openmp/runtime/src/kmp_tasking.cpp",
+      "openmp/runtime/src/z_Linux_asm.S",
+      "openmp/runtime/src/kmp.h",
+      "openmp/runtime/src/kmp_settings.cpp",
+      "openmp/docs/design/Runtimes.rst"
+    ],
+    "role": "independent performance configuration; not all community patches combined"
+  },
+  "ticket": {
+    "source": "vendor/llvm-runtime",
+    "patches": [
+      "patches/openmp/ticket.patch"
+    ],
+    "changed_files": [
+      "openmp/runtime/src/kmp_tasking.cpp"
+    ],
+    "role": "independent performance configuration; not all community patches combined"
+  },
+  "fast-task": {
+    "source": "vendor/llvm-runtime",
+    "patches": [
+      "patches/openmp/fast-task.patch"
+    ],
+    "changed_files": [
+      "openmp/runtime/src/kmp_tasking.cpp"
+    ],
+    "role": "independent performance configuration; not all community patches combined"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "baseline": {
+    "source": "vendor/openblas",
+    "patches": [],
+    "objects": []
+  },
+  "four-column": {
+    "source": "vendor/openblas",
+    "patches": [
+      "patches/openblas/four-column-1.patch"
+    ],
+    "objects": [
+      "sgemv_n",
+      "dgemv_n"
+    ]
+  },
+  "row-tail": {
+    "source": "vendor/openblas",
+    "patches": [
+      "patches/openblas/row-tail-1.patch"
+    ],
+    "objects": [
+      "sgemv_n",
+      "dgemv_n"
+    ]
+  },
+  "short-row": {
+    "source": "vendor/openblas",
+    "patches": [
+      "patches/openblas/short-row-1.patch",
+      "patches/openblas/short-row-2.patch"
+    ],
+    "objects": [
+      "sgemv_n",
+      "dgemv_n"
+    ]
+  },
+  "short-vector": {
+    "source": "vendor/openblas",
+    "patches": [
+      "patches/openblas/short-vector-1.patch"
+    ],
+    "objects": [
+      "saxpy_k",
+      "daxpy_k"
+    ]
+  },
+  "zero-stride": {
+    "source": "vendor/openblas",
+    "patches": [
+      "patches/openblas/zero-stride-1.patch"
+    ],
+    "objects": [
+      "saxpy_k",
+      "daxpy_k"
+    ]
+  },
+  "trsv-fused": {
+    "source": "vendor/openblas",
+    "patches": [
+      "patches/openblas/trsv-fused-1.patch"
+    ],
+    "objects": [
+      "strsv_NUU",
+      "strsv_NUN",
+      "strsv_NLU",
+      "strsv_NLN",
+      "dtrsv_NUU",
+      "dtrsv_NUN",
+      "dtrsv_NLU",
+      "dtrsv_NLN"
+    ]
+  },
+  "combined": {
+    "source": "vendor/openblas",
+    "patches": [
+      "patches/openblas/combined-1.patch"
+    ],
+    "objects": [
+      "strsv_NUU",
+      "strsv_NUN",
+      "strsv_NLU",
+      "strsv_NLN",
+      "dtrsv_NUU",
+      "dtrsv_NUN",
+      "dtrsv_NLU",
+      "dtrsv_NLN",
+      "saxpy_k",
+      "daxpy_k"
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+--- a/target/riscv/insn_trans/trans_rvv.c.inc
++++ b/target/riscv/insn_trans/trans_rvv.c.inc
+@@ -189,9 +189,11 @@
+     return true;
+ }
+ 
+-static bool do_vsetivli(DisasContext *s, int rd, TCGv s1, TCGv s2)
++static bool do_vsetivli(DisasContext *s, int rd, unsigned avl, unsigned vtype)
+ {
+     TCGv dst;
++    bool constant_vl;
++    unsigned vsew = FIELD_EX64(vtype, VTYPE, VSEW);
+ 
+     if (!require_rvv(s) || !s->cfg_ptr->ext_zve32x) {
+         return false;
+@@ -199,11 +201,44 @@
+ 
+     dst = dest_gpr(s, rd);
+ 
+-    gen_helper_vsetvl(dst, tcg_env, s1, s2);
++    /*
++     * For RV64, legal immediate LMUL=1 configurations have a constant VL.
++     * VLEN/ELEN are immutable CPU configuration.  Keep the existing helper
++     * for other LMULs, reserved/unsupported vtypes, and RV32 execution.
++     */
++    constant_vl = get_xl(s) == MXL_RV64 && (vtype & ~0xf8u) == 0 &&
++                  (8u << vsew) <= s->cfg_ptr->elen;
++    if (constant_vl) {
++        unsigned vlmax = vext_get_vlmax(s->cfg_ptr->vlenb, vsew, 0);
++        unsigned vl = MIN(avl, vlmax);
++
++        tcg_gen_movi_tl(dst, vl);
++        tcg_gen_movi_tl(cpu_vl, vl);
++        tcg_gen_st_tl(tcg_constant_tl(vtype), tcg_env,
++                      offsetof(CPURISCVState, vtype));
++        tcg_gen_movi_tl(cpu_vstart, 0);
++        tcg_gen_st8_i32(tcg_constant_i32(0), tcg_env,
++                       offsetof(CPURISCVState, vill));
++    } else {
++        gen_helper_vsetvl(dst, tcg_env, tcg_constant_tl(avl),
++                          tcg_constant_tl(vtype));
++    }
+     gen_set_gpr(s, rd, dst);
+     finalize_rvv_inst(s);
+-    gen_update_pc(s, s->cur_insn_len);
+-    lookup_and_goto_ptr(s);
++    /*
++     * This bounded path fixes all vector TB-key fields, keeps privilege,
++     * MMU and interrupt-enable state, and stores them before the link.
++     * Reuse the existing page/no-chain/PCREL handling.  Keep unvalidated
++     * modes and debug/icount execution on the original lookup path.
++     */
++    if (constant_vl && s->priv == PRV_M && !s->virt_enabled &&
++        !s->itrigger &&
++        !(tb_cflags(s->base.tb) & (CF_SINGLE_STEP | CF_USE_ICOUNT))) {
++        gen_goto_tb(s, 0, s->cur_insn_len);
++    } else {
++        gen_update_pc(s, s->cur_insn_len);
++        lookup_and_goto_ptr(s);
++    }
+     s->base.is_jmp = DISAS_NORETURN;
+ 
+     return true;
+@@ -217,15 +252,44 @@
+ 
+ static bool trans_vsetvli(DisasContext *s, arg_vsetvli *a)
+ {
+-    TCGv s2 = tcg_constant_tl(a->zimm);
+-    return do_vsetvl(s, a->rd, a->rs1, s2);
++    unsigned vsew = FIELD_EX64(a->zimm, VTYPE, VSEW);
++
++    /* Special x0 AVL forms and unsupported vtypes keep the helper. */
++    if (get_xl(s) == MXL_RV64 && a->rs1 != 0 &&
++        (a->zimm & ~0xf8u) == 0 && (8u << vsew) <= s->cfg_ptr->elen) {
++        TCGv avl, vl;
++        unsigned vlmax;
++
++        if (!require_rvv(s) || !s->cfg_ptr->ext_zve32x) {
++            return false;
++        }
++        avl = get_gpr(s, a->rs1, EXT_ZERO);
++        vl = tcg_temp_new();
++        vlmax = vext_get_vlmax(s->cfg_ptr->vlenb, vsew, 0);
++        /* AVL remains an unsigned runtime XLEN value, including all-ones.
++         * Capture the result before writing rd, which may alias rs1. */
++        tcg_gen_umin_tl(vl, avl, tcg_constant_tl(vlmax));
++        tcg_gen_mov_tl(cpu_vl, vl);
++        tcg_gen_st_tl(tcg_constant_tl(a->zimm), tcg_env,
++                      offsetof(CPURISCVState, vtype));
++        tcg_gen_movi_tl(cpu_vstart, 0);
++        tcg_gen_st8_i32(tcg_constant_i32(0), tcg_env,
++                       offsetof(CPURISCVState, vill));
++        gen_set_gpr(s, a->rd, vl);
++        finalize_rvv_inst(s);
++
++        /* Dynamic VL changes the next TB key: retain the existing lookup. */
++        gen_update_pc(s, s->cur_insn_len);
++        lookup_and_goto_ptr(s);
++        s->base.is_jmp = DISAS_NORETURN;
++        return true;
++    }
++    return do_vsetvl(s, a->rd, a->rs1, tcg_constant_tl(a->zimm));
+ }
+ 
+ static bool trans_vsetivli(DisasContext *s, arg_vsetivli *a)
+ {
+-    TCGv s1 = tcg_constant_tl(a->rs1);
+-    TCGv s2 = tcg_constant_tl(a->zimm);
+-    return do_vsetivli(s, a->rd, s1, s2);
++    return do_vsetivli(s, a->rd, a->rs1, a->zimm);
+ }
+ 
+ /* vector register offset from env */

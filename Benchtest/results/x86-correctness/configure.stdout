@@ -1,0 +1,188 @@
+-- Performing standalone runtimes build.
+-- The C compiler identification is Clang 21.1.8
+-- The CXX compiler identification is Clang 21.1.8
+-- The ASM compiler identification is Clang with GNU-like command-line
+-- Found assembler: /home/uiniu/CodeData/riscv-ai-platform/output/clang21-audit-r1/bin/clang
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/uiniu/CodeData/riscv-ai-platform/output/clang21-audit-r1/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/uiniu/CodeData/riscv-ai-platform/output/clang21-audit-r1/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Could NOT find LLVM (missing: LLVM_DIR)
+-- Could NOT find Clang (missing: Clang_DIR)
+-- Performing Test CXX_SUPPORTS_UNWINDLIB_EQ_NONE_FLAG
+-- Performing Test CXX_SUPPORTS_UNWINDLIB_EQ_NONE_FLAG - Success
+-- Performing Test C_SUPPORTS_START_NO_UNUSED_ARGUMENTS
+-- Performing Test C_SUPPORTS_START_NO_UNUSED_ARGUMENTS - Success
+-- Performing Test CXX_SUPPORTS_NOSTDLIBXX_FLAG
+-- Performing Test CXX_SUPPORTS_NOSTDLIBXX_FLAG - Success
+-- Performing Test CXX_SUPPORTS_NOSTDINCXX_FLAG
+-- Performing Test CXX_SUPPORTS_NOSTDINCXX_FLAG - Success
+-- Linker detection: GNU ld
+-- Performing Test LLVM_USES_LIBSTDCXX
+-- Performing Test LLVM_USES_LIBSTDCXX - Failed
+-- Performing Test LLVM_DEFAULT_TO_GLIBCXX_USE_CXX11_ABI
+-- Performing Test LLVM_DEFAULT_TO_GLIBCXX_USE_CXX11_ABI - Failed
+-- Performing Test SUPPORTS_FVISIBILITY_INLINES_HIDDEN_FLAG
+-- Performing Test SUPPORTS_FVISIBILITY_INLINES_HIDDEN_FLAG - Success
+-- Performing Test CXX_SUPPORTS_SUGGEST_OVERRIDE_FLAG
+-- Performing Test CXX_SUPPORTS_SUGGEST_OVERRIDE_FLAG - Success
+-- Performing Test CXX_WSUGGEST_OVERRIDE_ALLOWS_ONLY_FINAL
+-- Performing Test CXX_WSUGGEST_OVERRIDE_ALLOWS_ONLY_FINAL - Success
+-- Performing Test C_WCOMMENT_ALLOWS_LINE_WRAP
+-- Performing Test C_WCOMMENT_ALLOWS_LINE_WRAP - Success
+-- Performing Test C_SUPPORTS_MISLEADING_INDENTATION_FLAG
+-- Performing Test C_SUPPORTS_MISLEADING_INDENTATION_FLAG - Success
+-- Performing Test CXX_SUPPORTS_MISLEADING_INDENTATION_FLAG
+-- Performing Test CXX_SUPPORTS_MISLEADING_INDENTATION_FLAG - Success
+-- Performing Test C_SUPPORTS_CTAD_MAYBE_UNSUPPORTED_FLAG
+-- Performing Test C_SUPPORTS_CTAD_MAYBE_UNSUPPORTED_FLAG - Success
+-- Performing Test CXX_SUPPORTS_CTAD_MAYBE_UNSUPPORTED_FLAG
+-- Performing Test CXX_SUPPORTS_CTAD_MAYBE_UNSUPPORTED_FLAG - Success
+-- Performing Test LINKER_SUPPORTS_COLOR_DIAGNOSTICS
+-- Performing Test LINKER_SUPPORTS_COLOR_DIAGNOSTICS - Failed
+-- Precompiled headers enabled.
+-- Looking for os_signpost_interval_begin
+-- Looking for os_signpost_interval_begin - not found
+-- Looking for flock
+-- Looking for flock - found
+-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+-- LLVM host triple: x86_64-unknown-linux-gnu
+-- LLVM default target triple: x86_64-unknown-linux-gnu
+-- Doxygen disabled.
+-- Performing Test OPENMP_HAVE_ONEAPI_COMPILER
+-- Performing Test OPENMP_HAVE_ONEAPI_COMPILER - Failed
+-- Performing Test OPENMP_HAVE_WALL_FLAG
+-- Performing Test OPENMP_HAVE_WALL_FLAG - Success
+-- Performing Test OPENMP_HAVE_WERROR_FLAG
+-- Performing Test OPENMP_HAVE_WERROR_FLAG - Success
+-- Performing Test OPENMP_HAVE_COLOR_DIAGNOSTICS
+-- Performing Test OPENMP_HAVE_COLOR_DIAGNOSTICS - Success
+-- Performing Test OPENMP_HAVE_WCAST_QUAL_FLAG
+-- Performing Test OPENMP_HAVE_WCAST_QUAL_FLAG - Success
+-- Performing Test OPENMP_HAVE_WFORMAT_PEDANTIC_FLAG
+-- Performing Test OPENMP_HAVE_WFORMAT_PEDANTIC_FLAG - Success
+-- Performing Test OPENMP_HAVE_WIMPLICIT_FALLTHROUGH_FLAG
+-- Performing Test OPENMP_HAVE_WIMPLICIT_FALLTHROUGH_FLAG - Success
+-- Performing Test OPENMP_HAVE_WSIGN_COMPARE_FLAG
+-- Performing Test OPENMP_HAVE_WSIGN_COMPARE_FLAG - Success
+-- Performing Test OPENMP_HAVE_WEXTRA_FLAG
+-- Performing Test OPENMP_HAVE_WEXTRA_FLAG - Success
+-- Performing Test OPENMP_HAVE_WPEDANTIC_FLAG
+-- Performing Test OPENMP_HAVE_WPEDANTIC_FLAG - Success
+-- Performing Test OPENMP_HAVE_WMAYBE_UNINITIALIZED_FLAG
+-- Performing Test OPENMP_HAVE_WMAYBE_UNINITIALIZED_FLAG - Failed
+-- Performing Test OPENMP_HAVE_NO_SEMANTIC_INTERPOSITION
+-- Performing Test OPENMP_HAVE_NO_SEMANTIC_INTERPOSITION - Success
+-- Performing Test OPENMP_HAVE_FUNCTION_SECTIONS
+-- Performing Test OPENMP_HAVE_FUNCTION_SECTIONS - Failed
+-- Performing Test OPENMP_HAVE_DATA_SECTIONS
+-- Performing Test OPENMP_HAVE_DATA_SECTIONS - Success
+-- Cannot find 'FileCheck'.
+-- Performing Test LIBOMP_HAVE_FNO_EXCEPTIONS_FLAG
+-- Performing Test LIBOMP_HAVE_FNO_EXCEPTIONS_FLAG - Success
+-- Performing Test LIBOMP_HAVE_FNO_RTTI_FLAG
+-- Performing Test LIBOMP_HAVE_FNO_RTTI_FLAG - Success
+-- Performing Test LIBOMP_HAVE_WCLASS_MEMACCESS_FLAG
+-- Performing Test LIBOMP_HAVE_WCLASS_MEMACCESS_FLAG - Failed
+-- Performing Test LIBOMP_HAVE_WCOVERED_SWITCH_DEFAULT_FLAG
+-- Performing Test LIBOMP_HAVE_WCOVERED_SWITCH_DEFAULT_FLAG - Success
+-- Performing Test LIBOMP_HAVE_WFRAME_ADDRESS_FLAG
+-- Performing Test LIBOMP_HAVE_WFRAME_ADDRESS_FLAG - Success
+-- Performing Test LIBOMP_HAVE_WSTRICT_ALIASING_FLAG
+-- Performing Test LIBOMP_HAVE_WSTRICT_ALIASING_FLAG - Success
+-- Performing Test LIBOMP_HAVE_WSTRINGOP_OVERFLOW_FLAG
+-- Performing Test LIBOMP_HAVE_WSTRINGOP_OVERFLOW_FLAG - Failed
+-- Performing Test LIBOMP_HAVE_WSTRINGOP_TRUNCATION_FLAG
+-- Performing Test LIBOMP_HAVE_WSTRINGOP_TRUNCATION_FLAG - Failed
+-- Performing Test LIBOMP_HAVE_WSWITCH_FLAG
+-- Performing Test LIBOMP_HAVE_WSWITCH_FLAG - Success
+-- Performing Test LIBOMP_HAVE_WUNINITIALIZED_FLAG
+-- Performing Test LIBOMP_HAVE_WUNINITIALIZED_FLAG - Success
+-- Performing Test LIBOMP_HAVE_WRETURN_TYPE_C_LINKAGE_FLAG
+-- Performing Test LIBOMP_HAVE_WRETURN_TYPE_C_LINKAGE_FLAG - Success
+-- Performing Test LIBOMP_HAVE_WCAST_QUAL_FLAG
+-- Performing Test LIBOMP_HAVE_WCAST_QUAL_FLAG - Success
+-- Performing Test LIBOMP_HAVE_WINT_TO_VOID_POINTER_CAST_FLAG
+-- Performing Test LIBOMP_HAVE_WINT_TO_VOID_POINTER_CAST_FLAG - Success
+-- Performing Test LIBOMP_HAVE_MSSE2_FLAG
+-- Performing Test LIBOMP_HAVE_MSSE2_FLAG - Success
+-- Performing Test LIBOMP_HAVE_FTLS_MODEL_FLAG
+-- Performing Test LIBOMP_HAVE_FTLS_MODEL_FLAG - Success
+-- Performing Test LIBOMP_HAVE_MMIC_FLAG
+-- Performing Test LIBOMP_HAVE_MMIC_FLAG - Failed
+-- Performing Test LIBOMP_HAVE_M32_FLAG
+-- Performing Test LIBOMP_HAVE_M32_FLAG - Failed
+-- Looking for pthread_setname_np
+-- Looking for pthread_setname_np - not found
+-- Looking for pthread_set_name_np
+-- Looking for pthread_set_name_np - not found
+-- Looking for pthread_cancel
+-- Looking for pthread_cancel - found
+-- Looking for shm_open
+-- Looking for shm_open - found
+-- Looking for xmmintrin.h
+-- Looking for xmmintrin.h - found
+-- Performing Test LIBOMP_HAVE__MM_MALLOC
+-- Performing Test LIBOMP_HAVE__MM_MALLOC - Success
+-- Looking for aligned_alloc
+-- Looking for aligned_alloc - found
+-- Looking for posix_memalign
+-- Looking for posix_memalign - found
+-- Looking for _aligned_malloc
+-- Looking for _aligned_malloc - not found
+-- Performing Test LIBOMP_HAVE_X_FLAG
+-- Performing Test LIBOMP_HAVE_X_FLAG - Success
+-- Performing Test LIBOMP_HAVE_AS_NEEDED_FLAG
+-- Performing Test LIBOMP_HAVE_AS_NEEDED_FLAG - Success
+-- Performing Test LIBOMP_HAVE_VERSION_SCRIPT_FLAG
+-- Performing Test LIBOMP_HAVE_VERSION_SCRIPT_FLAG - Success
+-- Performing Test LIBOMP_HAVE_STATIC_LIBGCC_FLAG
+-- Performing Test LIBOMP_HAVE_STATIC_LIBGCC_FLAG - Success
+-- Performing Test LIBOMP_HAVE_Z_NOEXECSTACK_FLAG
+-- Performing Test LIBOMP_HAVE_Z_NOEXECSTACK_FLAG - Success
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Looking for immintrin.h
+-- Looking for immintrin.h - found
+-- Performing Test LIBOMP_HAVE_ATTRIBUTE_RTM
+-- Performing Test LIBOMP_HAVE_ATTRIBUTE_RTM - Success
+-- Performing Test LIBOMP_HAVE_ATTRIBUTE_WAITPKG
+-- Performing Test LIBOMP_HAVE_ATTRIBUTE_WAITPKG - Success
+-- Performing Test LIBOMP_HAVE_WAITPKG_INTRINSICS
+-- Performing Test LIBOMP_HAVE_WAITPKG_INTRINSICS - Success
+-- Performing Test LIBOMP_HAVE_RTM_INTRINSICS
+-- Performing Test LIBOMP_HAVE_RTM_INTRINSICS - Success
+-- Performing Test LIBOMP_HAVE_VERSION_SYMBOLS
+-- Performing Test LIBOMP_HAVE_VERSION_SYMBOLS - Success
+-- Performing Test LIBOMP_HAVE___BUILTIN_FRAME_ADDRESS
+-- Performing Test LIBOMP_HAVE___BUILTIN_FRAME_ADDRESS - Success
+-- Performing Test LIBOMP_HAVE_WEAK_ATTRIBUTE
+-- Performing Test LIBOMP_HAVE_WEAK_ATTRIBUTE - Success
+-- Performing Test LIBOMP_HAVE_PSAPI
+-- Performing Test LIBOMP_HAVE_PSAPI - Failed
+-- Looking for sqrt in m
+-- Looking for sqrt in m - found
+-- Looking for __atomic_load_1
+-- Looking for __atomic_load_1 - not found
+-- Looking for __atomic_load_1 in atomic
+-- Looking for __atomic_load_1 in atomic - found
+-- check-libomp does nothing.
+-- check-ompt does nothing.
+-- Performing Test LLVM_LINKER_SUPPORTS_B_SYMBOLIC_FUNCTIONS
+-- Performing Test LLVM_LINKER_SUPPORTS_B_SYMBOLIC_FUNCTIONS - Success
+-- check-libomp-unit does nothing.
+-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter Development Development.Module Development.Embed 
+-- check-openmp does nothing.
+-- check-runtimes does nothing.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/cmake

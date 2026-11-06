@@ -1,0 +1,67 @@
+Subject: [PATCH 2/2] libomp: test RV64 rounding inheritance on declared hardware FP targets
+Base-commit: fda4724ce92b99e4d7b90af9ee264d7650a63b32
+
+diff --git a/openmp/runtime/test/lit.cfg b/openmp/runtime/test/lit.cfg
+--- a/openmp/runtime/test/lit.cfg
++++ b/openmp/runtime/test/lit.cfg
+@@ -166,6 +166,22 @@
+   config.available_features.add(target_arch + '-target-arch')
+   if target_arch in ['x86_64', 'i386']:
+     config.available_features.add('x86-target-arch')
++
++# FP-control inheritance requires the same declared hardware FP as the runtime.
++if target_arch == 'riscv64':
++    fp_probe = [config.test_c_compiler] + \
++        shlex.split(config.test_openmp_flags) + \
++        shlex.split(config.test_extra_flags) + ['-dM', '-E', '-x', 'c', '-']
++    fp_result = subprocess.run(fp_probe, input='', capture_output=True, text=True)
++    if fp_result.returncode:
++        lit_config.warning('Cannot inspect RISC-V test compiler FP features: ' +
++                           fp_result.stderr.strip())
++    else:
++        fp_macros = dict(re.findall(
++            r'^#define (__riscv_(?:xlen|flen)) ([0-9]+)$', fp_result.stdout, re.M))
++        if fp_macros.get('__riscv_xlen') == '64' and \
++                int(fp_macros.get('__riscv_flen', '0')) >= 32:
++            config.available_features.add('riscv-hardware-fp')
+ 
+ import multiprocessing
+ try:
+diff --git a/openmp/runtime/test/parallel/omp_fp_rounding_inheritance.c b/openmp/runtime/test/parallel/omp_fp_rounding_inheritance.c
+new file mode 100644
+--- /dev/null
++++ b/openmp/runtime/test/parallel/omp_fp_rounding_inheritance.c
+@@ -0,0 +1,33 @@
++// RUN: %libomp-compile
++// RUN: env OMP_DYNAMIC=FALSE KMP_INHERIT_FP_CONTROL=TRUE %libomp-run
++// REQUIRES: linux, riscv64-target-arch, riscv-hardware-fp
++// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
++
++#include <fenv.h>
++#include <omp.h>
++#include <stdio.h>
++
++// Reused workers must inherit the new rounding mode at each parallel region.
++// Inspect control state directly, without relying on arithmetic optimization.
++int main(void) {
++  const int modes[] = {FE_TONEAREST, FE_DOWNWARD, FE_UPWARD, FE_TOWARDZERO};
++  int original = fegetround();
++  int errors = 0;
++  omp_set_dynamic(0);
++  for (int stage = 0; stage < 4; ++stage) {
++    if (fesetround(modes[stage]))
++      return 2;
++    int bad = 0;
++#pragma omp parallel num_threads(2) reduction(+:bad)
++    {
++      if (omp_get_num_threads() != 2 || fegetround() != modes[stage])
++        ++bad;
++    }
++    printf("FP_ROUND_STAGE stage=%d errors=%d\n", stage, bad);
++    errors += bad;
++  }
++  if (fesetround(original))
++    return 2;
++  printf("FP_ROUND_RESULT errors=%d\n", errors);
++  return errors != 0;
++}

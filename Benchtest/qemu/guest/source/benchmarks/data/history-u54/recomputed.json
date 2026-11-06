@@ -1,0 +1,269 @@
+{
+  "platform": "Historical Microchip PolarFire SoC / U54, Linux 6.1.74, RV64GC host without V",
+  "new_jupiter_measurement": false,
+  "historical_frozen_ELFs": true,
+  "files_verified": 1311,
+  "samples": 216,
+  "formal_samples": 180,
+  "warmups": 36,
+  "max_center_difference_from_previous_review": 0.0,
+  "metrics": [
+    {
+      "mode": "constant",
+      "metric": "ready_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 286.31327820493095,
+      "composite": 225.3554363487727,
+      "reduction_pct": 21.29060944652632,
+      "efficiency_increase_pct": null,
+      "ci95_reduction_pct": [
+        20.86855288497795,
+        21.726380403185207
+      ],
+      "min_pair_reduction_pct": 19.010308986877867,
+      "max_pair_reduction_pct": 23.67190602023632
+    },
+    {
+      "mode": "constant",
+      "metric": "total_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 527.4154658423122,
+      "composite": 287.6818150374749,
+      "reduction_pct": 45.454421861135415,
+      "efficiency_increase_pct": null,
+      "ci95_reduction_pct": [
+        45.13367201648138,
+        45.77049010631731
+      ],
+      "min_pair_reduction_pct": 43.80953657448451,
+      "max_pair_reduction_pct": 46.67305557791259
+    },
+    {
+      "mode": "constant",
+      "metric": "cpu_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 522.8330114966392,
+      "composite": 284.9605487650952,
+      "reduction_pct": 45.49683311897628,
+      "efficiency_increase_pct": 83.4755771500258,
+      "ci95_reduction_pct": [
+        45.35240294362052,
+        45.65350825473655
+      ],
+      "min_pair_reduction_pct": 44.887451051083296,
+      "max_pair_reduction_pct": 46.0586004668037
+    },
+    {
+      "mode": "constant",
+      "metric": "maxrss_kib",
+      "unit": "KiB",
+      "pairs": 30,
+      "baseline": 23954.52468156448,
+      "composite": 21669.007641192144,
+      "reduction_pct": 9.541066127399688,
+      "efficiency_increase_pct": null,
+      "ci95_reduction_pct": [
+        9.179136487508266,
+        9.914059562179212
+      ],
+      "min_pair_reduction_pct": 8.014112903225811,
+      "max_pair_reduction_pct": 10.976821192052977
+    },
+    {
+      "mode": "constant",
+      "metric": "region_wall_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 223.39098714499494,
+      "composite": 47.136977580968995,
+      "reduction_pct": 78.89933780077972,
+      "efficiency_increase_pct": null,
+      "ci95_reduction_pct": [
+        78.70018554971337,
+        79.08763510768613
+      ],
+      "min_pair_reduction_pct": 77.96019721128107,
+      "max_pair_reduction_pct": 79.75582463610992
+    },
+    {
+      "mode": "constant",
+      "metric": "region_cpu_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 222.76723138352673,
+      "composite": 47.31349534468384,
+      "reduction_pct": 78.76101657733194,
+      "efficiency_increase_pct": 370.8323275645646,
+      "ci95_reduction_pct": [
+        78.72002129712008,
+        78.80070836536542
+      ],
+      "min_pair_reduction_pct": 78.54187165559165,
+      "max_pair_reduction_pct": 79.00412704109098
+    },
+    {
+      "mode": "dynamic",
+      "metric": "ready_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 289.78484288535003,
+      "composite": 233.5390156571218,
+      "reduction_pct": 19.40951316438635,
+      "efficiency_increase_pct": null,
+      "ci95_reduction_pct": [
+        19.03545723691108,
+        19.83332551663325
+      ],
+      "min_pair_reduction_pct": 17.63057820788232,
+      "max_pair_reduction_pct": 21.16164272022527
+    },
+    {
+      "mode": "dynamic",
+      "metric": "total_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 673.7691014257589,
+      "composite": 589.1296929552942,
+      "reduction_pct": 12.56207924812216,
+      "efficiency_increase_pct": null,
+      "ci95_reduction_pct": [
+        12.234615851803499,
+        12.87780475253304
+      ],
+      "min_pair_reduction_pct": 11.111543143594627,
+      "max_pair_reduction_pct": 14.16037160418523
+    },
+    {
+      "mode": "dynamic",
+      "metric": "cpu_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 670.4773180426246,
+      "composite": 587.1239799607041,
+      "reduction_pct": 12.431940028226485,
+      "efficiency_increase_pct": 14.19688871973841,
+      "ci95_reduction_pct": [
+        12.254141325701195,
+        12.5909794610503
+      ],
+      "min_pair_reduction_pct": 11.521246937947893,
+      "max_pair_reduction_pct": 13.104266877684035
+    },
+    {
+      "mode": "dynamic",
+      "metric": "maxrss_kib",
+      "unit": "KiB",
+      "pairs": 30,
+      "baseline": 24012.858131522058,
+      "composite": 21758.305478218022,
+      "reduction_pct": 9.388939213131241,
+      "efficiency_increase_pct": null,
+      "ci95_reduction_pct": [
+        9.187375362111327,
+        9.575455583673564
+      ],
+      "min_pair_reduction_pct": 8.270676691729328,
+      "max_pair_reduction_pct": 10.51675747069506
+    },
+    {
+      "mode": "dynamic",
+      "metric": "region_wall_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 365.9615113871176,
+      "composite": 340.23279252577237,
+      "reduction_pct": 7.0304439294243455,
+      "efficiency_increase_pct": null,
+      "ci95_reduction_pct": [
+        6.723610813571579,
+        7.304080984426642
+      ],
+      "min_pair_reduction_pct": 5.802571900299725,
+      "max_pair_reduction_pct": 8.501227570114944
+    },
+    {
+      "mode": "dynamic",
+      "metric": "region_cpu_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 365.5654563439643,
+      "composite": 340.2860703781321,
+      "reduction_pct": 6.915146255516746,
+      "efficiency_increase_pct": 7.428862996872443,
+      "ci95_reduction_pct": [
+        6.712150909331893,
+        7.104181611482008
+      ],
+      "min_pair_reduction_pct": 5.802784305445496,
+      "max_pair_reduction_pct": 7.750817387137965
+    },
+    {
+      "mode": "init",
+      "metric": "ready_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 268.5615517307977,
+      "composite": 213.75712287751855,
+      "reduction_pct": 20.406654824594728,
+      "efficiency_increase_pct": null,
+      "ci95_reduction_pct": [
+        20.232166008496545,
+        20.582953366705357
+      ],
+      "min_pair_reduction_pct": 19.57250550345906,
+      "max_pair_reduction_pct": 21.52708617375869
+    },
+    {
+      "mode": "init",
+      "metric": "total_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 283.47899668619925,
+      "composite": 227.95469669783049,
+      "reduction_pct": 19.586742099920773,
+      "efficiency_increase_pct": null,
+      "ci95_reduction_pct": [
+        19.273842646813655,
+        19.878836649791587
+      ],
+      "min_pair_reduction_pct": 17.84317907158598,
+      "max_pair_reduction_pct": 20.981693545876812
+    },
+    {
+      "mode": "init",
+      "metric": "cpu_ms",
+      "unit": "ms",
+      "pairs": 30,
+      "baseline": 284.4072764045599,
+      "composite": 228.68076994637755,
+      "reduction_pct": 19.59391024121102,
+      "efficiency_increase_pct": 24.368689361702558,
+      "ci95_reduction_pct": [
+        19.41059473914004,
+        19.778097900060608
+      ],
+      "min_pair_reduction_pct": 18.67471372188103,
+      "max_pair_reduction_pct": 20.63972541916569
+    },
+    {
+      "mode": "init",
+      "metric": "maxrss_kib",
+      "unit": "KiB",
+      "pairs": 30,
+      "baseline": 23770.097259024114,
+      "composite": 21495.70892327945,
+      "reduction_pct": 9.568275261815462,
+      "efficiency_increase_pct": null,
+      "ci95_reduction_pct": [
+        9.334745927255616,
+        9.794041009772702
+      ],
+      "min_pair_reduction_pct": 8.761583824768326,
+      "max_pair_reduction_pct": 10.32981751213795
+    }
+  ],
+  "passed": true
+}

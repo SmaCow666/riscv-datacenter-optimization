@@ -1,0 +1,847 @@
+{
+  "protocol_sha256": "596afa5d951e570e495959fe00c2f90a627e0c13101e2e3d705f3f7fc38eb30b",
+  "interaction": {
+    "wall_ns": {
+      "metric": "wall_ns",
+      "definition": "I = (T_D * T_A) / (T_C * T_B)",
+      "point": 0.9932944220597201,
+      "bootstrap_95_percent": [
+        0.9664627855279829,
+        1.0350902567406521
+      ],
+      "median_of_block_ratios": 0.9970829173574589,
+      "per_block": [
+        1.0350064543380029,
+        0.9868394350293187,
+        1.0367581231563427,
+        0.972225384328905,
+        0.9246502799640275,
+        1.0449297794714945,
+        1.0073263996855992,
+        0.9753001360030084
+      ],
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "seed": 20261029,
+      "draws": 10000,
+      "ratio_tolerance": 1e-09,
+      "additive_delta": -187.6755000000012,
+      "additive_delta_unit": "ms",
+      "additive_delta_bootstrap_95_percent": [
+        -1054.8569499999976,
+        1142.0301
+      ],
+      "arm_medians": {
+        "A": 33183.4223,
+        "B": 31245.13255,
+        "C": 32845.9781,
+        "D": 30720.01285
+      },
+      "arm_median_unit": "ms",
+      "note": "ratio and additive delta come from the same 8 blocks; neither is derived from history. additive_delta = A * g_guest * g_qemu for independent proportional gains, so it is not an overlap indicator on its own"
+    },
+    "ksp_ns": {
+      "metric": "ksp_ns",
+      "definition": "I = (T_D * T_A) / (T_C * T_B)",
+      "point": 0.9935295238572731,
+      "bootstrap_95_percent": [
+        0.9606668540630151,
+        1.0286321541295267
+      ],
+      "median_of_block_ratios": 0.9894138671404196,
+      "per_block": [
+        1.0234117939068421,
+        0.9953885681860126,
+        1.0130330559003438,
+        0.9771760587435759,
+        0.9266060416501993,
+        1.0547447733381314,
+        0.9834391660948265,
+        0.9675011197164859
+      ],
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "seed": 20261029,
+      "draws": 10000,
+      "ratio_tolerance": 1e-09,
+      "additive_delta": -138.6241499999669,
+      "additive_delta_unit": "ms",
+      "additive_delta_bootstrap_95_percent": [
+        -976.5156999999781,
+        776.2324500001632
+      ],
+      "arm_medians": {
+        "A": 26694.74555000003,
+        "B": 24610.265399999997,
+        "C": 26449.466099999998,
+        "D": 24226.3618
+      },
+      "arm_median_unit": "ms",
+      "note": "ratio and additive delta come from the same 8 blocks; neither is derived from history. additive_delta = A * g_guest * g_qemu for independent proportional gains, so it is not an overlap indicator on its own"
+    },
+    "reuse_ns": {
+      "metric": "reuse_ns",
+      "definition": "I = (T_D * T_A) / (T_C * T_B)",
+      "point": 1.009137712707042,
+      "bootstrap_95_percent": [
+        0.9615995091673594,
+        1.0393402014365196
+      ],
+      "median_of_block_ratios": 1.004925573741468,
+      "per_block": [
+        1.0334183586987464,
+        1.009576175428099,
+        1.0168112333290145,
+        0.9800710993589258,
+        0.9075829135866528,
+        1.057408030954197,
+        1.000274972054837,
+        0.966047483557482
+      ],
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "seed": 20261029,
+      "draws": 10000,
+      "ratio_tolerance": 1e-09,
+      "additive_delta": 225.5905499998953,
+      "additive_delta_unit": "ms",
+      "additive_delta_bootstrap_95_percent": [
+        -822.0006500000527,
+        903.4136500001077
+      ],
+      "arm_medians": {
+        "A": 23219.519249999954,
+        "B": 20853.71430000004,
+        "C": 22845.537900000018,
+        "D": 20705.3235
+      },
+      "arm_median_unit": "ms",
+      "note": "ratio and additive delta come from the same 8 blocks; neither is derived from history. additive_delta = A * g_guest * g_qemu for independent proportional gains, so it is not an overlap indicator on its own"
+    },
+    "child_cpu_ns": {
+      "metric": "child_cpu_ns",
+      "definition": "I = (T_D * T_A) / (T_C * T_B)",
+      "point": 0.9929001024352394,
+      "bootstrap_95_percent": [
+        0.9711193744541776,
+        1.0396637091437981
+      ],
+      "median_of_block_ratios": 0.995202928252086,
+      "per_block": [
+        1.0298639485014964,
+        0.9835585450280586,
+        1.0323211277299704,
+        0.9766343105220721,
+        0.9236298873576214,
+        1.058355648504223,
+        1.0066270765969174,
+        0.9837787799072547
+      ],
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "seed": 20261029,
+      "draws": 10000,
+      "ratio_tolerance": 1e-09,
+      "additive_delta": -382.8715000000084,
+      "additive_delta_unit": "ms",
+      "additive_delta_bootstrap_95_percent": [
+        -1694.5539999999964,
+        2396.4424999999974
+      ],
+      "arm_medians": {
+        "A": 62480.7775,
+        "B": 58551.271,
+        "C": 62008.614,
+        "D": 57696.236
+      },
+      "arm_median_unit": "ms",
+      "note": "ratio and additive delta come from the same 8 blocks; neither is derived from history. additive_delta = A * g_guest * g_qemu for independent proportional gains, so it is not an overlap indicator on its own"
+    },
+    "host_boot_wall_ns": {
+      "metric": "host_boot_wall_ns",
+      "definition": "I = (T_D * T_A) / (T_C * T_B)",
+      "point": 1.001229419657559,
+      "bootstrap_95_percent": [
+        0.989157621714158,
+        1.0258727651904094
+      ],
+      "median_of_block_ratios": 1.005865090295899,
+      "per_block": [
+        1.0095276038528846,
+        0.9756464193046133,
+        1.0552054497973824,
+        1.0258727651904094,
+        0.989267560213002,
+        1.0285685072354995,
+        1.0022025767389133,
+        0.9738456195111898
+      ],
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "seed": 20261029,
+      "draws": 10000,
+      "ratio_tolerance": 1e-09,
+      "additive_delta": 52.31341999999859,
+      "additive_delta_unit": "ms",
+      "additive_delta_bootstrap_95_percent": [
+        -461.7968919999985,
+        1086.7476040000038
+      ],
+      "arm_medians": {
+        "A": 42278.9195785,
+        "B": 42360.9679865,
+        "C": 42352.68375,
+        "D": 42487.045578
+      },
+      "arm_median_unit": "ms",
+      "note": "ratio and additive delta come from the same 8 blocks; neither is derived from history. additive_delta = A * g_guest * g_qemu for independent proportional gains, so it is not an overlap indicator on its own"
+    },
+    "host_boot_cpu_ns": {
+      "metric": "host_boot_cpu_ns",
+      "definition": "I = (T_D * T_A) / (T_C * T_B)",
+      "point": 1.007927093769352,
+      "bootstrap_95_percent": [
+        0.982693094616547,
+        1.0384605948368706
+      ],
+      "median_of_block_ratios": 1.0159526061901571,
+      "per_block": [
+        1.0219055906274543,
+        0.9805026356516879,
+        1.041633134746773,
+        1.0435934645824223,
+        0.9795588741904369,
+        1.04012339815518,
+        1.0099996217528602,
+        0.9735473701348589
+      ],
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "seed": 20261029,
+      "draws": 10000,
+      "ratio_tolerance": 1e-09,
+      "additive_delta": 460.0,
+      "additive_delta_unit": "ms",
+      "additive_delta_bootstrap_95_percent": [
+        -1015.0,
+        2205.0
+      ],
+      "arm_medians": {
+        "A": 58155.0,
+        "B": 57945.0,
+        "C": 58310.0,
+        "D": 58560.0
+      },
+      "arm_median_unit": "ms",
+      "note": "ratio and additive delta come from the same 8 blocks; neither is derived from history. additive_delta = A * g_guest * g_qemu for independent proportional gains, so it is not an overlap indicator on its own"
+    },
+    "host_region_wall_ns": {
+      "metric": "host_region_wall_ns",
+      "definition": "I = (T_D * T_A) / (T_C * T_B)",
+      "point": 1.0033311961352105,
+      "bootstrap_95_percent": [
+        0.9734538897757442,
+        1.026600754388341
+      ],
+      "median_of_block_ratios": 1.0029096720057287,
+      "per_block": [
+        1.0435775676867431,
+        1.018551271442988,
+        0.9693221595110778,
+        0.9872680725684693,
+        0.9555269110433892,
+        1.048160849117002,
+        1.0203180060548624,
+        0.9760705720673604
+      ],
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "seed": 20261029,
+      "draws": 10000,
+      "ratio_tolerance": 1e-09,
+      "additive_delta": 606.132429499994,
+      "additive_delta_unit": "ms",
+      "additive_delta_bootstrap_95_percent": [
+        -4221.723327999993,
+        4257.0843949999835
+      ],
+      "arm_medians": {
+        "A": 165472.5775865,
+        "B": 155926.483399,
+        "C": 163883.038571,
+        "D": 154943.076813
+      },
+      "arm_median_unit": "ms",
+      "note": "ratio and additive delta come from the same 8 blocks; neither is derived from history. additive_delta = A * g_guest * g_qemu for independent proportional gains, so it is not an overlap indicator on its own"
+    },
+    "host_region_cpu_ns": {
+      "metric": "host_region_cpu_ns",
+      "definition": "I = (T_D * T_A) / (T_C * T_B)",
+      "point": 1.0012616157027434,
+      "bootstrap_95_percent": [
+        0.9738129912600917,
+        1.023139338878291
+      ],
+      "median_of_block_ratios": 0.9966275010181882,
+      "per_block": [
+        1.0269419980167656,
+        1.024250427573685,
+        0.9724303534672153,
+        0.978516583641989,
+        0.9615104958238906,
+        1.0397869012904584,
+        1.0147384183943875,
+        0.9741680044154719
+      ],
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "seed": 20261029,
+      "draws": 10000,
+      "ratio_tolerance": 1e-09,
+      "additive_delta": 435.0,
+      "additive_delta_unit": "ms",
+      "additive_delta_bootstrap_95_percent": [
+        -7895.0,
+        7050.0
+      ],
+      "arm_medians": {
+        "A": 310235.0,
+        "B": 291605.0,
+        "C": 309095.0,
+        "D": 290900.0
+      },
+      "arm_median_unit": "ms",
+      "note": "ratio and additive delta come from the same 8 blocks; neither is derived from history. additive_delta = A * g_guest * g_qemu for independent proportional gains, so it is not an overlap indicator on its own"
+    },
+    "host_slot_cpu_ns": {
+      "metric": "host_slot_cpu_ns",
+      "definition": "I = (T_D * T_A) / (T_C * T_B)",
+      "point": 0.9962281013175405,
+      "bootstrap_95_percent": [
+        0.9777994035739214,
+        1.01618351594654
+      ],
+      "median_of_block_ratios": 1.0015181365774701,
+      "per_block": [
+        1.0258335526700033,
+        1.0169958890616504,
+        0.9834178438499986,
+        0.9890387242615133,
+        0.9639425800487065,
+        1.0396415891684423,
+        1.013997548893427,
+        0.9739191098797789
+      ],
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "seed": 20261029,
+      "draws": 10000,
+      "ratio_tolerance": 1e-09,
+      "additive_delta": -1297.8400000000256,
+      "additive_delta_unit": "ms",
+      "additive_delta_bootstrap_95_percent": [
+        -7955.922000500024,
+        5733.425999499974
+      ],
+      "arm_medians": {
+        "A": 368443.0149995,
+        "B": 350475.6004995,
+        "C": 367982.3324995,
+        "D": 348717.0779995
+      },
+      "arm_median_unit": "ms",
+      "note": "ratio and additive delta come from the same 8 blocks; neither is derived from history. additive_delta = A * g_guest * g_qemu for independent proportional gains, so it is not an overlap indicator on its own"
+    },
+    "host_rss_peak_kb": {
+      "metric": "host_rss_peak_kb",
+      "definition": "I = (T_D * T_A) / (T_C * T_B)",
+      "point": 1.0213030356234505,
+      "bootstrap_95_percent": [
+        0.9933707303694963,
+        1.0500875744581624
+      ],
+      "median_of_block_ratios": 1.0209557650204213,
+      "per_block": [
+        1.05167670136248,
+        0.9750101661538154,
+        1.0621508839600162,
+        1.0196051900769267,
+        0.9999236853444534,
+        1.0400846770139196,
+        1.0223063399639158,
+        0.962562081380849
+      ],
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "seed": 20261029,
+      "draws": 10000,
+      "ratio_tolerance": 1e-09,
+      "additive_delta": 7544.0,
+      "additive_delta_unit": "kB",
+      "additive_delta_bootstrap_95_percent": [
+        -2368.0,
+        17482.0
+      ],
+      "arm_medians": {
+        "A": 360028.0,
+        "B": 356548.0,
+        "C": 355518.0,
+        "D": 359582.0
+      },
+      "arm_median_unit": "kB",
+      "note": "ratio and additive delta come from the same 8 blocks; neither is derived from history. additive_delta = A * g_guest * g_qemu for independent proportional gains, so it is not an overlap indicator on its own"
+    }
+  },
+  "effect_modification": {
+    "wall_ns": {
+      "guest_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "B"
+          ],
+          "percent": 5.841138784530974,
+          "delta_ms": -1938289750.0,
+          "direction": "REPEATED_GAIN"
+        },
+        "high_level": {
+          "pair": [
+            "C",
+            "D"
+          ],
+          "percent": 6.472528367179297,
+          "delta_ms": -2125965250.0,
+          "direction": "REPEATED_GAIN"
+        },
+        "percent_gap": 0.4482140344411807,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      },
+      "qemu_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "C"
+          ],
+          "percent": 1.0169059627101795,
+          "delta_ms": -337444200.0,
+          "direction": "REPEATED_GAIN"
+        },
+        "high_level": {
+          "pair": [
+            "B",
+            "D"
+          ],
+          "percent": 1.680644814547283,
+          "delta_ms": -525119700.0,
+          "direction": "POSITIVE_TREND"
+        },
+        "percent_gap": 0.22584033998325204,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      }
+    },
+    "ksp_ns": {
+      "guest_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "B"
+          ],
+          "percent": 7.808578456369785,
+          "delta_ms": -2084480150.0000343,
+          "direction": "REPEATED_GAIN"
+        },
+        "high_level": {
+          "pair": [
+            "C",
+            "D"
+          ],
+          "percent": 8.405100850031888,
+          "delta_ms": -2223104299.999996,
+          "direction": "REPEATED_GAIN"
+        },
+        "percent_gap": 0.12072076535021736,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      },
+      "qemu_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "C"
+          ],
+          "percent": 0.9188304475149178,
+          "delta_ms": -245279450.00003433,
+          "direction": "POSITIVE_TREND"
+        },
+        "high_level": {
+          "pair": [
+            "B",
+            "D"
+          ],
+          "percent": 1.5599327912977135,
+          "delta_ms": -383903599.9999962,
+          "direction": "POSITIVE_TREND"
+        },
+        "percent_gap": 0.8008845440108492,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      }
+    },
+    "reuse_ns": {
+      "guest_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "B"
+          ],
+          "percent": 10.188862760368822,
+          "delta_ms": -2365804949.999916,
+          "direction": "REPEATED_GAIN"
+        },
+        "high_level": {
+          "pair": [
+            "C",
+            "D"
+          ],
+          "percent": 9.368194390380346,
+          "delta_ms": -2140214400.000019,
+          "direction": "REPEATED_GAIN"
+        },
+        "percent_gap": -0.03488127387481299,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      },
+      "qemu_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "C"
+          ],
+          "percent": 1.610633475970591,
+          "delta_ms": -373981349.99993515,
+          "direction": "POSITIVE_TREND"
+        },
+        "high_level": {
+          "pair": [
+            "B",
+            "D"
+          ],
+          "percent": 0.7115797112461575,
+          "delta_ms": -148390800.00003815,
+          "direction": "FLAT"
+        },
+        "percent_gap": 0.1254027097486512,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      }
+    },
+    "child_cpu_ns": {
+      "guest_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "B"
+          ],
+          "percent": 6.289144689340653,
+          "delta_ms": -3929506500.0,
+          "direction": "REPEATED_GAIN"
+        },
+        "high_level": {
+          "pair": [
+            "C",
+            "D"
+          ],
+          "percent": 6.954482162752418,
+          "delta_ms": -4312378000.0,
+          "direction": "REPEATED_GAIN"
+        },
+        "percent_gap": 0.4207149108028103,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      },
+      "qemu_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "C"
+          ],
+          "percent": 0.7556940212531726,
+          "delta_ms": -472163500.0,
+          "direction": "REPEATED_GAIN"
+        },
+        "high_level": {
+          "pair": [
+            "B",
+            "D"
+          ],
+          "percent": 1.4603184275880143,
+          "delta_ms": -855035000.0,
+          "direction": "POSITIVE_TREND"
+        },
+        "percent_gap": 0.5016003389469004,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      }
+    },
+    "host_boot_wall_ns": {
+      "guest_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "B"
+          ],
+          "percent": -0.19406458068933485,
+          "delta_ms": 82048408.0,
+          "direction": "FLAT"
+        },
+        "high_level": {
+          "pair": [
+            "C",
+            "D"
+          ],
+          "percent": -0.3172451332555726,
+          "delta_ms": 134361828.0,
+          "direction": "NEGATIVE_TREND"
+        },
+        "percent_gap": -1.2033315109295284,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      },
+      "qemu_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "C"
+          ],
+          "percent": -0.17447033234385678,
+          "delta_ms": 73764171.5,
+          "direction": "FLAT"
+        },
+        "high_level": {
+          "pair": [
+            "B",
+            "D"
+          ],
+          "percent": -0.29762679535598746,
+          "delta_ms": 126077591.5,
+          "direction": "NEGATIVE_TREND"
+        },
+        "percent_gap": -1.2112557465236373,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      }
+    },
+    "host_boot_cpu_ns": {
+      "guest_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "B"
+          ],
+          "percent": 0.3611039463502719,
+          "delta_ms": -210000000.0,
+          "direction": "FLAT"
+        },
+        "high_level": {
+          "pair": [
+            "C",
+            "D"
+          ],
+          "percent": -0.4287429257417319,
+          "delta_ms": 250000000.0,
+          "direction": "NEGATIVE_TREND"
+        },
+        "percent_gap": -1.6192470481237453,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      },
+      "qemu_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "C"
+          ],
+          "percent": -0.2665291032585282,
+          "delta_ms": 155000000.0,
+          "direction": "POSITIVE_TREND"
+        },
+        "high_level": {
+          "pair": [
+            "B",
+            "D"
+          ],
+          "percent": -1.0613512813875126,
+          "delta_ms": 615000000.0,
+          "direction": "FLAT"
+        },
+        "percent_gap": -1.9159464243098667,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      }
+    },
+    "host_region_wall_ns": {
+      "guest_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "B"
+          ],
+          "percent": 5.768988630463456,
+          "delta_ms": -9546094187.5,
+          "direction": "REPEATED_GAIN"
+        },
+        "high_level": {
+          "pair": [
+            "C",
+            "D"
+          ],
+          "percent": 5.455086649572271,
+          "delta_ms": -8939961758.0,
+          "direction": "REPEATED_GAIN"
+        },
+        "percent_gap": 0.8377114999881519,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      },
+      "qemu_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "C"
+          ],
+          "percent": 0.9606057019744374,
+          "delta_ms": -1589539015.5,
+          "direction": "POSITIVE_TREND"
+        },
+        "high_level": {
+          "pair": [
+            "B",
+            "D"
+          ],
+          "percent": 0.630686054455265,
+          "delta_ms": -983406586.0,
+          "direction": "POSITIVE_TREND"
+        },
+        "percent_gap": 0.36674391848861565,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      }
+    },
+    "host_region_cpu_ns": {
+      "guest_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "B"
+          ],
+          "percent": 6.005125147065938,
+          "delta_ms": -18630000000.0,
+          "direction": "REPEATED_GAIN"
+        },
+        "high_level": {
+          "pair": [
+            "C",
+            "D"
+          ],
+          "percent": 5.886539736974072,
+          "delta_ms": -18195000000.0,
+          "direction": "REPEATED_GAIN"
+        },
+        "percent_gap": 0.6070002948509998,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      },
+      "qemu_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "C"
+          ],
+          "percent": 0.36746337453865685,
+          "delta_ms": -1140000000.0,
+          "direction": "FLAT"
+        },
+        "high_level": {
+          "pair": [
+            "B",
+            "D"
+          ],
+          "percent": 0.24176540182782036,
+          "delta_ms": -705000000.0,
+          "direction": "POSITIVE_TREND"
+        },
+        "percent_gap": 0.5273069879527248,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      }
+    },
+    "host_slot_cpu_ns": {
+      "guest_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "B"
+          ],
+          "percent": 4.876578946685795,
+          "delta_ms": -17967414500.0,
+          "direction": "REPEATED_GAIN"
+        },
+        "high_level": {
+          "pair": [
+            "C",
+            "D"
+          ],
+          "percent": 5.235374853227814,
+          "delta_ms": -19265254500.0,
+          "direction": "REPEATED_GAIN"
+        },
+        "percent_gap": 0.45378020860289414,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      },
+      "qemu_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "C"
+          ],
+          "percent": 0.12503493925665188,
+          "delta_ms": -460682500.0,
+          "direction": "POSITIVE_TREND"
+        },
+        "high_level": {
+          "pair": [
+            "B",
+            "D"
+          ],
+          "percent": 0.5017531883799498,
+          "delta_ms": -1758522500.0,
+          "direction": "POSITIVE_TREND"
+        },
+        "percent_gap": -0.18075722483845702,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      }
+    },
+    "host_rss_peak_kb": {
+      "guest_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "B"
+          ],
+          "percent": 0.9665914873287607,
+          "delta_ms": -3480.0,
+          "direction": "POSITIVE_TREND"
+        },
+        "high_level": {
+          "pair": [
+            "C",
+            "D"
+          ],
+          "percent": -1.1431207421283895,
+          "delta_ms": 4064.0,
+          "direction": "NEGATIVE_TREND"
+        },
+        "percent_gap": -1.37160731505368,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      },
+      "qemu_effect": {
+        "low_level": {
+          "pair": [
+            "A",
+            "C"
+          ],
+          "percent": 1.252680347084112,
+          "delta_ms": -4510.0,
+          "direction": "POSITIVE_TREND"
+        },
+        "high_level": {
+          "pair": [
+            "B",
+            "D"
+          ],
+          "percent": -0.8509373212022053,
+          "delta_ms": 3034.0,
+          "direction": "NEGATIVE_TREND"
+        },
+        "percent_gap": -2.5953957589111565,
+        "note": "low/high refer to the other layer: guest effect under official/optimised QEMU, or QEMU effect under stock/optimised guest"
+      }
+    }
+  }
+}

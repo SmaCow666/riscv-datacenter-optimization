@@ -1,0 +1,239 @@
+{
+  "schema": 2,
+  "id": "20250117T144341-1ceb00e7",
+  "mode": "quick",
+  "protocol": {
+    "sessions": 1,
+    "blocks": 3,
+    "warmups": 1,
+    "description": "基础功能、跨架构数值对照、3 个配对区组；不含完整 Linux 回归"
+  },
+  "benchmarks": [
+    "init",
+    "constant",
+    "dynamic",
+    "pipeline-scalar",
+    "pipeline-rvv"
+  ],
+  "status": "running",
+  "started_at": "2025-01-17T14:43:41.782594+00:00",
+  "platform_kind": "native-riscv",
+  "performance_valid": false,
+  "physical_board_confirmed": false,
+  "steps": [
+    {
+      "name": "cross-scalar",
+      "status": "passed",
+      "elapsed_s": 4.650197522998496,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": true,
+        "includes_known_baseline_behavior": false,
+        "output_sha256": "f1736add8a2231eef4e8a6537cadd81ea28ba2917bb935ca8fcbd701337e8406",
+        "tail": "CROSS_PASS cases=00000000000000b4 values=0000000000001a10"
+      }
+    },
+    {
+      "name": "cross-rvv",
+      "status": "passed",
+      "elapsed_s": 5.090813499999058,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": true,
+        "includes_known_baseline_behavior": false,
+        "output_sha256": "f1736add8a2231eef4e8a6537cadd81ea28ba2917bb935ca8fcbd701337e8406",
+        "tail": "CROSS_PASS cases=00000000000000b4 values=0000000000001a10"
+      }
+    },
+    {
+      "name": "数据处理 scalar",
+      "status": "passed",
+      "elapsed_s": 5.417155208000622,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": true,
+        "includes_known_baseline_behavior": false,
+        "output_sha256": "fc82dda066cc1b660c78b735af8cab0142a1eb5ce6a1b844711ac35694a7c1a1",
+        "tail": "PIPELINE_PASS checksum=0a4c2349"
+      }
+    },
+    {
+      "name": "数据处理 rvv",
+      "status": "passed",
+      "elapsed_s": 6.684173641002417,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": true,
+        "includes_known_baseline_behavior": false,
+        "output_sha256": "fc82dda066cc1b660c78b735af8cab0142a1eb5ce6a1b844711ac35694a7c1a1",
+        "tail": "PIPELINE_PASS checksum=0a4c2349"
+      }
+    },
+    {
+      "name": "非 RVV 控制 V=off",
+      "status": "passed",
+      "elapsed_s": 0.8661211959988577,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": false,
+        "includes_known_baseline_behavior": false,
+        "output_sha256": "992a81e13451a1eb87a5e3db9cd3e94b0023c950a4c5a9ecb908f1455134a83b",
+        "tail": "SCALAR_PASS digest=1faa31c56854bf30 atomic=4103 fp=512,256"
+      }
+    },
+    {
+      "name": "混合状态与计算 VLEN128",
+      "status": "passed",
+      "elapsed_s": 0.6078438969998388,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": false,
+        "includes_known_baseline_behavior": true,
+        "output_sha256": "b7a64c7ee4c7ab1113159259211d902fb5491fd57f3e988502e6cd00c932e367",
+        "tail": "MIXED_PASS cases=0000000000000400 checks=0000000000004201 known_vl0_reductions=0000000000000007 digest=b348d5bc5c0a04fd"
+      }
+    },
+    {
+      "name": "浮点位结果与异常标志",
+      "status": "passed",
+      "elapsed_s": 1.8362768499973754,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": false,
+        "includes_known_baseline_behavior": false,
+        "output_sha256": "771ebd7ffbdd96d8600b79fc58c44b7f20c46e88fc4ba7afe5d6a90a5b513d57",
+        "tail": "FLOAT_PASS cases=0000000000000a00 checks=0000000000004600 digest=46db3a86bc4d1300"
+      }
+    },
+    {
+      "name": "已知 VL=0 偏差重现",
+      "status": "passed",
+      "elapsed_s": 0.19501596099871676,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": false,
+        "includes_known_baseline_behavior": true,
+        "output_sha256": "750f9b072d0df74522ea3f61c3bdf81bd68060c4519bbb27e1464d58921a4af3",
+        "tail": "VL0_REDUCTION_OBSERVED_PASS got=0000000022222222 spec_expected=0000000011111111 baseline_expected=0000000022222222"
+      }
+    },
+    {
+      "name": "QOM 扩展与管理请求",
+      "status": "passed",
+      "elapsed_s": 0.42174748799880035,
+      "result": {
+        "objects_per_variant": 32,
+        "types": 440,
+        "malformed_request_rejected": true
+      }
+    },
+    {
+      "name": "配置回退 nochain",
+      "status": "passed",
+      "elapsed_s": 0.8193634990020655,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": false,
+        "includes_known_baseline_behavior": true,
+        "output_sha256": "df9ecb31625b3b9a55b8b1b2f3e45f250bf112c946159faa5a1bf70ee8639364",
+        "tail": "MIXED_PASS cases=0000000000000800 checks=0000000000008401 known_vl0_reductions=000000000000000e digest=4e6bc918f49defed"
+      }
+    },
+    {
+      "name": "配置回退 icount",
+      "status": "passed",
+      "elapsed_s": 0.7309313849982573,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": false,
+        "includes_known_baseline_behavior": true,
+        "output_sha256": "df9ecb31625b3b9a55b8b1b2f3e45f250bf112c946159faa5a1bf70ee8639364",
+        "tail": "MIXED_PASS cases=0000000000000800 checks=0000000000008401 known_vl0_reductions=000000000000000e digest=4e6bc918f49defed"
+      }
+    },
+    {
+      "name": "配置回退 one-insn",
+      "status": "passed",
+      "elapsed_s": 0.7234910480001417,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": false,
+        "includes_known_baseline_behavior": true,
+        "output_sha256": "df9ecb31625b3b9a55b8b1b2f3e45f250bf112c946159faa5a1bf70ee8639364",
+        "tail": "MIXED_PASS cases=0000000000000800 checks=0000000000008401 known_vl0_reductions=000000000000000e digest=4e6bc918f49defed"
+      }
+    },
+    {
+      "name": "faults",
+      "status": "passed",
+      "elapsed_s": 0.22061786499762093,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": false,
+        "includes_known_baseline_behavior": false,
+        "output_sha256": "7b3f5f58e7f01b93179823d0974169e20d25cfddd56bf59ef32dbc0aa69f4647",
+        "tail": "FAULT_PASS faults=128 checks=0000000000000381"
+      }
+    },
+    {
+      "name": "cache",
+      "status": "passed",
+      "elapsed_s": 12.291419280998525,
+      "result": {
+        "variants": 2,
+        "equal": true,
+        "independent_x86": false,
+        "includes_known_baseline_behavior": false,
+        "output_sha256": "943e54920cd6959a0e67e5e31dde3df50a85ec2fe53f57051aba9af0798ec7bf",
+        "tail": "CACHE_PASS blocks=8192 passes=4 checks=0000000000020000 digest=6234f6b74d4e5470"
+      }
+    },
+    {
+      "name": "Linux baseline 1 vCPU",
+      "status": "passed",
+      "elapsed_s": 72.68395079900074,
+      "result": {
+        "variant": "baseline",
+        "vcpus": 1,
+        "passed": true,
+        "pipeline_user_programs": 2,
+        "pipeline_matches_x86": true,
+        "pipeline_guest_files_sha256": "fc82dda066cc1b660c78b735af8cab0142a1eb5ce6a1b844711ac35694a7c1a1",
+        "test_disk_sha256_before": "c32486d7cde75650c8a7d9fd2831413efe6baeca56cac8404c9f8ea370c641fb"
+      }
+    },
+    {
+      "name": "Linux composite 1 vCPU",
+      "status": "passed",
+      "elapsed_s": 71.03746900499755,
+      "result": {
+        "variant": "composite",
+        "vcpus": 1,
+        "passed": true,
+        "pipeline_user_programs": 2,
+        "pipeline_matches_x86": true,
+        "pipeline_guest_files_sha256": "fc82dda066cc1b660c78b735af8cab0142a1eb5ce6a1b844711ac35694a7c1a1",
+        "test_disk_sha256_before": "c32486d7cde75650c8a7d9fd2831413efe6baeca56cac8404c9f8ea370c641fb"
+      }
+    }
+  ],
+  "samples": [],
+  "metrics": [],
+  "missing": [],
+  "known_deviations": [
+    "QEMU 9.1.0 VL=0 integer reduction: reproduced baseline behavior; ISA property fails"
+  ],
+  "current": "Linux composite 1 vCPU"
+}

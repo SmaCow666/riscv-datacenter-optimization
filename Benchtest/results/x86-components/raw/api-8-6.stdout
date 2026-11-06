@@ -1,0 +1,6 @@
+FINAL_BLAS_ID {"provider":"/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so","symbol":"cblas_sgemv","cpu":0}
+FINAL_BLAS_ROUND {"round":-1,"repeats":42845,"calls":85690,"wall_ns":3110753,"thread_cpu_ns":3105791,"correct":true,"guards":true}
+FINAL_BLAS_ROUND {"round":0,"repeats":42845,"calls":85690,"wall_ns":2954084,"thread_cpu_ns":2954830,"correct":true,"guards":true}
+FINAL_BLAS_ROUND {"round":1,"repeats":42845,"calls":85690,"wall_ns":3046777,"thread_cpu_ns":3048178,"correct":true,"guards":true}
+FINAL_BLAS_ROUND {"round":2,"repeats":42845,"calls":85690,"wall_ns":2940579,"thread_cpu_ns":2941364,"correct":true,"guards":true}
+FINAL_BLAS_EXIT=0

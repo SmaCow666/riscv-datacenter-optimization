@@ -1,0 +1,19 @@
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -1590,10 +1590,16 @@
+     sifive_test_create(memmap[VIRT_TEST].base);
+ 
+     /* VirtIO MMIO devices */
++    /*
++     * No guest or VirtIO backend runs during board initialization. Publish
++     * these transport mappings together, avoiding intermediate FlatViews.
++     */
++    memory_region_transaction_begin();
+     for (i = 0; i < VIRTIO_COUNT; i++) {
+         sysbus_create_simple("virtio-mmio",
+             memmap[VIRT_VIRTIO].base + i * memmap[VIRT_VIRTIO].size,
+             qdev_get_gpio_in(virtio_irqchip, VIRTIO_IRQ + i));
+     }
++    memory_region_transaction_commit();
+ 
+     gpex_pcie_init(system_memory, pcie_irqchip, s);

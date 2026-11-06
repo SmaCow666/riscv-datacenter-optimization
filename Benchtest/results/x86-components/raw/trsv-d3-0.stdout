@@ -1,0 +1,5 @@
+TRSV_ROUND {"round":-1,"single":0,"n":3,"repeats":128754,"wall_ns":2906048,"thread_cpu_ns":2904201,"cpu":0,"library":"/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so","correct":true}
+TRSV_ROUND {"round":0,"single":0,"n":3,"repeats":128754,"wall_ns":2890040,"thread_cpu_ns":2888591,"cpu":0,"library":"/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so","correct":true}
+TRSV_ROUND {"round":1,"single":0,"n":3,"repeats":128754,"wall_ns":2923794,"thread_cpu_ns":2921831,"cpu":0,"library":"/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so","correct":true}
+TRSV_ROUND {"round":2,"single":0,"n":3,"repeats":128754,"wall_ns":2880375,"thread_cpu_ns":2878577,"cpu":0,"library":"/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so","correct":true}
+TRSV_BENCH_EXIT=0

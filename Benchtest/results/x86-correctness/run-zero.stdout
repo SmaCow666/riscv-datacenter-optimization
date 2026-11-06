@@ -1,0 +1,4 @@
+ZERO_STRIDE {"role":1,"provider":"/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so","n":2,"incx":1,"incy":0,"seed":2,"expected":4,"single":4,"double":4,"single_matches":true,"double_matches":true}
+ZERO_STRIDE {"role":1,"provider":"/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so","n":9,"incx":1,"incy":0,"seed":2,"expected":11,"single":11,"double":11,"single_matches":true,"double_matches":true}
+ZERO_STRIDE {"role":1,"provider":"/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so","n":17,"incx":1,"incy":0,"seed":2,"expected":19,"single":19,"double":19,"single_matches":true,"double_matches":true}
+ZERO_PROBE_EXIT=0

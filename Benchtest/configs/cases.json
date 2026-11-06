@@ -1,0 +1,326 @@
+[
+  {
+    "id": "api-6",
+    "label": "行尾分对·单精度128×4 API",
+    "family": "blas",
+    "repeats": 66667,
+    "calls": 133334,
+    "shape": [
+      "gemv",
+      "s",
+      "api",
+      128,
+      4,
+      131,
+      1,
+      1
+    ],
+    "baseline": "baseline",
+    "candidate": "row-tail"
+  },
+  {
+    "id": "api-8",
+    "label": "行尾分对·单精度129×5 API",
+    "family": "blas",
+    "repeats": 42845,
+    "calls": 85690,
+    "shape": [
+      "gemv",
+      "s",
+      "api",
+      129,
+      5,
+      132,
+      2,
+      1
+    ],
+    "baseline": "baseline",
+    "candidate": "row-tail"
+  },
+  {
+    "id": "api-9",
+    "label": "行尾分对·单精度非单位输出步长控制",
+    "family": "blas",
+    "repeats": 22223,
+    "calls": 44446,
+    "shape": [
+      "gemv",
+      "s",
+      "api",
+      129,
+      5,
+      132,
+      2,
+      2
+    ],
+    "baseline": "baseline",
+    "candidate": "row-tail"
+  },
+  {
+    "id": "api-11",
+    "label": "行尾分对·双精度128×4 API",
+    "family": "blas",
+    "repeats": 38700,
+    "calls": 77400,
+    "shape": [
+      "gemv",
+      "d",
+      "api",
+      128,
+      4,
+      131,
+      1,
+      1
+    ],
+    "baseline": "baseline",
+    "candidate": "row-tail"
+  },
+  {
+    "id": "api-13",
+    "label": "行尾分对·双精度129×5 API",
+    "family": "blas",
+    "repeats": 27263,
+    "calls": 54526,
+    "shape": [
+      "gemv",
+      "d",
+      "api",
+      129,
+      5,
+      132,
+      2,
+      1
+    ],
+    "baseline": "baseline",
+    "candidate": "row-tail"
+  },
+  {
+    "id": "api-14",
+    "label": "行尾分对·双精度非单位输出步长控制",
+    "family": "blas",
+    "repeats": 20000,
+    "calls": 40000,
+    "shape": [
+      "gemv",
+      "d",
+      "api",
+      129,
+      5,
+      132,
+      2,
+      2
+    ],
+    "baseline": "baseline",
+    "candidate": "row-tail"
+  },
+  {
+    "id": "api-15",
+    "label": "行尾分对·双精度1024×1024 API控制",
+    "family": "blas",
+    "repeats": 11,
+    "calls": 22,
+    "shape": [
+      "gemv",
+      "d",
+      "api",
+      1024,
+      1024,
+      1027,
+      1,
+      1
+    ],
+    "baseline": "baseline",
+    "candidate": "row-tail"
+  },
+  {
+    "id": "api-17",
+    "label": "四列行尾恢复·单精度API",
+    "family": "blas",
+    "repeats": 33334,
+    "calls": 66668,
+    "shape": [
+      "gemv",
+      "s",
+      "api",
+      129,
+      5,
+      132,
+      2,
+      1
+    ],
+    "baseline": "four-column",
+    "candidate": "row-tail"
+  },
+  {
+    "id": "api-19",
+    "label": "四列行尾恢复·双精度API",
+    "family": "blas",
+    "repeats": 25537,
+    "calls": 51074,
+    "shape": [
+      "gemv",
+      "d",
+      "api",
+      129,
+      5,
+      132,
+      2,
+      1
+    ],
+    "baseline": "four-column",
+    "candidate": "row-tail"
+  },
+  {
+    "id": "api-21",
+    "label": "短行驻留·3×8 API",
+    "family": "blas",
+    "repeats": 70522,
+    "calls": 141044,
+    "shape": [
+      "gemv",
+      "d",
+      "api",
+      3,
+      8,
+      3,
+      1,
+      1
+    ],
+    "baseline": "baseline",
+    "candidate": "short-row"
+  },
+  {
+    "id": "api-30",
+    "label": "短向量单轮·双精度长度8 API",
+    "family": "blas",
+    "repeats": 239235,
+    "calls": 478470,
+    "shape": [
+      "axpy",
+      "d",
+      "api",
+      8,
+      1,
+      11,
+      1,
+      1
+    ],
+    "baseline": "baseline",
+    "candidate": "short-vector"
+  },
+  {
+    "id": "api-31",
+    "label": "短向量单轮·单精度长度16 API",
+    "family": "blas",
+    "repeats": 239235,
+    "calls": 478470,
+    "shape": [
+      "axpy",
+      "s",
+      "api",
+      16,
+      1,
+      19,
+      1,
+      1
+    ],
+    "baseline": "baseline",
+    "candidate": "short-vector"
+  },
+  {
+    "id": "api-32",
+    "label": "短向量单轮·双精度长度4096 API控制",
+    "family": "blas",
+    "repeats": 2326,
+    "calls": 4652,
+    "shape": [
+      "axpy",
+      "d",
+      "api",
+      4096,
+      1,
+      4099,
+      1,
+      1
+    ],
+    "baseline": "baseline",
+    "candidate": "short-vector"
+  },
+  {
+    "id": "trsv-d3",
+    "label": "双精度 TRSV n=3",
+    "family": "trsv",
+    "repeats": 128754,
+    "calls": 128754,
+    "precision": "d",
+    "n": 3,
+    "baseline": "baseline",
+    "candidate": "trsv-fused"
+  },
+  {
+    "id": "trsv-d8",
+    "label": "双精度 TRSV n=8",
+    "family": "trsv",
+    "repeats": 92166,
+    "calls": 92166,
+    "precision": "d",
+    "n": 8,
+    "baseline": "baseline",
+    "candidate": "trsv-fused"
+  },
+  {
+    "id": "trsv-d32",
+    "label": "双精度 TRSV n=32",
+    "family": "trsv",
+    "repeats": 25370,
+    "calls": 25370,
+    "precision": "d",
+    "n": 32,
+    "baseline": "baseline",
+    "candidate": "trsv-fused"
+  },
+  {
+    "id": "trsv-d64",
+    "label": "双精度 TRSV n=64",
+    "family": "trsv",
+    "repeats": 9032,
+    "calls": 9032,
+    "precision": "d",
+    "n": 64,
+    "baseline": "baseline",
+    "candidate": "trsv-fused"
+  },
+  {
+    "id": "trsv-d128",
+    "label": "双精度 TRSV n=128",
+    "family": "trsv",
+    "repeats": 1753,
+    "calls": 1753,
+    "precision": "d",
+    "n": 128,
+    "baseline": "baseline",
+    "candidate": "trsv-fused"
+  },
+  {
+    "id": "trsv-s8",
+    "label": "单精度 TRSV n=8",
+    "family": "trsv",
+    "repeats": 87848,
+    "calls": 87848,
+    "precision": "s",
+    "n": 8,
+    "baseline": "baseline",
+    "candidate": "trsv-fused"
+  },
+  {
+    "id": "trsv-s64",
+    "label": "单精度 TRSV n=64",
+    "family": "trsv",
+    "repeats": 13543,
+    "calls": 13543,
+    "precision": "s",
+    "n": 64,
+    "baseline": "baseline",
+    "candidate": "trsv-fused"
+  }
+]

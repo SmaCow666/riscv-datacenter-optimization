@@ -1,0 +1,56 @@
+--- a/kernel/riscv64/gemv_n_vector.c
++++ b/kernel/riscv64/gemv_n_vector.c
+@@ -53,6 +53,21 @@
+ 
+ #if defined(RISCV64_ZVL256B)
+ #define GEMV_N_BLOCK 4
++/* Five live vectors (y and four columns) fit in 20 registers with m4.
++   Keep the full-row m8 path; strip-mine only its variable-length tail. */
++#if !defined(DOUBLE)
++#define TAIL_V_T                vfloat32m4_t
++#define TAIL_VL(n)              RISCV_RVV(vsetvl_e32m4)(n)
++#define TAIL_LOAD               RISCV_RVV(vle32_v_f32m4)
++#define TAIL_STORE              RISCV_RVV(vse32_v_f32m4)
++#define TAIL_FMA                RISCV_RVV(vfmacc_vf_f32m4)
++#else
++#define TAIL_V_T                vfloat64m4_t
++#define TAIL_VL(n)              RISCV_RVV(vsetvl_e64m4)(n)
++#define TAIL_LOAD               RISCV_RVV(vle64_v_f64m4)
++#define TAIL_STORE              RISCV_RVV(vse64_v_f64m4)
++#define TAIL_FMA                RISCV_RVV(vfmacc_vf_f64m4)
++#endif
+ #endif
+ 
+ int CNAME(BLASLONG m, BLASLONG n, BLASLONG dummy1, FLOAT alpha, FLOAT *a, BLASLONG lda, FLOAT *x, BLASLONG inc_x, FLOAT *y, BLASLONG inc_y, FLOAT *buffer)
+@@ -96,23 +111,14 @@
+                 vy = VFMACCVF_FLOAT(vy, t3, VLEV_FLOAT(ap3 + i, epr), epr);
+                 VSEV_FLOAT(y_ptr, vy, epr);
+             }
+-            if (i < m) {
+-                vl = VSETVL(m - i);
+-                y_ptr = y + i;
+-                /* Limit live m8 groups in the variable-VL remainder. Store
+-                   the first ordered pair before loading columns 2 and 3. */
+-                vy = VLEV_FLOAT(y_ptr, vl);
+-                va = VLEV_FLOAT(ap0 + i, vl);
+-                va2 = VLEV_FLOAT(ap1 + i, vl);
+-                vy = VFMACCVF_FLOAT(vy, t0, va, vl);
+-                vy = VFMACCVF_FLOAT(vy, t1, va2, vl);
+-                VSEV_FLOAT(y_ptr, vy, vl);
+-                vy = VLEV_FLOAT(y_ptr, vl);
+-                va = VLEV_FLOAT(ap2 + i, vl);
+-                va2 = VLEV_FLOAT(ap3 + i, vl);
+-                vy = VFMACCVF_FLOAT(vy, t2, va, vl);
+-                vy = VFMACCVF_FLOAT(vy, t3, va2, vl);
+-                VSEV_FLOAT(y_ptr, vy, vl);
++            for (; i < m; i += vl) {
++                vl = TAIL_VL(m - i);
++                TAIL_V_T tail_y = TAIL_LOAD(y + i, vl);
++                tail_y = TAIL_FMA(tail_y, t0, TAIL_LOAD(ap0 + i, vl), vl);
++                tail_y = TAIL_FMA(tail_y, t1, TAIL_LOAD(ap1 + i, vl), vl);
++                tail_y = TAIL_FMA(tail_y, t2, TAIL_LOAD(ap2 + i, vl), vl);
++                tail_y = TAIL_FMA(tail_y, t3, TAIL_LOAD(ap3 + i, vl), vl);
++                TAIL_STORE(y + i, tail_y, vl);
+             }
+         }
+ 

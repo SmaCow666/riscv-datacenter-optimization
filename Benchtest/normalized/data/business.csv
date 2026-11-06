@@ -1,0 +1,13 @@
+comparison,metric,baseline_index,optimized_index
+guest_under_official_qemu,wall_ns,100,94.15886121546903
+guest_under_official_qemu,ksp_ns,100,92.19142154363021
+guest_under_official_qemu,reuse_ns,100,89.81113723963118
+qemu_under_stock_guest,wall_ns,100,98.98309403728982
+qemu_under_stock_guest,ksp_ns,100,99.08116955248508
+qemu_under_stock_guest,reuse_ns,100,98.38936652402941
+full_stack,wall_ns,100,92.57638519701447
+full_stack,ksp_ns,100,90.75329732820762
+full_stack,reuse_ns,100,89.17205940859452
+qemu_under_optimised_guest,wall_ns,100,98.31935518545272
+qemu_under_optimised_guest,ksp_ns,100,98.44006720870229
+qemu_under_optimised_guest,reuse_ns,100,99.28842028875384

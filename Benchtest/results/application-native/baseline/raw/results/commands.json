@@ -1,0 +1,443 @@
+[
+  {
+    "label": "capability",
+    "kind": "gate",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/capability"
+    ],
+    "exit_code": 0,
+    "cell": null
+  },
+  {
+    "label": "gate-P0",
+    "kind": "gate",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P0"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "gate",
+      "slot": 0,
+      "arm": "A",
+      "profile": "P0"
+    }
+  },
+  {
+    "label": "gate-P3",
+    "kind": "gate",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "gate",
+      "slot": 0,
+      "arm": "A",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "gate-P4",
+    "kind": "gate",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P4"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "gate",
+      "slot": 0,
+      "arm": "A",
+      "profile": "P4"
+    }
+  },
+  {
+    "label": "calibration-0",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "calibration",
+      "slot": 0,
+      "arm": "A",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "calibration-1",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "calibration",
+      "slot": 1,
+      "arm": "B",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "calibration-2",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "calibration",
+      "slot": 2,
+      "arm": "B",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "calibration-3",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "calibration",
+      "slot": 3,
+      "arm": "A",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "calibration-4",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "calibration",
+      "slot": 4,
+      "arm": "B",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "calibration-5",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "calibration",
+      "slot": 5,
+      "arm": "A",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "calibration-6",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "calibration",
+      "slot": 6,
+      "arm": "A",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "calibration-7",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "calibration",
+      "slot": 7,
+      "arm": "B",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "increment-0",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "increment",
+      "slot": 0,
+      "arm": "A",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "total-stacked-0",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P0"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "total-stacked",
+      "slot": 0,
+      "arm": "A",
+      "profile": "P0"
+    }
+  },
+  {
+    "label": "total-stacked-1",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P4"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "total-stacked",
+      "slot": 1,
+      "arm": "B",
+      "profile": "P4"
+    }
+  },
+  {
+    "label": "increment-1",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P4"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "increment",
+      "slot": 1,
+      "arm": "B",
+      "profile": "P4"
+    }
+  },
+  {
+    "label": "increment-2",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P4"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "increment",
+      "slot": 2,
+      "arm": "B",
+      "profile": "P4"
+    }
+  },
+  {
+    "label": "total-stacked-2",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P4"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "total-stacked",
+      "slot": 2,
+      "arm": "B",
+      "profile": "P4"
+    }
+  },
+  {
+    "label": "total-stacked-3",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P0"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "total-stacked",
+      "slot": 3,
+      "arm": "A",
+      "profile": "P0"
+    }
+  },
+  {
+    "label": "increment-3",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "increment",
+      "slot": 3,
+      "arm": "A",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "increment-4",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P4"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "increment",
+      "slot": 4,
+      "arm": "B",
+      "profile": "P4"
+    }
+  },
+  {
+    "label": "total-stacked-4",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P4"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "total-stacked",
+      "slot": 4,
+      "arm": "B",
+      "profile": "P4"
+    }
+  },
+  {
+    "label": "total-stacked-5",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P0"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "total-stacked",
+      "slot": 5,
+      "arm": "A",
+      "profile": "P0"
+    }
+  },
+  {
+    "label": "increment-5",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "increment",
+      "slot": 5,
+      "arm": "A",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "increment-6",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P3"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "increment",
+      "slot": 6,
+      "arm": "A",
+      "profile": "P3"
+    }
+  },
+  {
+    "label": "total-stacked-6",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P0"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "total-stacked",
+      "slot": 6,
+      "arm": "A",
+      "profile": "P0"
+    }
+  },
+  {
+    "label": "total-stacked-7",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P4"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "total-stacked",
+      "slot": 7,
+      "arm": "B",
+      "profile": "P4"
+    }
+  },
+  {
+    "label": "increment-7",
+    "kind": "measurement",
+    "argv": [
+      "/root/s01-stack.J54i9c/stack-kit/payload/system-launch",
+      "64",
+      "P4"
+    ],
+    "exit_code": 0,
+    "cell": {
+      "stage": "increment",
+      "slot": 7,
+      "arm": "B",
+      "profile": "P4"
+    }
+  }
+]

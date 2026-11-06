@@ -1,0 +1,142 @@
+Subject: [PATCH] libomp: inherit RV64 hardware FP rounding across reused teams
+Base-commit: fda4724ce92b99e4d7b90af9ee264d7650a63b32
+
+diff --git a/openmp/docs/design/Runtimes.md b/openmp/docs/design/Runtimes.md
+--- a/openmp/docs/design/Runtimes.md
++++ b/openmp/docs/design/Runtimes.md
+@@ -601,6 +601,10 @@
+ Enables (`true`) or disables (`false`) the copying of the floating-point
+ control settings of the primary thread to the floating-point control settings
+ of the OpenMP worker threads at the start of each parallel region.
++
++On RISC-V Linux hardware-FP targets, this controls dynamic scalar rounding
++through `frm`. Each thread retains its own accrued exception flags; vector
++fixed-point rounding (`vxrm`) is outside this control.
+ 
+ **Default:** `true`
+ 
+diff --git a/openmp/runtime/src/kmp.h b/openmp/runtime/src/kmp.h
+--- a/openmp/runtime/src/kmp.h
++++ b/openmp/runtime/src/kmp.h
+@@ -15,6 +15,13 @@
+ #define KMP_H
+ 
+ #include "kmp_config.h"
++
++// Floating-point CSR access is available only for a declared hardware FP target.
++#if KMP_ARCH_RISCV64 && KMP_OS_LINUX && defined(__riscv_flen) && __riscv_flen >= 32
++#define KMP_RISCV_FP_CONTROL 1
++#else
++#define KMP_RISCV_FP_CONTROL 0
++#endif
+ 
+ /* #define BUILD_PARALLEL_ORDERED 1 */
+ 
+@@ -3167,7 +3174,10 @@
+   kmp_int8 t_pad2b;
+   kmp_int16 t_x87_fpu_control_word; // FP control regs
+   kmp_uint32 t_mxcsr;
+-#endif /* KMP_ARCH_X86 || KMP_ARCH_X86_64 */
++#elif KMP_RISCV_FP_CONTROL
++  kmp_int8 t_fp_control_saved;
++  kmp_uint32 t_riscv_rounding;
++#endif /* FP control */
+ 
+   void *t_inline_argv[KMP_INLINE_ARGV_ENTRIES];
+ 
+@@ -3517,8 +3527,10 @@
+ #endif
+ extern int __kmp_tls_gtid_min; /* #threads below which use sp search for gtid */
+ extern int __kmp_foreign_tp; // If true, separate TP var for each foreign thread
++#if KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_RISCV_FP_CONTROL
++extern int __kmp_inherit_fp_control; // copy fp creg(s) parent->workers at fork
++#endif
+ #if KMP_ARCH_X86 || KMP_ARCH_X86_64
+-extern int __kmp_inherit_fp_control; // copy fp creg(s) parent->workers at fork
+ extern kmp_int16 __kmp_init_x87_fpu_control_word; // init thread's FP ctrl reg
+ extern kmp_uint32 __kmp_init_mxcsr; /* init thread's mxscr */
+ #endif /* KMP_ARCH_X86 || KMP_ARCH_X86_64 */
+diff --git a/openmp/runtime/src/kmp_global.cpp b/openmp/runtime/src/kmp_global.cpp
+--- a/openmp/runtime/src/kmp_global.cpp
++++ b/openmp/runtime/src/kmp_global.cpp
+@@ -185,8 +185,10 @@
+ #endif /* KMP_TDATA_GTID */
+ int __kmp_tls_gtid_min = INT_MAX;
+ int __kmp_foreign_tp = TRUE;
++#if KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_RISCV_FP_CONTROL
++int __kmp_inherit_fp_control = TRUE;
++#endif
+ #if KMP_ARCH_X86 || KMP_ARCH_X86_64
+-int __kmp_inherit_fp_control = TRUE;
+ kmp_int16 __kmp_init_x87_fpu_control_word = 0;
+ kmp_uint32 __kmp_init_mxcsr = 0;
+ #endif /* KMP_ARCH_X86 || KMP_ARCH_X86_64 */
+diff --git a/openmp/runtime/src/kmp_runtime.cpp b/openmp/runtime/src/kmp_runtime.cpp
+--- a/openmp/runtime/src/kmp_runtime.cpp
++++ b/openmp/runtime/src/kmp_runtime.cpp
+@@ -1166,6 +1166,32 @@
+       __kmp_load_mxcsr(&team->t.t_mxcsr);
+     }
+   }
++}
++#elif KMP_RISCV_FP_CONTROL
++// Access frm alone: fflags and reserved fcsr bits belong to the current thread.
++static inline kmp_uint32 __kmp_riscv_read_rounding() {
++  kmp_uint32 mode;
++  __asm__ __volatile__("frrm %0" : "=r"(mode) : : "memory");
++  return mode;
++}
++
++static inline void __kmp_riscv_write_rounding(kmp_uint32 mode) {
++  __asm__ __volatile__("fsrm %0" : : "r"(mode) : "memory");
++}
++
++inline static void propagateFPControl(kmp_team_t *team) {
++  if (__kmp_inherit_fp_control) {
++    KMP_CHECK_UPDATE(team->t.t_riscv_rounding, __kmp_riscv_read_rounding());
++    KMP_CHECK_UPDATE(team->t.t_fp_control_saved, TRUE);
++  } else {
++    KMP_CHECK_UPDATE(team->t.t_fp_control_saved, FALSE);
++  }
++}
++
++inline static void updateHWFPControl(kmp_team_t *team) {
++  if (__kmp_inherit_fp_control && team->t.t_fp_control_saved &&
++      team->t.t_riscv_rounding != __kmp_riscv_read_rounding())
++    __kmp_riscv_write_rounding(team->t.t_riscv_rounding);
+ }
+ #else
+ #define propagateFPControl(x) ((void)0)
+@@ -4754,7 +4780,10 @@
+   team->t.t_fp_control_saved = FALSE; /* not needed */
+   team->t.t_x87_fpu_control_word = 0; /* not needed */
+   team->t.t_mxcsr = 0; /* not needed */
+-#endif /* KMP_ARCH_X86 || KMP_ARCH_X86_64 */
++#elif KMP_RISCV_FP_CONTROL
++  team->t.t_fp_control_saved = FALSE;
++  team->t.t_riscv_rounding = 0;
++#endif /* FP control */
+ 
+   team->t.t_construct = 0;
+ 
+diff --git a/openmp/runtime/src/kmp_settings.cpp b/openmp/runtime/src/kmp_settings.cpp
+--- a/openmp/runtime/src/kmp_settings.cpp
++++ b/openmp/runtime/src/kmp_settings.cpp
+@@ -791,7 +791,7 @@
+ // -----------------------------------------------------------------------------
+ // KMP_INHERIT_FP_CONTROL
+ 
+-#if KMP_ARCH_X86 || KMP_ARCH_X86_64
++#if KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_RISCV_FP_CONTROL
+ 
+ static void __kmp_stg_parse_inherit_fp_control(char const *name,
+                                                char const *value, void *data) {
+@@ -5575,7 +5575,7 @@
+      __kmp_stg_print_handle_signals, NULL, 0, 0},
+ #endif
+ 
+-#if KMP_ARCH_X86 || KMP_ARCH_X86_64
++#if KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_RISCV_FP_CONTROL
+     {"KMP_INHERIT_FP_CONTROL", __kmp_stg_parse_inherit_fp_control,
+      __kmp_stg_print_inherit_fp_control, NULL, 0, 0},
+ #endif /* KMP_ARCH_X86 || KMP_ARCH_X86_64 */

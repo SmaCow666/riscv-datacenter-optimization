@@ -1,0 +1,922 @@
+[
+  {
+    "id": "api-6",
+    "label": "行尾分对·单精度128×4 API",
+    "family": "blas",
+    "calls_per_batch": 133334,
+    "repeats": 66667,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 3050316.5,
+      "MAD": 30895.5,
+      "ns_per_call": 22.877259363703182,
+      "process_medians": [
+        3052859,
+        3050677,
+        3023789,
+        3081497,
+        3128632,
+        3035705,
+        3064393,
+        3048160
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 3047696.5,
+      "MAD": 28520.5,
+      "ns_per_call": 22.85760946195269,
+      "process_medians": [
+        3054074,
+        3040191,
+        3024686,
+        3083076,
+        3129599,
+        3036603,
+        3065094,
+        3049328
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 313.9071879640602,
+      "optimized_ns_per_call": 281.86825190874043,
+      "own_reduction_percent": 10.206499654601064,
+      "paired_ci": "[10.15811361411707, 10.377292018659057]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 12.320892438538754
+  },
+  {
+    "id": "api-8",
+    "label": "行尾分对·单精度129×5 API",
+    "family": "blas",
+    "calls_per_batch": 85690,
+    "repeats": 42845,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 2955957.0,
+      "MAD": 27811.0,
+      "ns_per_call": 34.49593884934065,
+      "process_medians": [
+        2924078,
+        2943272,
+        2960959,
+        2937886,
+        2936235,
+        2969424,
+        2954084,
+        2957830
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 2956720.0,
+      "MAD": 27840.5,
+      "ns_per_call": 34.50484303886101,
+      "process_medians": [
+        2924792,
+        2937271,
+        2961653,
+        2938796,
+        2937109,
+        2971004,
+        2954830,
+        2958610
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 511.6360835570078,
+      "optimized_ns_per_call": 483.8395028591434,
+      "own_reduction_percent": 5.432881219912478,
+      "paired_ci": "[4.658864627673232, 5.853267504840498]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 14.025984478123329
+  },
+  {
+    "id": "api-9",
+    "label": "行尾分对·单精度非单位输出步长控制",
+    "family": "blas",
+    "calls_per_batch": 44446,
+    "repeats": 22223,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 2850355.0,
+      "MAD": 29372.0,
+      "ns_per_call": 64.13074292399766,
+      "process_medians": [
+        2816539,
+        2814390,
+        2832309,
+        2855456,
+        2881069,
+        2890645,
+        2860317,
+        2836365
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 2848815.5,
+      "MAD": 32274.0,
+      "ns_per_call": 64.09610538631148,
+      "process_medians": [
+        2814703,
+        2815088,
+        2833102,
+        2856457,
+        2881782,
+        2882134,
+        2851134,
+        2837072
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 1042.5480358187463,
+      "optimized_ns_per_call": 1044.0901768438105,
+      "own_reduction_percent": -0.14792038084394665,
+      "paired_ci": "[-0.23185825247080682, 0.132119165558775]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 16.28064995412852
+  },
+  {
+    "id": "api-11",
+    "label": "行尾分对·双精度128×4 API",
+    "family": "blas",
+    "calls_per_batch": 77400,
+    "repeats": 38700,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 2638202.0,
+      "MAD": 46977.0,
+      "ns_per_call": 34.08529715762274,
+      "process_medians": [
+        2615674,
+        2629917,
+        2610812,
+        2665898,
+        2734191,
+        2672267,
+        2728564,
+        2630467
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 2639191.5,
+      "MAD": 35443.0,
+      "ns_per_call": 34.098081395348835,
+      "process_medians": [
+        2616440,
+        2626769,
+        2611576,
+        2666771,
+        2718374,
+        2673824,
+        2729378,
+        2624307
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 541.7399031007752,
+      "optimized_ns_per_call": 453.700503875969,
+      "own_reduction_percent": 16.25123028982951,
+      "paired_ci": "[15.895659449688859, 16.334129845546574]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 13.310739283800103
+  },
+  {
+    "id": "api-13",
+    "label": "行尾分对·双精度129×5 API",
+    "family": "blas",
+    "calls_per_batch": 54526,
+    "repeats": 27263,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 2578886.5,
+      "MAD": 53123.5,
+      "ns_per_call": 47.29645490224847,
+      "process_medians": [
+        2575465,
+        2555548,
+        2532222,
+        2599511,
+        2595620,
+        2578060,
+        2651039,
+        2641956
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 2580118.0,
+      "MAD": 53525.5,
+      "ns_per_call": 47.31904045776327,
+      "process_medians": [
+        2576339,
+        2543687,
+        2523433,
+        2600389,
+        2590604,
+        2579129,
+        2652390,
+        2626308
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 819.0591369255035,
+      "optimized_ns_per_call": 737.4328118695668,
+      "own_reduction_percent": 9.965864658116974,
+      "paired_ci": "[9.640953473889214, 10.180999588863493]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 15.591714292195487
+  },
+  {
+    "id": "api-14",
+    "label": "行尾分对·双精度非单位输出步长控制",
+    "family": "blas",
+    "calls_per_batch": 40000,
+    "repeats": 20000,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 3170234.5,
+      "MAD": 32062.0,
+      "ns_per_call": 79.2558625,
+      "process_medians": [
+        3170949,
+        3153963,
+        3169204,
+        3238848,
+        3162662,
+        3169520,
+        3182824,
+        3108209
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 3170224.0,
+      "MAD": 26826.5,
+      "ns_per_call": 79.2556,
+      "process_medians": [
+        3159707,
+        3139087,
+        3170008,
+        3230259,
+        3163387,
+        3170440,
+        3183571,
+        3097697
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 1130.319275,
+      "optimized_ns_per_call": 1132.7349125,
+      "own_reduction_percent": -0.21371284675297808,
+      "paired_ci": "[-0.35373588854028526, -0.055653877553329956]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 14.292127759003316
+  },
+  {
+    "id": "api-15",
+    "label": "行尾分对·双精度1024×1024 API控制",
+    "family": "blas",
+    "calls_per_batch": 22,
+    "repeats": 11,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 3389053.0,
+      "MAD": 194005.5,
+      "ns_per_call": 154047.86363636365,
+      "process_medians": [
+        3679902,
+        3323309,
+        3070836,
+        3482602,
+        3056219,
+        3511696,
+        3577146,
+        3175468
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 3391139.5,
+      "MAD": 193977.0,
+      "ns_per_call": 154142.70454545456,
+      "process_medians": [
+        3682425,
+        3326077,
+        3072666,
+        3484811,
+        3058605,
+        3514947,
+        3579253,
+        3177641
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 2274719.159090909,
+      "optimized_ns_per_call": 4749095.704545454,
+      "own_reduction_percent": -108.77723237023376,
+      "paired_ci": "[-151.10954650263128, -101.29436890800454]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 30.82870214776812
+  },
+  {
+    "id": "api-17",
+    "label": "四列行尾恢复·单精度API",
+    "family": "blas",
+    "calls_per_batch": 66668,
+    "repeats": 33334,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 2299219.0,
+      "MAD": 27121.5,
+      "ns_per_call": 34.48759524809504,
+      "process_medians": [
+        2351810,
+        2334053,
+        2295387,
+        2264409,
+        2292713,
+        2307056,
+        2347102,
+        2285671
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 2299745.5,
+      "MAD": 30822.0,
+      "ns_per_call": 34.495492590148196,
+      "process_medians": [
+        2334056,
+        2334962,
+        2296108,
+        2261994,
+        2293421,
+        2305268,
+        2347872,
+        2287235
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 653.8317858642827,
+      "optimized_ns_per_call": 483.55042149157015,
+      "own_reduction_percent": 26.043604494942407,
+      "paired_ci": "[25.75874309068483, 26.696645514286754]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 14.020995607638941
+  },
+  {
+    "id": "api-19",
+    "label": "四列行尾恢复·双精度API",
+    "family": "blas",
+    "calls_per_batch": 51074,
+    "repeats": 25537,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 2413038.0,
+      "MAD": 45563.0,
+      "ns_per_call": 47.24591768806046,
+      "process_medians": [
+        2395398,
+        2387320,
+        2353770,
+        2483431,
+        2423415,
+        2418065,
+        2407285,
+        2493513
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 2410503.5,
+      "MAD": 45555.0,
+      "ns_per_call": 47.19629361318871,
+      "process_medians": [
+        2396306,
+        2377756,
+        2354527,
+        2473192,
+        2424277,
+        2418798,
+        2399068,
+        2494223
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 907.899312761875,
+      "optimized_ns_per_call": 738.4721482554725,
+      "own_reduction_percent": 18.661448700847306,
+      "paired_ci": "[18.610466902606426, 18.978997877818117]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 15.630390611337244
+  },
+  {
+    "id": "api-21",
+    "label": "短行驻留·3×8 API",
+    "family": "blas",
+    "calls_per_batch": 141044,
+    "repeats": 70522,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 1681473.0,
+      "MAD": 16603.5,
+      "ns_per_call": 11.921620203624402,
+      "process_medians": [
+        1697923,
+        1689083,
+        1688721,
+        1655808,
+        1690313,
+        1682543,
+        1673407,
+        1664716
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 1680439.5,
+      "MAD": 15902.0,
+      "ns_per_call": 11.914292702986302,
+      "process_medians": [
+        1698639,
+        1678980,
+        1689497,
+        1656540,
+        1691065,
+        1683493,
+        1674260,
+        1665450
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 295.2333704375939,
+      "optimized_ns_per_call": 224.3061987748504,
+      "own_reduction_percent": 24.024103900455263,
+      "paired_ci": "[22.89569047036212, 24.45133039500792]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 18.815076721422226
+  },
+  {
+    "id": "api-30",
+    "label": "短向量单轮·双精度长度8 API",
+    "family": "blas",
+    "calls_per_batch": 478470,
+    "repeats": 239235,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 2512708.0,
+      "MAD": 44196.5,
+      "ns_per_call": 5.251547641440425,
+      "process_medians": [
+        2585386,
+        2468649,
+        2487470,
+        2588567,
+        2474579,
+        2533659,
+        2516011,
+        2509405
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 2513512.0,
+      "MAD": 44942.0,
+      "ns_per_call": 5.253227997575606,
+      "process_medians": [
+        2577878,
+        2469647,
+        2488370,
+        2589735,
+        2475278,
+        2525429,
+        2516866,
+        2510158
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 55.59625263861893,
+      "optimized_ns_per_call": 46.423861475118606,
+      "own_reduction_percent": 16.49821836576246,
+      "paired_ci": "[15.738731121975757, 18.602788597256303]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 8.840034337455844
+  },
+  {
+    "id": "api-31",
+    "label": "短向量单轮·单精度长度16 API",
+    "family": "blas",
+    "calls_per_batch": 478470,
+    "repeats": 239235,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 2765148.0,
+      "MAD": 10813.0,
+      "ns_per_call": 5.779146027964136,
+      "process_medians": [
+        2813384,
+        2774764,
+        2777158,
+        2756202,
+        2772756,
+        2758707,
+        2759913,
+        2741966
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 2762992.0,
+      "MAD": 8769.5,
+      "ns_per_call": 5.774639998328004,
+      "process_medians": [
+        2806641,
+        2769696,
+        2770230,
+        2756888,
+        2765919,
+        2757851,
+        2760595,
+        2742888
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 52.61333103433862,
+      "optimized_ns_per_call": 43.8902501724246,
+      "own_reduction_percent": 16.579601957193724,
+      "paired_ci": "[8.34850148078381, 16.687934294630114]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 7.5945909586033
+  },
+  {
+    "id": "api-32",
+    "label": "短向量单轮·双精度长度4096 API控制",
+    "family": "blas",
+    "calls_per_batch": 4652,
+    "repeats": 2326,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 1894844.0,
+      "MAD": 24112.5,
+      "ns_per_call": 407.3181427343078,
+      "process_medians": [
+        1891172,
+        1877063,
+        1748211,
+        1934661,
+        1881339,
+        1900729,
+        1896580,
+        1870567
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 1895656.0,
+      "MAD": 24194.5,
+      "ns_per_call": 407.4926913155632,
+      "process_medians": [
+        1892593,
+        1877833,
+        1749387,
+        1931672,
+        1882105,
+        1902179,
+        1897452,
+        1871423
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 11253.820507308685,
+      "optimized_ns_per_call": 11268.970765262253,
+      "own_reduction_percent": -0.13462324144701832,
+      "paired_ci": "[-0.7325620156006907, 1.7141324390142598]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 27.666262763583706
+  },
+  {
+    "id": "trsv-d3",
+    "label": "双精度 TRSV n=3",
+    "family": "trsv",
+    "calls_per_batch": 128754,
+    "repeats": 128754,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 2889661.0,
+      "MAD": 21263.0,
+      "ns_per_call": 22.44327166534632,
+      "process_medians": [
+        2890040,
+        2934912,
+        2872125,
+        2889282,
+        2873108,
+        2887278,
+        2876082,
+        2918391
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 2887566.0,
+      "MAD": 21219.0,
+      "ns_per_call": 22.42700032620346,
+      "process_medians": [
+        2888591,
+        2929565,
+        2870444,
+        2887152,
+        2871603,
+        2874196,
+        2874459,
+        2916557
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 352.5764364602265,
+      "optimized_ns_per_call": 311.6650006990074,
+      "own_reduction_percent": 11.603564938133415,
+      "paired_ci": "[6.838983822255395, 16.413943856075242]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 13.886790007547598
+  },
+  {
+    "id": "trsv-d8",
+    "label": "双精度 TRSV n=8",
+    "family": "trsv",
+    "calls_per_batch": 92166,
+    "repeats": 92166,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 4456207.5,
+      "MAD": 29980.5,
+      "ns_per_call": 48.34979819022199,
+      "process_medians": [
+        4484411,
+        4419545,
+        4564712,
+        4495066,
+        4465269,
+        4435387,
+        4435189,
+        4494984
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 4447155.5,
+      "MAD": 29832.5,
+      "ns_per_call": 48.25158409825749,
+      "process_medians": [
+        4482216,
+        4417389,
+        4562707,
+        4477054,
+        4463241,
+        4433582,
+        4432945,
+        4493115
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 546.396019139379,
+      "optimized_ns_per_call": 430.1178091704099,
+      "own_reduction_percent": 21.280940178172834,
+      "paired_ci": "[15.147334630229048, 21.51458402187023]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 8.895958727236108
+  },
+  {
+    "id": "trsv-d32",
+    "label": "双精度 TRSV n=32",
+    "family": "trsv",
+    "calls_per_batch": 25370,
+    "repeats": 25370,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 4991998.5,
+      "MAD": 41905.0,
+      "ns_per_call": 196.76777690185259,
+      "process_medians": [
+        4989223,
+        4949973,
+        4980711,
+        5009094,
+        4954095,
+        5030305,
+        5056160,
+        4916194
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 4989998.5,
+      "MAD": 44901.0,
+      "ns_per_call": 196.68894363421364,
+      "process_medians": [
+        4987222,
+        4947255,
+        4978983,
+        5006817,
+        4952120,
+        5028398,
+        5054368,
+        4914468
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 1956.3044343713048,
+      "optimized_ns_per_call": 1647.042136381553,
+      "own_reduction_percent": 15.808495475252492,
+      "paired_ci": "[15.412299389663264, 20.81129144146059]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 8.370487090490913
+  },
+  {
+    "id": "trsv-d64",
+    "label": "双精度 TRSV n=64",
+    "family": "trsv",
+    "calls_per_batch": 9032,
+    "repeats": 9032,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 4018262.0,
+      "MAD": 57263.5,
+      "ns_per_call": 444.8917183348096,
+      "process_medians": [
+        4236816,
+        3983567,
+        4062780,
+        4034656,
+        4001868,
+        3956076,
+        3975615,
+        4053081
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 4016365.0,
+      "MAD": 57290.5,
+      "ns_per_call": 444.68168733392383,
+      "process_medians": [
+        4219497,
+        3981901,
+        4060864,
+        4032889,
+        3999841,
+        3954385,
+        3973422,
+        4050979
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 5497.2973317094775,
+      "optimized_ns_per_call": 4965.465179362268,
+      "own_reduction_percent": 9.674429456080148,
+      "paired_ci": "[8.86253349640722, 11.115138638938337]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 11.16106453486607
+  },
+  {
+    "id": "trsv-d128",
+    "label": "双精度 TRSV n=128",
+    "family": "trsv",
+    "calls_per_batch": 1753,
+    "repeats": 1753,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 2220815.5,
+      "MAD": 36202.0,
+      "ns_per_call": 1266.8656588705078,
+      "process_medians": [
+        2233913,
+        2276675,
+        2283442,
+        2218401,
+        2239910,
+        2213603,
+        2197764,
+        2179513
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 2218051.5,
+      "MAD": 35573.5,
+      "ns_per_call": 1265.2889332572734,
+      "process_medians": [
+        2232718,
+        2262449,
+        2281977,
+        2217152,
+        2218951,
+        2196622,
+        2196457,
+        2178057
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 28380.470621791213,
+      "optimized_ns_per_call": 27129.061038220196,
+      "own_reduction_percent": 4.409403918094856,
+      "paired_ci": "[2.1614456615082545, 6.0423399450859065]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 21.414315597130873
+  },
+  {
+    "id": "trsv-s8",
+    "label": "单精度 TRSV n=8",
+    "family": "trsv",
+    "calls_per_batch": 87848,
+    "repeats": 87848,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 4088247.0,
+      "MAD": 36824.0,
+      "ns_per_call": 46.53773563427739,
+      "process_medians": [
+        4052979,
+        4135254,
+        4046570,
+        4099344,
+        4116035,
+        4119817,
+        4057376,
+        4224617
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 4083237.5,
+      "MAD": 38001.5,
+      "ns_per_call": 46.480711000819596,
+      "process_medians": [
+        4051118,
+        4133540,
+        4044863,
+        4097200,
+        4114244,
+        4117868,
+        4055784,
+        4223067
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 541.8944995902012,
+      "optimized_ns_per_call": 448.06923891266734,
+      "own_reduction_percent": 17.314303937110953,
+      "paired_ci": "[16.317809640378012, 20.971566792103]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 9.628084237571752
+  },
+  {
+    "id": "trsv-s64",
+    "label": "单精度 TRSV n=64",
+    "family": "trsv",
+    "calls_per_batch": 13543,
+    "repeats": 13543,
+    "formal_samples": 24,
+    "independent_processes": 8,
+    "wall_ns": {
+      "median": 5447265.0,
+      "MAD": 47504.0,
+      "ns_per_call": 402.21996603411355,
+      "process_medians": [
+        5481796,
+        5457612,
+        5395713,
+        5475956,
+        5416732,
+        5607271,
+        5409147,
+        5430836
+      ]
+    },
+    "thread_cpu_ns": {
+      "median": 5445127.5,
+      "MAD": 47649.5,
+      "ns_per_call": 402.06213542051245,
+      "process_medians": [
+        5479736,
+        5454873,
+        5383631,
+        5474004,
+        5414963,
+        5599626,
+        5407407,
+        5429036
+      ]
+    },
+    "riscv": {
+      "baseline_ns_per_call": 3657.994055969874,
+      "optimized_ns_per_call": 3093.732407885993,
+      "own_reduction_percent": 15.425439173773448,
+      "paired_ci": "[15.01468465018787, 15.606261130726196]"
+    },
+    "riscv_optimized_over_x86_time_ratio": 7.691643053899527
+  }
+]

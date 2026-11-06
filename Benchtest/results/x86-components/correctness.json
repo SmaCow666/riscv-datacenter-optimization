@@ -1,0 +1,161 @@
+[
+  {
+    "id": "gate-tasks-core-1",
+    "status": "PASS",
+    "result": {
+      "actual_team": 1,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/llvm/core/install/lib/libomp.so"
+    }
+  },
+  {
+    "id": "gate-tasks-core-2",
+    "status": "PASS",
+    "result": {
+      "actual_team": 2,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/llvm/core/install/lib/libomp.so"
+    }
+  },
+  {
+    "id": "gate-tasks-core-4",
+    "status": "PASS",
+    "result": {
+      "actual_team": 4,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/llvm/core/install/lib/libomp.so"
+    }
+  },
+  {
+    "id": "gate-tasks-batch-1",
+    "status": "PASS",
+    "result": {
+      "actual_team": 1,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/llvm/batch/install/lib/libomp.so"
+    }
+  },
+  {
+    "id": "gate-tasks-batch-2",
+    "status": "PASS",
+    "result": {
+      "actual_team": 2,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/llvm/batch/install/lib/libomp.so"
+    }
+  },
+  {
+    "id": "gate-tasks-batch-4",
+    "status": "PASS",
+    "result": {
+      "actual_team": 4,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/llvm/batch/install/lib/libomp.so"
+    }
+  },
+  {
+    "id": "trsv-independent-reference",
+    "status": "PASS",
+    "result": {
+      "cases": 5120,
+      "double_max_error": 0,
+      "single_max_error": 0,
+      "bitwise_equal": true,
+      "guard": true,
+      "matrix_unchanged": true
+    },
+    "scope": "One x86 library checked against constructed solutions; same-provider equality is not independent implementation evidence"
+  },
+  {
+    "id": "gate-api-6",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-api-8",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-api-9",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-api-11",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-api-13",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-api-14",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-api-15",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-api-17",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-api-19",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-api-21",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-api-30",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-api-31",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-api-32",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-trsv-d3",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-trsv-d8",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-trsv-d32",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-trsv-d64",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-trsv-d128",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-trsv-s8",
+    "status": "PASS"
+  },
+  {
+    "id": "gate-trsv-s64",
+    "status": "PASS"
+  }
+]

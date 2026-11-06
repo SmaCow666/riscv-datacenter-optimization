@@ -1,0 +1,62 @@
+--- a/openmp/runtime/src/kmp_tasking.cpp
++++ b/openmp/runtime/src/kmp_tasking.cpp
+@@ -88,6 +88,20 @@
+     node->dn.mtx_num_locks = -node->dn.mtx_num_locks;
+   }
+   return true;
++}
++
++// Untied/unconstrained tasks without a dependency node need neither the
++// tied-task ancestry walk nor mutexinoutset lock acquisition.
++__forceinline static bool
++__kmp_task_is_allowed_fast(int gtid, const kmp_int32 is_constrained,
++                      const kmp_taskdata_t *tasknew,
++                      const kmp_taskdata_t *taskcurr) {
++#if KMP_ARCH_RISCV64 && KMP_OS_LINUX
++  if ((!is_constrained || tasknew->td_flags.tiedness == TASK_UNTIED) &&
++      tasknew->td_depnode == nullptr)
++    return true;
++#endif
++  return __kmp_task_is_allowed(gtid, is_constrained, tasknew, taskcurr);
+ }
+ 
+ // __kmp_realloc_task_deque:
+@@ -2991,7 +3005,7 @@
+          TASK_DEQUE_MASK(thread_data->td); // Wrap index.
+   taskdata = thread_data->td.td_deque[tail];
+ 
+-  if (!__kmp_task_is_allowed(gtid, is_constrained, taskdata,
++  if (!__kmp_task_is_allowed_fast(gtid, is_constrained, taskdata,
+                              thread->th.th_current_task)) {
+     // The TSC does not allow to steal victim task
+     __kmp_release_bootstrap_lock(&thread_data->td.td_deque_lock);
+@@ -3074,7 +3088,7 @@
+   KMP_DEBUG_ASSERT(victim_td->td.td_deque != NULL);
+   current = __kmp_threads[gtid]->th.th_current_task;
+   taskdata = victim_td->td.td_deque[victim_td->td.td_deque_head];
+-  if (__kmp_task_is_allowed(gtid, is_constrained, taskdata, current)) {
++  if (__kmp_task_is_allowed_fast(gtid, is_constrained, taskdata, current)) {
+     // Bump head pointer and Wrap.
+     victim_td->td.td_deque_head =
+         (victim_td->td.td_deque_head + 1) & TASK_DEQUE_MASK(victim_td->td);
+@@ -3095,7 +3109,7 @@
+     for (i = 1; i < ntasks; ++i) {
+       target = (target + 1) & TASK_DEQUE_MASK(victim_td->td);
+       taskdata = victim_td->td.td_deque[target];
+-      if (__kmp_task_is_allowed(gtid, is_constrained, taskdata, current)) {
++      if (__kmp_task_is_allowed_fast(gtid, is_constrained, taskdata, current)) {
+         break; // found victim task
+       } else {
+         taskdata = NULL;
+@@ -3312,7 +3326,10 @@
+       if (thread->th.th_task_team == NULL) {
+         break;
+       }
+-      KMP_YIELD(__kmp_library == library_throughput); // Yield before next task
++      // Keep explicit yield policies and oversubscribed teams unchanged.
++      // Otherwise continue task execution without an OS yield at each handoff.
++      KMP_YIELD(__kmp_library == library_throughput &&
++                (__kmp_use_yield_exp_set || KMP_OVERSUBSCRIBED));
+       // If execution of a stolen task results in more tasks being placed on our
+       // run queue, reset use_own_tasks
+       if (!use_own_tasks && TCR_4(threads_data[tid].td.td_deque_ntasks) != 0) {

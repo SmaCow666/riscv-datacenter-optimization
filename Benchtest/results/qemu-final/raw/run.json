@@ -1,0 +1,289 @@
+{
+  "status": "CROSSLAYER_2X2_COMPLETE",
+  "run_id": "20250117T164950-2495b759",
+  "protocol_sha256": "596afa5d951e570e495959fe00c2f90a627e0c13101e2e3d705f3f7fc38eb30b",
+  "rehearsal": false,
+  "kit": "/root/crosslayer-kit-v7/crosslayer-kit",
+  "board": {
+    "uname": [
+      "Linux",
+      "milkv-jupiter",
+      "6.6.63",
+      "#2.2.4.2 SMP PREEMPT Thu Jun 26 05:06:32 UTC 2025",
+      "riscv64"
+    ],
+    "machine": "riscv64",
+    "python": "3.12.3 (main, Nov  6 2024, 18:32:19) [GCC 13.2.0]",
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "qemu_override": null
+  },
+  "gate": {
+    "A": "SLOT_OK",
+    "B": "SLOT_OK",
+    "C": "SLOT_OK",
+    "D": "SLOT_OK"
+  },
+  "started_at": "2025-01-17T16:49:50.914232+00:00",
+  "kit_files": 37,
+  "gate_status": "PASS",
+  "slots": 32,
+  "headline": {
+    "wall_ns/guest_under_official_qemu": {
+      "baseline": "A",
+      "candidate": "B",
+      "median_reduction_percent": 5.841138784530974,
+      "speedup": 1.062034934462136,
+      "paired_bootstrap_95_percent": [
+        5.191053515752642,
+        9.096679429634303
+      ],
+      "direction": "REPEATED_GAIN"
+    },
+    "wall_ns/qemu_under_stock_guest": {
+      "baseline": "A",
+      "candidate": "C",
+      "median_reduction_percent": 1.0169059627101795,
+      "speedup": 1.0102735317843983,
+      "paired_bootstrap_95_percent": [
+        0.02945682834153418,
+        3.3390375733443056
+      ],
+      "direction": "REPEATED_GAIN"
+    },
+    "wall_ns/full_stack": {
+      "baseline": "A",
+      "candidate": "D",
+      "median_reduction_percent": 7.423614802985523,
+      "speedup": 1.0801890761578896,
+      "paired_bootstrap_95_percent": [
+        7.682526452598848,
+        8.737511619312055
+      ],
+      "direction": "REPEATED_GAIN"
+    },
+    "wall_ns/qemu_under_optimised_guest": {
+      "baseline": "B",
+      "candidate": "D",
+      "median_reduction_percent": 1.680644814547283,
+      "speedup": 1.0170937330841643,
+      "paired_bootstrap_95_percent": [
+        -0.3951096704374324,
+        3.95975149088722
+      ],
+      "direction": "POSITIVE_TREND"
+    },
+    "wall_ns/guest_under_optimised_qemu": {
+      "baseline": "C",
+      "candidate": "D",
+      "median_reduction_percent": 6.472528367179297,
+      "speedup": 1.069204569033896,
+      "paired_bootstrap_95_percent": [
+        5.012413283181183,
+        8.416958163654254
+      ],
+      "direction": "REPEATED_GAIN"
+    },
+    "ksp_ns/guest_under_official_qemu": {
+      "baseline": "A",
+      "candidate": "B",
+      "median_reduction_percent": 7.808578456369785,
+      "speedup": 1.0846996209151014,
+      "paired_bootstrap_95_percent": [
+        5.8193951719549,
+        10.404647977972491
+      ],
+      "direction": "REPEATED_GAIN"
+    },
+    "ksp_ns/qemu_under_stock_guest": {
+      "baseline": "A",
+      "candidate": "C",
+      "median_reduction_percent": 0.9188304475149178,
+      "speedup": 1.0092735123299912,
+      "paired_bootstrap_95_percent": [
+        -0.37484646279937195,
+        2.932672456642793
+      ],
+      "direction": "POSITIVE_TREND"
+    },
+    "ksp_ns/full_stack": {
+      "baseline": "A",
+      "candidate": "D",
+      "median_reduction_percent": 9.246702671792384,
+      "speedup": 1.1018883384297526,
+      "paired_bootstrap_95_percent": [
+        8.504592147816414,
+        12.658996816766816
+      ],
+      "direction": "REPEATED_GAIN"
+    },
+    "ksp_ns/qemu_under_optimised_guest": {
+      "baseline": "B",
+      "candidate": "D",
+      "median_reduction_percent": 1.5599327912977135,
+      "speedup": 1.015846523021876,
+      "paired_bootstrap_95_percent": [
+        -0.952959570538825,
+        4.496490859986702
+      ],
+      "direction": "POSITIVE_TREND"
+    },
+    "ksp_ns/guest_under_optimised_qemu": {
+      "baseline": "C",
+      "candidate": "D",
+      "median_reduction_percent": 8.405100850031888,
+      "speedup": 1.0917638528786437,
+      "paired_bootstrap_95_percent": [
+        7.329139234597804,
+        11.305475081594674
+      ],
+      "direction": "REPEATED_GAIN"
+    },
+    "reuse_ns/guest_under_official_qemu": {
+      "baseline": "A",
+      "candidate": "B",
+      "median_reduction_percent": 10.188862760368822,
+      "speedup": 1.1134476533036568,
+      "paired_bootstrap_95_percent": [
+        7.540244408043262,
+        12.527051099802556
+      ],
+      "direction": "REPEATED_GAIN"
+    },
+    "reuse_ns/qemu_under_stock_guest": {
+      "baseline": "A",
+      "candidate": "C",
+      "median_reduction_percent": 1.610633475970591,
+      "speedup": 1.016369995385398,
+      "paired_bootstrap_95_percent": [
+        -0.3344751794033707,
+        4.732875918604085
+      ],
+      "direction": "POSITIVE_TREND"
+    },
+    "reuse_ns/full_stack": {
+      "baseline": "A",
+      "candidate": "D",
+      "median_reduction_percent": 10.827940591405483,
+      "speedup": 1.1214275038977273,
+      "paired_bootstrap_95_percent": [
+        9.23482096155922,
+        14.8592359529101
+      ],
+      "direction": "REPEATED_GAIN"
+    },
+    "reuse_ns/qemu_under_optimised_guest": {
+      "baseline": "B",
+      "candidate": "D",
+      "median_reduction_percent": 0.7115797112461575,
+      "speedup": 1.007166794568558,
+      "paired_bootstrap_95_percent": [
+        -0.7362220895780647,
+        5.713959337785591
+      ],
+      "direction": "FLAT"
+    },
+    "reuse_ns/guest_under_optimised_qemu": {
+      "baseline": "C",
+      "candidate": "D",
+      "median_reduction_percent": 9.368194390380346,
+      "speedup": 1.103365417111209,
+      "paired_bootstrap_95_percent": [
+        8.323637996985155,
+        12.582341247369545
+      ],
+      "direction": "REPEATED_GAIN"
+    }
+  },
+  "interaction": {
+    "wall_ns": {
+      "point": 0.9932944220597201,
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "ci": [
+        0.9664627855279829,
+        1.0350902567406521
+      ]
+    },
+    "ksp_ns": {
+      "point": 0.9935295238572731,
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "ci": [
+        0.9606668540630151,
+        1.0286321541295267
+      ]
+    },
+    "reuse_ns": {
+      "point": 1.009137712707042,
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "ci": [
+        0.9615995091673594,
+        1.0393402014365196
+      ]
+    },
+    "child_cpu_ns": {
+      "point": 0.9929001024352394,
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "ci": [
+        0.9711193744541776,
+        1.0396637091437981
+      ]
+    },
+    "host_boot_wall_ns": {
+      "point": 1.001229419657559,
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "ci": [
+        0.989157621714158,
+        1.0258727651904094
+      ]
+    },
+    "host_boot_cpu_ns": {
+      "point": 1.007927093769352,
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "ci": [
+        0.982693094616547,
+        1.0384605948368706
+      ]
+    },
+    "host_region_wall_ns": {
+      "point": 1.0033311961352105,
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "ci": [
+        0.9734538897757442,
+        1.026600754388341
+      ]
+    },
+    "host_region_cpu_ns": {
+      "point": 1.0012616157027434,
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "ci": [
+        0.9738129912600917,
+        1.023139338878291
+      ]
+    },
+    "host_slot_cpu_ns": {
+      "point": 0.9962281013175405,
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "ci": [
+        0.9777994035739214,
+        1.01618351594654
+      ]
+    },
+    "host_rss_peak_kb": {
+      "point": 1.0213030356234505,
+      "verdict": "INDEPENDENT_OR_NOT_DISTINGUISHABLE",
+      "ci": [
+        0.9933707303694963,
+        1.0500875744581624
+      ]
+    }
+  },
+  "finished_at": "2025-01-17T18:52:59.008639+00:00"
+}

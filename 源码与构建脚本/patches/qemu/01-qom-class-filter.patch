@@ -1,0 +1,42 @@
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -1112,6 +1112,7 @@
+     const char *implements_type;
+     bool include_abstract;
+     void *opaque;
++    TypeImpl *class_filter;
+ } OCFData;
+ 
+ static void object_class_foreach_tramp(gpointer key, gpointer value,
+@@ -1121,6 +1122,14 @@
+     TypeImpl *type = value;
+     ObjectClass *k;
+ 
++    /*
++     * Ordinary class ancestry is known before class initialization.
++     * Interface casts still need initialized classes and ambiguity checks.
++     */
++    if (data->class_filter && !type_is_ancestor(type, data->class_filter)) {
++        return;
++    }
++
+     type_initialize(type);
+     k = type->class;
+ 
+@@ -1140,7 +1149,15 @@
+                           const char *implements_type, bool include_abstract,
+                           void *opaque)
+ {
+-    OCFData data = { fn, implements_type, include_abstract, opaque };
++    TypeImpl *filter = type_get_by_name(implements_type);
++    OCFData data = {
++        .fn = fn,
++        .implements_type = implements_type,
++        .include_abstract = include_abstract,
++        .opaque = opaque,
++        .class_filter = filter && !type_is_ancestor(filter, type_interface)
++                        ? filter : NULL,
++    };
+ 
+     enumerating_types = true;
+     g_hash_table_foreach(type_table_get(), object_class_foreach_tramp, &data);

@@ -1,0 +1,46 @@
+Spinning up truth for 300 steps...
+Localization configured: 40 vertices, radius=5.
+Lorenz-96 LETKF Example
+======================
+  State dimension        : 40
+  Ensemble size          : 5
+  Forcing parameter (F)  : 8.0000
+  Time step (dt)         : 0.0500
+  Total steps            : 20
+  Burn-in steps          : 5
+  Spin-up steps          : 300
+  Observation frequency  : 1
+  Observation noise std  : 1.000
+  Ensemble init std      : 1.000
+  Random seed            : 12345
+  Localization radius    : 5.
+
+Step    0, time  0.000  RMSE_forecast 0.00000  RMSE_analysis 0.00000  Spread 1.07881 [burn-in]
+Step    2, time  0.100  RMSE_forecast 0.52693  RMSE_analysis 0.33765  Spread 0.43199 [burn-in]
+Step    4, time  0.200  RMSE_forecast 0.32663  RMSE_analysis 0.20516  Spread 0.34348 [burn-in]
+Step    6, time  0.300  RMSE_forecast 0.24880  RMSE_analysis 0.23078  Spread 0.30153
+Step    8, time  0.400  RMSE_forecast 0.19488  RMSE_analysis 0.17494  Spread 0.26959
+Step   10, time  0.500  RMSE_forecast 0.25585  RMSE_analysis 0.21391  Spread 0.25011
+Step   12, time  0.600  RMSE_forecast 0.22475  RMSE_analysis 0.24676  Spread 0.24666
+Step   14, time  0.700  RMSE_forecast 0.28715  RMSE_analysis 0.24712  Spread 0.23970
+Step   16, time  0.800  RMSE_forecast 0.20520  RMSE_analysis 0.15858  Spread 0.22446
+Step   18, time  0.900  RMSE_forecast 0.18283  RMSE_analysis 0.15273  Spread 0.22115
+Step   20, time  1.000  RMSE_forecast 0.20663  RMSE_analysis 0.20451  Spread 0.22506
+
+Statistics (16 forecast steps, 16 analysis steps post-burn-in):
+==================================================
+  Mean RMSE (forecast) : 0.22068
+  Mean RMSE (analysis) : 0.20858
+  Observations used    : 20
+
+PetscDA Object: 3 MPI processes
+  type: letkf
+  State size: 40
+  Observation size: 40
+  Ensemble size: 5
+  Assembled: true
+  Inflation: 1.
+  Local analysis: Kokkos
+  Localization type: gaspari_cohn
+  Localization radius: 5.
+  GPU batch size: auto

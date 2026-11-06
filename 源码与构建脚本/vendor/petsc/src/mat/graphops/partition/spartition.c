@@ -1,0 +1,82 @@
+#include <petscmat.h>
+#include <petsc/private/matimpl.h>
+
+PETSC_EXTERN PetscErrorCode MatPartitioningCreate_Current(MatPartitioning);
+PETSC_EXTERN PetscErrorCode MatPartitioningCreate_Average(MatPartitioning part);
+PETSC_EXTERN PetscErrorCode MatPartitioningCreate_Square(MatPartitioning);
+PETSC_EXTERN PetscErrorCode MatPartitioningCreate_ParMETIS(MatPartitioning);
+PETSC_EXTERN PetscErrorCode MatPartitioningCreate_Hierarchical(MatPartitioning);
+#if PetscDefined(HAVE_CHACO)
+PETSC_EXTERN PetscErrorCode MatPartitioningCreate_Chaco(MatPartitioning);
+#endif
+#if PetscDefined(HAVE_PARTY)
+PETSC_EXTERN PetscErrorCode MatPartitioningCreate_Party(MatPartitioning);
+#endif
+#if PetscDefined(HAVE_PTSCOTCH)
+PETSC_EXTERN PetscErrorCode MatPartitioningCreate_PTScotch(MatPartitioning);
+#endif
+
+#if PetscDefined(HAVE_PARMETIS)
+PETSC_EXTERN PetscErrorCode MatMeshToCellGraph_ParMETIS(Mat, PetscInt, Mat *);
+#endif
+#if PetscDefined(HAVE_METIS)
+PETSC_EXTERN PetscErrorCode MatMeshToCellGraph_METIS(Mat, PetscInt, Mat *);
+#endif
+
+/*@
+  MatPartitioningRegisterAll - Registers all of the matrix partitioning routines in PETSc.
+
+  Not Collective
+
+  Level: developer
+
+.seealso: `MatPartitioning`, `MatPartitioningType`, `MatPartitioningRegister()`, `MatPartitioningRegisterDestroy()`
+@*/
+PetscErrorCode MatPartitioningRegisterAll(void)
+{
+  PetscFunctionBegin;
+  if (MatPartitioningRegisterAllCalled) PetscFunctionReturn(PETSC_SUCCESS);
+  MatPartitioningRegisterAllCalled = PETSC_TRUE;
+
+  PetscCall(MatPartitioningRegister(MATPARTITIONINGCURRENT, MatPartitioningCreate_Current));
+  PetscCall(MatPartitioningRegister(MATPARTITIONINGAVERAGE, MatPartitioningCreate_Average));
+  PetscCall(MatPartitioningRegister(MATPARTITIONINGSQUARE, MatPartitioningCreate_Square));
+  PetscCall(MatPartitioningRegister(MATPARTITIONINGHIERARCH, MatPartitioningCreate_Hierarchical));
+#if PetscDefined(HAVE_PARMETIS)
+  PetscCall(MatPartitioningRegister(MATPARTITIONINGPARMETIS, MatPartitioningCreate_ParMETIS));
+#endif
+#if PetscDefined(HAVE_CHACO)
+  PetscCall(MatPartitioningRegister(MATPARTITIONINGCHACO, MatPartitioningCreate_Chaco));
+#endif
+#if PetscDefined(HAVE_PARTY)
+  PetscCall(MatPartitioningRegister(MATPARTITIONINGPARTY, MatPartitioningCreate_Party));
+#endif
+#if PetscDefined(HAVE_PTSCOTCH)
+  PetscCall(MatPartitioningRegister(MATPARTITIONINGPTSCOTCH, MatPartitioningCreate_PTScotch));
+#endif
+  PetscFunctionReturn(PETSC_SUCCESS);
+}
+
+/*@
+  MatMeshToCellGraphRegisterAll - Registers all of the mesh-to-cell-graph conversion routines in PETSc.
+
+  Not Collective
+
+  Level: developer
+
+.seealso: `MatMeshToCellGraph()`, `MatMeshToCellGraphRegister()`, `MatMeshToCellGraphType`
+@*/
+PetscErrorCode MatMeshToCellGraphRegisterAll(void)
+{
+  PetscFunctionBegin;
+  if (MatMeshToCellGraphRegisterAllCalled) PetscFunctionReturn(PETSC_SUCCESS);
+  MatMeshToCellGraphRegisterAllCalled = PETSC_TRUE;
+
+#if PetscDefined(HAVE_PARMETIS)
+  PetscCall(MatMeshToCellGraphRegister(MATMESHTOCELLGRAPHPARMETIS, MatMeshToCellGraph_ParMETIS));
+#endif
+#if PetscDefined(HAVE_METIS)
+  PetscCall(MatMeshToCellGraphRegister(MATMESHTOCELLGRAPHMETIS, MatMeshToCellGraph_METIS));
+#endif
+  PetscFunctionReturn(PETSC_SUCCESS);
+}

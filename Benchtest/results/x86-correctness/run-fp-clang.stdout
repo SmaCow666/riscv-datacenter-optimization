@@ -1,0 +1,5 @@
+FP_RUNTIME {"library":"/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/install/lib/libomp.so"}
+FP_CONTROL {"stage":0,"local":0,"expected_mode":2048,"actual_team":2,"expected_positive":2,"expected_negative":-1,"threads":[{"tid":0,"mode":2048,"positive":2,"negative":-1,"mismatch":0},{"tid":1,"mode":2048,"positive":2,"negative":-1,"mismatch":0}]}
+FP_CONTROL {"stage":1,"local":0,"expected_mode":1024,"actual_team":2,"expected_positive":1,"expected_negative":-2,"threads":[{"tid":0,"mode":1024,"positive":1,"negative":-2,"mismatch":0},{"tid":1,"mode":1024,"positive":1,"negative":-2,"mismatch":0}]}
+FP_CONTROL {"stage":2,"local":0,"expected_mode":3072,"actual_team":2,"expected_positive":1,"expected_negative":-1,"threads":[{"tid":0,"mode":3072,"positive":1,"negative":-1,"mismatch":0},{"tid":1,"mode":3072,"positive":1,"negative":-1,"mismatch":0}]}
+FP_CONTROL {"stage":3,"local":0,"expected_mode":0,"actual_team":2,"expected_positive":2,"expected_negative":-2,"threads":[{"tid":0,"mode":0,"positive":2,"negative":-2,"mismatch":0},{"tid":1,"mode":0,"positive":2,"negative":-2,"mismatch":0}]}

@@ -1,0 +1,47 @@
+{
+  "frame-repair": {
+    "source": "vendor/community-state",
+    "patches": [
+      "patches/community/frame-repair/01.patch",
+      "patches/community/frame-repair/02.patch"
+    ],
+    "independent": true
+  },
+  "rounding-repair": {
+    "source": "vendor/community-state",
+    "patches": [
+      "patches/community/rounding-repair/01.patch",
+      "patches/community/rounding-repair/02.patch"
+    ],
+    "independent": true
+  },
+  "ticket-repair": {
+    "source": "vendor/community-state",
+    "patches": [
+      "patches/community/ticket-repair/01.patch",
+      "patches/community/ticket-repair/02.patch"
+    ],
+    "independent": true
+  },
+  "task-copy": {
+    "source": "vendor/community-copy",
+    "patches": [
+      "patches/community/task-copy/01.patch"
+    ],
+    "independent": true
+  },
+  "taskloop-strict": {
+    "source": "vendor/community-taskloop",
+    "patches": [
+      "patches/community/taskloop-strict/01.patch"
+    ],
+    "independent": true
+  },
+  "taskloop-bounds": {
+    "source": "vendor/community-taskloop",
+    "patches": [
+      "patches/community/taskloop-bounds/01.patch"
+    ],
+    "independent": true
+  }
+}

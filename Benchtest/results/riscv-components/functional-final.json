@@ -1,0 +1,1291 @@
+[
+  {
+    "id": "fp-base",
+    "status": "PASS",
+    "result": {
+      "errors": 3,
+      "baseline_observation": true
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "interval-base",
+    "status": "PASS",
+    "result": {
+      "team": 2,
+      "rows": 8,
+      "errors": 4
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "cfi-base",
+    "status": "EXPECTED_NEGATIVE_CONFIRMED",
+    "result": {
+      "classification": "EXPECTED_BASELINE_UNWIND_FAULT",
+      "signal": 11,
+      "caller_visible": false,
+      "source": "original parent raw log; no hardware rerun"
+    },
+    "original_status": "FAILED",
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-base-1",
+    "status": "PASS",
+    "result": {
+      "actual_team": 1,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/base/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-base-2",
+    "status": "PASS",
+    "result": {
+      "actual_team": 2,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/base/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-base-4",
+    "status": "PASS",
+    "result": {
+      "actual_team": 4,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/base/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "sync-base",
+    "status": "PASS",
+    "result": {
+      "threads": 2,
+      "actual": 2,
+      "regions": 16,
+      "iterations": 16,
+      "sleep": 1,
+      "tasks": 512,
+      "wall_ns": 37702268,
+      "cpu_ns": 40008042,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/base/libomp.so",
+      "errors": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "fp-core",
+    "status": "PASS",
+    "result": {
+      "errors": 0,
+      "baseline_observation": false
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "interval-core",
+    "status": "PASS",
+    "result": {
+      "team": 2,
+      "rows": 8,
+      "errors": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "cfi-core",
+    "status": "PASS",
+    "result": {
+      "caller_visible": true
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-core-1",
+    "status": "PASS",
+    "result": {
+      "actual_team": 1,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/core/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-core-2",
+    "status": "PASS",
+    "result": {
+      "actual_team": 2,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/core/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-core-4",
+    "status": "PASS",
+    "result": {
+      "actual_team": 4,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/core/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "sync-core",
+    "status": "PASS",
+    "result": {
+      "threads": 2,
+      "actual": 2,
+      "regions": 16,
+      "iterations": 16,
+      "sleep": 1,
+      "tasks": 512,
+      "wall_ns": 38160604,
+      "cpu_ns": 40462290,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/core/libomp.so",
+      "errors": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "fp-batch",
+    "status": "PASS",
+    "result": {
+      "errors": 0,
+      "baseline_observation": false
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "interval-batch",
+    "status": "PASS",
+    "result": {
+      "team": 2,
+      "rows": 8,
+      "errors": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "cfi-batch",
+    "status": "PASS",
+    "result": {
+      "caller_visible": true
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-batch-1",
+    "status": "PASS",
+    "result": {
+      "actual_team": 1,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/batch/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-batch-2",
+    "status": "PASS",
+    "result": {
+      "actual_team": 2,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/batch/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-batch-4",
+    "status": "PASS",
+    "result": {
+      "actual_team": 4,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/batch/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "sync-batch",
+    "status": "PASS",
+    "result": {
+      "threads": 2,
+      "actual": 2,
+      "regions": 16,
+      "iterations": 16,
+      "sleep": 1,
+      "tasks": 512,
+      "wall_ns": 37555142,
+      "cpu_ns": 39287083,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/batch/libomp.so",
+      "errors": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "fp-ticket",
+    "status": "PASS",
+    "result": {
+      "errors": 0,
+      "baseline_observation": false
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "interval-ticket",
+    "status": "PASS",
+    "result": {
+      "team": 2,
+      "rows": 8,
+      "errors": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "cfi-ticket",
+    "status": "PASS",
+    "result": {
+      "caller_visible": true
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-ticket-1",
+    "status": "PASS",
+    "result": {
+      "actual_team": 1,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/ticket/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-ticket-2",
+    "status": "PASS",
+    "result": {
+      "actual_team": 2,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/ticket/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-ticket-4",
+    "status": "PASS",
+    "result": {
+      "actual_team": 4,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/ticket/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "sync-ticket",
+    "status": "PASS",
+    "result": {
+      "threads": 2,
+      "actual": 2,
+      "regions": 16,
+      "iterations": 16,
+      "sleep": 1,
+      "tasks": 512,
+      "wall_ns": 37718226,
+      "cpu_ns": 39390460,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/ticket/libomp.so",
+      "errors": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "fp-fast",
+    "status": "PASS",
+    "result": {
+      "errors": 0,
+      "baseline_observation": false
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "interval-fast",
+    "status": "PASS",
+    "result": {
+      "team": 2,
+      "rows": 8,
+      "errors": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "cfi-fast",
+    "status": "PASS",
+    "result": {
+      "caller_visible": true
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-fast-1",
+    "status": "PASS",
+    "result": {
+      "actual_team": 1,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/fast/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-fast-2",
+    "status": "PASS",
+    "result": {
+      "actual_team": 2,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/fast/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "tasks-fast-4",
+    "status": "PASS",
+    "result": {
+      "actual_team": 4,
+      "pairs": 128,
+      "nested_tasks": 128,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/fast/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "sync-fast",
+    "status": "PASS",
+    "result": {
+      "threads": 2,
+      "actual": 2,
+      "regions": 16,
+      "iterations": 16,
+      "sleep": 1,
+      "tasks": 512,
+      "wall_ns": 37394058,
+      "cpu_ns": 39263295,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/fast/libomp.so",
+      "errors": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "ncnn-core",
+    "status": "PASS",
+    "result": {
+      "runtime": {
+        "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/core/libomp.so"
+      },
+      "max_vector_diff": 0.0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "ncnn-batch",
+    "status": "PASS",
+    "result": {
+      "runtime": {
+        "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/batch/libomp.so"
+      },
+      "max_vector_diff": 0.0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "ticket-lock-ticket",
+    "status": "PASS",
+    "result": {
+      "suite": "ticket-public",
+      "actual_team": 2,
+      "count": 1024,
+      "nested_count": 256,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/ticket/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "ticket-checked-ticket",
+    "status": "PASS",
+    "result": {
+      "suite": "ticket-public",
+      "actual_team": 2,
+      "count": 1024,
+      "nested_count": 256,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/ticket/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "untied-boundary-ticket",
+    "status": "PASS",
+    "result": {
+      "suite": "untied-boundary",
+      "actual_team": 2,
+      "waves": 4,
+      "taskloop_items": 256,
+      "detach_tasks": 16,
+      "helper_joins": 4,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/ticket/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "eligibility-ticket-1",
+    "status": "PASS",
+    "result": {
+      "suite": "task-eligibility",
+      "actual_team": 1,
+      "items": 64,
+      "mutex_sum": 64,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/ticket/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "eligibility-ticket-2",
+    "status": "PASS",
+    "result": {
+      "suite": "task-eligibility",
+      "actual_team": 2,
+      "items": 64,
+      "mutex_sum": 64,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/ticket/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "eligibility-ticket-4",
+    "status": "PASS",
+    "result": {
+      "suite": "task-eligibility",
+      "actual_team": 4,
+      "items": 64,
+      "mutex_sum": 64,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/ticket/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "ticket-lock-fast",
+    "status": "PASS",
+    "result": {
+      "suite": "ticket-public",
+      "actual_team": 2,
+      "count": 1024,
+      "nested_count": 256,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/fast/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "ticket-checked-fast",
+    "status": "PASS",
+    "result": {
+      "suite": "ticket-public",
+      "actual_team": 2,
+      "count": 1024,
+      "nested_count": 256,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/fast/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "untied-boundary-fast",
+    "status": "PASS",
+    "result": {
+      "suite": "untied-boundary",
+      "actual_team": 2,
+      "waves": 4,
+      "taskloop_items": 256,
+      "detach_tasks": 16,
+      "helper_joins": 4,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/fast/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "eligibility-fast-1",
+    "status": "PASS",
+    "result": {
+      "suite": "task-eligibility",
+      "actual_team": 1,
+      "items": 64,
+      "mutex_sum": 64,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/fast/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "eligibility-fast-2",
+    "status": "PASS",
+    "result": {
+      "suite": "task-eligibility",
+      "actual_team": 2,
+      "items": 64,
+      "mutex_sum": 64,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/fast/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "eligibility-fast-4",
+    "status": "PASS",
+    "result": {
+      "suite": "task-eligibility",
+      "actual_team": 4,
+      "items": 64,
+      "mutex_sum": 64,
+      "errors": 0,
+      "library": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/fast/libomp.so"
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "gemv-C2",
+    "status": "PASS",
+    "result": {
+      "s": {
+        "cases": "25920",
+        "calls": "103680",
+        "unit": "12960",
+        "nonunit": "12960",
+        "fp": "16",
+        "bit_equal": "1",
+        "guards": "1",
+        "source_unchanged": "1",
+        "max_abs": "3.9775198785729771e-06",
+        "max_bound_ratio": "0.012635586360628691",
+        "exit": "0"
+      },
+      "d": {
+        "cases": "25920",
+        "calls": "103680",
+        "unit": "12960",
+        "nonunit": "12960",
+        "fp": "16",
+        "bit_equal": "1",
+        "guards": "1",
+        "source_unchanged": "1",
+        "max_abs": "9.5479180117763462e-15",
+        "max_bound_ratio": "0.02076209172401176",
+        "exit": "0"
+      }
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "gemv-T1",
+    "status": "PASS",
+    "result": {
+      "s": {
+        "cases": "25920",
+        "calls": "103680",
+        "unit": "12960",
+        "nonunit": "12960",
+        "fp": "16",
+        "bit_equal": "1",
+        "guards": "1",
+        "source_unchanged": "1",
+        "max_abs": "3.9775198785729771e-06",
+        "max_bound_ratio": "0.012635586360628691",
+        "exit": "0"
+      },
+      "d": {
+        "cases": "25920",
+        "calls": "103680",
+        "unit": "12960",
+        "nonunit": "12960",
+        "fp": "16",
+        "bit_equal": "1",
+        "guards": "1",
+        "source_unchanged": "1",
+        "max_abs": "9.5479180117763462e-15",
+        "max_bound_ratio": "0.02076209172401176",
+        "exit": "0"
+      }
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "axpy-AXPY",
+    "status": "PASS",
+    "result": {
+      "records": [
+        {
+          "precision": "s",
+          "cases": 17000,
+          "guard_pages": 129,
+          "inputs_unchanged": true,
+          "scalar_reference_nonzero_incy": true,
+          "zero_incy_reference": false
+        },
+        {
+          "precision": "d",
+          "cases": 17000,
+          "guard_pages": 129,
+          "inputs_unchanged": true,
+          "scalar_reference_nonzero_incy": true,
+          "zero_incy_reference": false
+        }
+      ],
+      "zero_reference": false
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "axpy-Z",
+    "status": "PASS",
+    "result": {
+      "records": [
+        {
+          "precision": "s",
+          "cases": 17000,
+          "guard_pages": 129,
+          "inputs_unchanged": true,
+          "scalar_reference_nonzero_incy": true,
+          "zero_incy_reference": true
+        },
+        {
+          "precision": "d",
+          "cases": 17000,
+          "guard_pages": 129,
+          "inputs_unchanged": true,
+          "scalar_reference_nonzero_incy": true,
+          "zero_incy_reference": true
+        }
+      ],
+      "zero_reference": true
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "axpy-U-Z",
+    "status": "PASS",
+    "result": {
+      "records": [
+        {
+          "precision": "s",
+          "cases": 17000,
+          "guard_pages": 129,
+          "inputs_unchanged": true,
+          "scalar_reference_nonzero_incy": true,
+          "zero_incy_reference": true
+        },
+        {
+          "precision": "d",
+          "cases": 17000,
+          "guard_pages": 129,
+          "inputs_unchanged": true,
+          "scalar_reference_nonzero_incy": true,
+          "zero_incy_reference": true
+        }
+      ],
+      "zero_reference": true
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "zero-public",
+    "status": "PASS",
+    "result": [
+      {
+        "role": 1,
+        "provider": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/A/libopenblas.so.0",
+        "n": 2,
+        "incx": 1,
+        "incy": 0,
+        "seed": 2,
+        "expected": 4,
+        "single": 4,
+        "double": 4,
+        "single_matches": true,
+        "double_matches": true
+      },
+      {
+        "role": 1,
+        "provider": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/A/libopenblas.so.0",
+        "n": 9,
+        "incx": 1,
+        "incy": 0,
+        "seed": 2,
+        "expected": 11,
+        "single": 11,
+        "double": 11,
+        "single_matches": true,
+        "double_matches": true
+      },
+      {
+        "role": 1,
+        "provider": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/A/libopenblas.so.0",
+        "n": 17,
+        "incx": 1,
+        "incy": 0,
+        "seed": 2,
+        "expected": 19,
+        "single": 19,
+        "double": 19,
+        "single_matches": true,
+        "double_matches": true
+      },
+      {
+        "role": 2,
+        "provider": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/B/libopenblas.so.0",
+        "n": 2,
+        "incx": 1,
+        "incy": 0,
+        "seed": 2,
+        "expected": 4,
+        "single": 6,
+        "double": 6,
+        "single_matches": false,
+        "double_matches": false
+      },
+      {
+        "role": 2,
+        "provider": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/B/libopenblas.so.0",
+        "n": 9,
+        "incx": 1,
+        "incy": 0,
+        "seed": 2,
+        "expected": 11,
+        "single": 27,
+        "double": 25,
+        "single_matches": false,
+        "double_matches": false
+      },
+      {
+        "role": 2,
+        "provider": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/B/libopenblas.so.0",
+        "n": 17,
+        "incx": 1,
+        "incy": 0,
+        "seed": 2,
+        "expected": 19,
+        "single": 49,
+        "double": 33,
+        "single_matches": false,
+        "double_matches": false
+      },
+      {
+        "role": 3,
+        "provider": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/U/libopenblas.so.0",
+        "n": 2,
+        "incx": 1,
+        "incy": 0,
+        "seed": 2,
+        "expected": 4,
+        "single": 6,
+        "double": 6,
+        "single_matches": false,
+        "double_matches": false
+      },
+      {
+        "role": 3,
+        "provider": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/U/libopenblas.so.0",
+        "n": 9,
+        "incx": 1,
+        "incy": 0,
+        "seed": 2,
+        "expected": 11,
+        "single": 27,
+        "double": 27,
+        "single_matches": false,
+        "double_matches": false
+      },
+      {
+        "role": 3,
+        "provider": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/U/libopenblas.so.0",
+        "n": 17,
+        "incx": 1,
+        "incy": 0,
+        "seed": 2,
+        "expected": 19,
+        "single": 51,
+        "double": 49,
+        "single_matches": false,
+        "double_matches": false
+      },
+      {
+        "role": 4,
+        "provider": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/Z/libopenblas.so.0",
+        "n": 2,
+        "incx": 1,
+        "incy": 0,
+        "seed": 2,
+        "expected": 4,
+        "single": 4,
+        "double": 4,
+        "single_matches": true,
+        "double_matches": true
+      },
+      {
+        "role": 4,
+        "provider": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/Z/libopenblas.so.0",
+        "n": 9,
+        "incx": 1,
+        "incy": 0,
+        "seed": 2,
+        "expected": 11,
+        "single": 11,
+        "double": 11,
+        "single_matches": true,
+        "double_matches": true
+      },
+      {
+        "role": 4,
+        "provider": "/root/riscv-final-kit.BDu6e2/riscv-final-kit/payload/Z/libopenblas.so.0",
+        "n": 17,
+        "incx": 1,
+        "incy": 0,
+        "seed": 2,
+        "expected": 19,
+        "single": 19,
+        "double": 19,
+        "single_matches": true,
+        "double_matches": true
+      }
+    ],
+    "source_stage": "original"
+  },
+  {
+    "id": "official-gemv-openblas_utest",
+    "status": "PASS",
+    "result": {
+      "exit": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "official-gemv-openblas_utest_ext",
+    "status": "PASS",
+    "result": {
+      "exit": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "official-gemv-xscblat2",
+    "status": "PASS",
+    "result": {
+      "status": "PASS",
+      "precision": "s",
+      "computational_checks": 32,
+      "functions": 16,
+      "input_file": "sin2"
+    },
+    "source_stage": "completion",
+    "original_observation": "NOT_EXECUTED_WAITING_STDIN"
+  },
+  {
+    "id": "official-gemv-xdcblat2",
+    "status": "PASS",
+    "result": {
+      "status": "PASS",
+      "precision": "d",
+      "computational_checks": 32,
+      "functions": 16,
+      "input_file": "din2"
+    },
+    "source_stage": "completion",
+    "original_observation": "NOT_EXECUTED_WAITING_STDIN"
+  },
+  {
+    "id": "official-C2-openblas_utest",
+    "status": "PASS",
+    "result": {
+      "exit": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "official-C2-openblas_utest_ext",
+    "status": "PASS",
+    "result": {
+      "exit": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "official-C2-xscblat2",
+    "status": "PASS",
+    "result": {
+      "status": "PASS",
+      "precision": "s",
+      "computational_checks": 32,
+      "functions": 16,
+      "input_file": "sin2"
+    },
+    "source_stage": "completion",
+    "original_observation": "NOT_EXECUTED_WAITING_STDIN"
+  },
+  {
+    "id": "official-C2-xdcblat2",
+    "status": "PASS",
+    "result": {
+      "status": "PASS",
+      "precision": "d",
+      "computational_checks": 32,
+      "functions": 16,
+      "input_file": "din2"
+    },
+    "source_stage": "completion",
+    "original_observation": "NOT_EXECUTED_WAITING_STDIN"
+  },
+  {
+    "id": "official-axpy-openblas_utest",
+    "status": "PASS",
+    "result": {
+      "exit": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "official-axpy-openblas_utest_ext",
+    "status": "PASS",
+    "result": {
+      "exit": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "official-axpy-xscblat1",
+    "status": "PASS",
+    "result": {
+      "exit": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "official-axpy-xdcblat1",
+    "status": "PASS",
+    "result": {
+      "exit": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "official-zero-openblas_utest",
+    "status": "PASS",
+    "result": {
+      "exit": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "official-zero-openblas_utest_ext",
+    "status": "PASS",
+    "result": {
+      "exit": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "official-zero-xscblat1",
+    "status": "PASS",
+    "result": {
+      "exit": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "official-zero-xdcblat1",
+    "status": "PASS",
+    "result": {
+      "exit": 0
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "framework-core-B",
+    "status": "PASS",
+    "result": {
+      "result": {
+        "grid": 64,
+        "steps": 100,
+        "setups": 1,
+        "applies": 100,
+        "destroys": 1,
+        "operator_unchanged": true,
+        "max_discrete_error": 4.0668904097442024e-14,
+        "max_residual": 2.9235820181554366e-15,
+        "final_energy": 0.005016994784339056,
+        "performance": "NOT_MEASURED"
+      },
+      "ksp_ns": 780906553.9993298,
+      "reuse_ns": 723172288.999308,
+      "factor_ns": 29932388.000020184,
+      "runtime_path_counts": [
+        {
+          "phase": 0,
+          "calls": 0,
+          "wall": 0,
+          "caller_cpu": 0,
+          "task_api_calls": 0,
+          "sched_yield_calls": 19894,
+          "handoff_yield_calls": 0
+        },
+        {
+          "phase": 1,
+          "calls": 1,
+          "wall": 0.008061299000019062,
+          "caller_cpu": 0.008064374999999992,
+          "task_api_calls": 60,
+          "sched_yield_calls": 521,
+          "handoff_yield_calls": 44
+        },
+        {
+          "phase": 2,
+          "calls": 1,
+          "wall": 0.029932388000020183,
+          "caller_cpu": 0.029749499,
+          "task_api_calls": 14,
+          "sched_yield_calls": 272,
+          "handoff_yield_calls": 8
+        },
+        {
+          "phase": 3,
+          "calls": 1,
+          "wall": 0.008386467000036646,
+          "caller_cpu": 0.008390583999999993,
+          "task_api_calls": 120,
+          "sched_yield_calls": 140,
+          "handoff_yield_calls": 87
+        },
+        {
+          "phase": 4,
+          "calls": 99,
+          "wall": 0.723172288999308,
+          "caller_cpu": 0.7198474499999996,
+          "task_api_calls": 11880,
+          "sched_yield_calls": 12292,
+          "handoff_yield_calls": 8474
+        }
+      ]
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "framework-batch-B",
+    "status": "PASS",
+    "result": {
+      "result": {
+        "grid": 64,
+        "steps": 100,
+        "setups": 1,
+        "applies": 100,
+        "destroys": 1,
+        "operator_unchanged": true,
+        "max_discrete_error": 4.0668904097442024e-14,
+        "max_residual": 2.9235820181554366e-15,
+        "final_energy": 0.005016994784339056,
+        "performance": "NOT_MEASURED"
+      },
+      "ksp_ns": 752701509.0000759,
+      "reuse_ns": 698096144.0003738,
+      "factor_ns": 29761803.000042163,
+      "runtime_path_counts": [
+        {
+          "phase": 0,
+          "calls": 0,
+          "wall": 0,
+          "caller_cpu": 0,
+          "task_api_calls": 0,
+          "sched_yield_calls": 19573,
+          "handoff_yield_calls": 0
+        },
+        {
+          "phase": 1,
+          "calls": 1,
+          "wall": 0.006195412000010947,
+          "caller_cpu": 0.006198250000000002,
+          "task_api_calls": 60,
+          "sched_yield_calls": 345,
+          "handoff_yield_calls": 0
+        },
+        {
+          "phase": 2,
+          "calls": 1,
+          "wall": 0.029761803000042164,
+          "caller_cpu": 0.029515542999999998,
+          "task_api_calls": 14,
+          "sched_yield_calls": 225,
+          "handoff_yield_calls": 0
+        },
+        {
+          "phase": 3,
+          "calls": 1,
+          "wall": 0.0080343399999947,
+          "caller_cpu": 0.008040332999999997,
+          "task_api_calls": 120,
+          "sched_yield_calls": 45,
+          "handoff_yield_calls": 0
+        },
+        {
+          "phase": 4,
+          "calls": 99,
+          "wall": 0.6980961440003739,
+          "caller_cpu": 0.698188037,
+          "task_api_calls": 11880,
+          "sched_yield_calls": 3285,
+          "handoff_yield_calls": 0
+        }
+      ]
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "framework-core-C2",
+    "status": "PASS",
+    "result": {
+      "result": {
+        "grid": 64,
+        "steps": 100,
+        "setups": 1,
+        "applies": 100,
+        "destroys": 1,
+        "operator_unchanged": true,
+        "max_discrete_error": 4.0668904097442024e-14,
+        "max_residual": 2.9235820181554366e-15,
+        "final_energy": 0.005016994784339056,
+        "performance": "NOT_MEASURED"
+      },
+      "ksp_ns": 702167128.9998039,
+      "reuse_ns": 650878155.9995214,
+      "factor_ns": 27242247.000003774
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "framework-core-T1",
+    "status": "PASS",
+    "result": {
+      "result": {
+        "grid": 64,
+        "steps": 100,
+        "setups": 1,
+        "applies": 100,
+        "destroys": 1,
+        "operator_unchanged": true,
+        "max_discrete_error": 4.0668904097442024e-14,
+        "max_residual": 2.9235820181554366e-15,
+        "final_energy": 0.005016994784339056,
+        "performance": "NOT_MEASURED"
+      },
+      "ksp_ns": 695680262.0005647,
+      "reuse_ns": 646046958.0000563,
+      "factor_ns": 26277616.00001577
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "framework-core-AXPY",
+    "status": "PASS",
+    "result": {
+      "result": {
+        "grid": 64,
+        "steps": 100,
+        "setups": 1,
+        "applies": 100,
+        "destroys": 1,
+        "operator_unchanged": true,
+        "max_discrete_error": 4.0668904097442024e-14,
+        "max_residual": 2.9235820181554366e-15,
+        "final_energy": 0.005016994784339056,
+        "performance": "NOT_MEASURED"
+      },
+      "ksp_ns": 677718609.9997152,
+      "reuse_ns": 627354272.0005026,
+      "factor_ns": 26378282.99998546
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "framework-core-Z",
+    "status": "PASS",
+    "result": {
+      "result": {
+        "grid": 64,
+        "steps": 100,
+        "setups": 1,
+        "applies": 100,
+        "destroys": 1,
+        "operator_unchanged": true,
+        "max_discrete_error": 4.0668904097442024e-14,
+        "max_residual": 2.9235820181554366e-15,
+        "final_energy": 0.005016994784339056,
+        "performance": "NOT_MEASURED"
+      },
+      "ksp_ns": 676915313.0001086,
+      "reuse_ns": 627759556.0002283,
+      "factor_ns": 25979698.00001465
+    },
+    "source_stage": "original"
+  },
+  {
+    "id": "framework-batch-C2",
+    "status": "PASS",
+    "result": {
+      "result": {
+        "grid": 64,
+        "steps": 100,
+        "setups": 1,
+        "applies": 100,
+        "destroys": 1,
+        "operator_unchanged": true,
+        "max_discrete_error": 4.0668904097442024e-14,
+        "max_residual": 2.9235820181554366e-15,
+        "final_energy": 0.005016994784339056,
+        "performance": "NOT_MEASURED"
+      },
+      "ksp_ns": 648112020.9998608,
+      "reuse_ns": 599824635.9995391,
+      "factor_ns": 25159359.000099357
+    },
+    "source_stage": "original"
+  }
+]

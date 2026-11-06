@@ -1,0 +1,34 @@
+-include ../../../../petscdir.mk
+
+CLEANFILES       = rhs.vtk solution.vtk bench_kspsolve report_performance.xml
+NP               = 1
+
+include ${PETSC_DIR}/lib/petsc/conf/variables
+include ${PETSC_DIR}/lib/petsc/conf/rules
+
+V ?= 0
+QUIET = $(shell [ "$(V)" = "0" ] && echo @)
+
+testex100: ex100.PETSc
+	-${QUIET}OMPI_MCA_mpi_warn_on_fork=0 ${MPIEXEC} -n 1 ${MPIEXEC_TAIL} ./ex100 -test  > ex100.tmp 2>&1;
+	-${QUIET}${DIFF} output/ex100_1.testout ex100.tmp > ex100.dtmp;
+	-@if [ ! -s ex100.dtmp ];  then \
+	  echo "C/C++ Python example src/ksp/ksp/tutorials/ex100 run successfully with 1 MPI process"; \
+	else \
+		echo "Possible error running C/C++ Python src/ksp/ksp/tutorials/ex100 with 1 MPI process"; \
+		echo "See https://petsc.org/release/faq/";\
+		cat ex100.tmp;\
+		touch ../../../../check_error;\
+	fi; \
+	${RM} -f ex100.tmp ex100.dtmp;
+	-${QUIET}export PYTHONPATH=$${PYTHONPATH:+$$PYTHONPATH:}${PETSCPYTHONPATH}; \
+	if OMPI_MCA_mpi_warn_on_fork=0 ${MPIEXEC} -n 1 ${MPIEXEC_TAIL} ${PYTHON_EXE} ./ex100.py -test > ex100_py.tmp 2>&1 && \
+	   ${DIFF} output/ex100_1.testout ex100_py.tmp > ex100_py.dtmp; then \
+	  echo "Python example src/ksp/ksp/tutorials/ex100.py run successfully with 1 MPI process"; \
+	else \
+	  echo "Possible error running Python example src/ksp/ksp/tutorials/ex100.py with 1 MPI process"; \
+	  echo "See https://petsc.org/release/faq/"; \
+	  cat ex100_py.tmp; \
+	  touch ../../../../check_error; \
+	fi; \
+	${RM} -f ex100_py.tmp ex100_py.dtmp;

@@ -1,0 +1,262 @@
+(ch_developingmr)=
+
+# Developing a Merge Request
+
+(sec_integration_branches)=
+
+## Select the integration branch
+
+**Integration branches** are permanent branches in a repository that developers can contribute to. PETSc has two integration branches: `release`
+and `main`. **Feature branches** are temporary branches created by developers to add or change a feature. A new feature branch is the basis for each
+merge request.
+
+(sec_release_branch)=
+
+### `release`
+
+The `release` branch contains the latest PETSc release including bug-fixes.
+
+Crucial bug fixes should start from `release`, as well as changes intended to affect CI or the website immediately, for example, news or meeting information.
+
+```console
+$ git fetch
+$ git checkout -b yourname/fix-component-name origin/release
+```
+
+Bug-fix updates, about every month, (e.g. 3.17.1) are tagged on `release` (e.g. v3.17.1).
+
+(sec_main_branch)=
+
+### `main`
+
+The `main` branch contains everything in the release branch as well as new features that have passed all testing
+and will be in the next release (e.g. version 3.18). Users developing software based
+on recently-added features in PETSc should follow `main`.
+
+New features should start from `main`.
+
+```console
+$ git fetch
+$ git checkout -b yourname/fix-component-name origin/main
+```
+
+(sec_developing_a_new_feature)=
+
+## Start a new feature branch
+
+- Determine the appropriate integration_branch to start from, `main` or `release` (for bug fixes only).
+
+- Create and switch to a new feature branch:
+
+  ```console
+  $ git fetch
+  $ git checkout -b <loginname>/<affected-package>-<short-description> origin/main  # or origin/release
+  ```
+
+  For example, Barry’s new feature branch on removing CPP in `snes/` will
+  use
+
+  ```console
+  $ git checkout -b barry/snes-removecpp origin/main
+  ```
+
+  Use all lowercase and no additional underscores in the branch name.
+
+(sec_develop_your_code)=
+
+## Develop your code
+
+- Write code and tests.
+
+  For developers using agents, PETSc provides repository-specific instructions for LLM coding tools in `AGENTS.md` and reusable skills in `.agents/skills`.
+  Claude Code loads `AGENTS.md` through `CLAUDE.md` and finds the same skills through the `.claude/skills` symbolic link.
+  The writing rules cover PETSc contribution materials and their drafts; they do not govern unrelated conversations or prescribe your conversational style.
+
+  Each skill has a `SKILL.md` with a name, a description that helps the tool select it, and instructions loaded when the task needs them.
+  This is the [Agent Skills format](https://agentskills.io/specification), supported by [Codex](https://developers.openai.com/codex/skills/) and [Claude Code](https://code.claude.com/docs/en/skills).
+  Other tools can use the instructions if they support the format and are configured to discover this directory, or are explicitly told to read the relevant file.
+  Skill selection follows your coding tool's discovery and enablement settings; `AGENTS.md` does not require loading disabled skills.
+
+  The development skills are organized by task, with PETSc and petsc4py procedures together where they share that task:
+
+  | Skill | Use |
+  | --- | --- |
+  | `petsc-configure` | Choose configure options, configure, or reconfigure PETSc. |
+  | `petsc-build` | Build PETSc libraries, Fortran bindings, or petsc4py. |
+  | `petsc-test` | Select, run, and diagnose tests or update expected output. |
+  | `petsc-lint` | Format source and run PETSc or petsc4py source checks. |
+  | `petsc-docs` | Audit or build PETSc and petsc4py documentation. |
+
+  For example, a request to configure PETSc can select `petsc-configure` directly; a request to build and test petsc4py can use `petsc-build` and `petsc-test`.
+  Shared repository rules stay in `AGENTS.md` and its conditional convention references; each skill contains its task's procedure.
+
+  The optional `agents/openai.yaml` inside a skill contains OpenAI-specific metadata.
+  PETSc uses its `interface` fields for the display name, short description, and suggested invocation prompt in the Codex UI.
+  These files do not define or launch subagents, choose a model, or implement the PETSc workflow; the instructions remain in `SKILL.md`.
+  Claude Code uses the shared skills without needing this metadata.
+
+  Subagent definitions live in `.agents/agents`, which Claude Code finds through the `.claude/agents` symbolic link; they are Claude Code-specific, though another tool can be told to read one and follow it as a role.
+  PETSc defines `petsc-search-docs`, which runs in its own context and answers documentation questions from a local documentation build, so the pages it reads never enter the main session; the `/petsc-search-docs` skill dispatches to it.
+
+  One of the skills integrates [CodeGraph](https://colbymchenry.github.io/codegraph/) with PETSc source navigation and review.
+  CodeGraph is third-party software; it is not maintained or vetted by the PETSc team.
+  Install the CodeGraph CLI with `npx @colbymchenry/codegraph`.
+  The installer is interactive and prompts to add `codegraph` to your PATH (required) and whether to configure globally or per-project.
+  Choose **global** to avoid modifying tracked files; the project-local option writes to `AGENTS.md`, which should not be committed without review.
+  Then run `codegraph init` from the PETSc repository root to create the local `.codegraph/` index, which is ignored by Git.
+  CodeGraph's installer enables anonymous usage telemetry by default; opt out with `codegraph telemetry off`, `CODEGRAPH_TELEMETRY=0`, or the cross-tool `DO_NOT_TRACK=1`.
+  After installation completes, restart your agent/LLM CLI session so the CodeGraph MCP server loads.
+  When enabled in your coding tool, the CodeGraph skill provides PETSc-specific guidance for source navigation and review using the index.
+  If the index does not exist, the skill uses ordinary repository inspection.
+
+- For any new features or API changes you introduced add information on them to `doc/changes/dev.md`.
+
+- Inspect changes and stage code using standard Git commands, e.g.
+
+  ```console
+  $ git status
+  $ git add file1 file2
+  $ git commit
+  ```
+
+- Commit code with good commit message, for example
+
+  ```console
+  $ git commit
+  ```
+
+  ```none
+  ComponentName: one-line explanation of commit
+
+  After a blank line, write a more detailed explanation of the commit. Many tools do not auto-wrap this part, so wrap paragraph text at a reasonable length. Commit messages are meant for other people to read, possibly months or years later, so describe the rationale for the change in a manner that will make sense later, and which will be provide helpful search terms.
+
+  Use the imperative, e.g. "Fix bug", not "Fixed bug".
+
+  If any interfaces have changed, the commit should fix occurrences in PETSc itself and the message should state its impact on users.
+
+  We have defined several standard commit message tags you should use; this makes it easy to search for specific types of contributions. Multiple tags may be used in the same commit message.
+
+  /spend 1h or 30m
+
+  If other people contributed significantly to a commit, perhaps by reporting bugs or by writing an initial version of the patch, acknowledge them using tags at the end of the commit message.
+
+  Reported-by: Helpful User <helpful@example.com>
+  Based-on-patch-by: Original Idea <original@example.com>
+  Thanks-to: Incremental Improver <improver@example.com>
+
+  If work is done for a particular well defined funding source or project you should label the commit with one or more of the tags
+
+  Funded-by: My funding source
+  Project: My project name
+  ```
+
+- Push the feature branch to the remote repository as desired:
+
+  ```console
+  % git push -u origin barry/snes-removecpp
+  ```
+
+## Test your branch
+
+- Include {doc}`tests </developers/testing>` which cover any changes to the source code.
+
+- {any}`Run the full test suite <sec_runningtests>` on your machine.
+
+  ```console
+  $ make alltests TIMEOUT=600
+  ```
+
+- Test generating the documentation.
+
+  ```console
+  $ make docs
+  ```
+
+- Run the source checkers on your machine.
+
+  ```console
+  $ make checkbadSource
+  $ make clangformat
+  $ make lint
+  ```
+
+- Run LLM reviews of your branch
+
+  ```console
+  $ [PETSC_LLM_CLI=command] [PETSC_LLM_MODEL=modelname] make branch-review
+  ```
+
+  CLI refers to a command line interface tool such as `claude` that runs Claude Code.
+  The default is `claude`; set `PETSC_LLM_CLI` to select another tool.
+  `claude`, `gemini`, `codex`, and `opencode` are supported directly. For other LLM CLIs, you must export `PETSC_LLM_CLI_OPTS` with the appropriate value to make the CLI run
+  the command-line request; for example, `PETSC_LLM_CLI_OPTS=--prompt`.
+
+  When possible (this depends on the capabilities of the LLM CLI), `make branch-review` runs interactively and leaves the terminal in the LLM CLI when the review is complete.
+  This allows users to issue additional commands to the LLM CLI, such as requesting that it fix certain issues it may have detected in the review.
+
+  `make branch-review` follows the repository-specific `AGENTS.md` instructions. It can use the optional CodeGraph skill described in {any}`Develop your code <sec_develop_your_code>` when enabled in your coding tool.
+
+(sec_clean_commit_history)=
+
+## Maintain a clean commit history
+
+If your contribution can be logically decomposed into 2 or more
+separate contributions, submit them in sequence with different
+branches and merge requests instead of all at once.
+
+Often a branch's commit history does not present a logical series of changes.
+Extra commits from bug-fixes or tiny improvements may accumulate. One commit may contain multiple orthogonal changes.
+The order of changes may be incorrect. Branches without a clean commit history will often break `git bisect`.
+Ideally, each commit in an MR will pass the PETSc CI testing, while presenting a small-as-possible set of very closely related changes.
+
+Use different commits for:
+
+- fixing formatting and spelling mistakes,
+- fixing a bug,
+- adding a new feature,
+- adding another new feature.
+
+Rewriting history can be done in [several ways](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History); the easiest is often with the interactive `rebase` command, which allows one to combine ("squash"), rearrange, and edit commits.
+
+It is better to clean up your commits regularly than to wait until you have a large number of them.
+
+For example, if you have made three commits and the most recent two are fixes for the first, you could use
+
+```console
+$ git rebase -i HEAD~3
+```
+
+If the branch has already been pushed, the rewritten branch is not compatible with the remote copy of the branch. You must force push your changes with
+
+```console
+$ git push -f origin branch-name
+```
+
+to update the remote branch with your copy. This must be done with extreme care and only if you know someone else has not changed the remote copy of the branch,
+otherwise you will lose those changes. Never do a `git pull` immediately after you rebase since that will merge the old branch (from GitLab) into your local one and create a mess [^block-ugly-pull-merge].
+
+You can use `git log` to see the recent changes to your branch and help determine what commits should be rearranged, combined, or split.
+You may also find it helpful to use an additional tool such as
+[git-gui](https://git-scm.com/docs/git-gui/), [lazygit](https://github.com/jesseduffield/lazygit), or [various GUI tools](https://git-scm.com/downloads/guis).
+
+(sec_rebasing)=
+
+## Rebase your branch against the integration branch
+
+You may also need to occasionally [rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) your branch onto to the latest version of your {any}`integration branch <sec_integration_branches>` [^rebase-not-merge-upstream], if the integration branch has had relevant changes since you started working on your feature branch.
+
+```console
+$ git fetch origin                              # assume origin --> PETSc upstream
+$ git checkout myname/component-feature
+$ git branch myname/component-feature-backup-1  # optional
+$ git rebase origin/main                        # or origin/release
+```
+
+Note that this type of rebasing is different than the `rebase -i` process for organizing your commits in a coherent manner.
+
+```{rubric} Footnotes
+```
+
+[^rebase-not-merge-upstream]: Rebasing is generally preferable to [merging an upstream branch](http://yarchive.net/comp/linux/git_merges_from_upstream.html).
+
+[^block-ugly-pull-merge]: You may wish to [make it impossible to perform these usually-undesired "non fast-forward" merges when pulling](https://git-scm.com/docs/git-config#Documentation/git-config.txt-pullff), with `git config --global pull.ff only`.

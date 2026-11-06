@@ -1,0 +1,23 @@
+--- a/kernel/riscv64/axpy_vector.c
++++ b/kernel/riscv64/axpy_vector.c
+@@ -77,6 +77,20 @@
+ 	if (n <= 0)  return(0);
+ 	if (da == 0.0) return(0);
+ 
++#if defined(RISCV64_ZVL256B)
++        /* LMUL=m2 and ZVL>=256 guarantee 64/sizeof(FLOAT) lanes.
++           Finish one-vector calls before the general loop's setup/spills. */
++        if (n <= (BLASLONG)(64 / sizeof(FLOAT)) && inc_x == 1 && inc_y == 1) {
++                size_t short_vl = VSETVL(n);
++                FLOAT_V_T short_x = VLEV_FLOAT(x, short_vl);
++                FLOAT_V_T short_y = VLEV_FLOAT(y, short_vl);
++                short_y = VFMACCVF_FLOAT(short_y, da, short_x, short_vl);
++                VSEV_FLOAT(y, short_y, short_vl);
++                return 0;
++        }
++#endif
++
++
+ 	if (inc_x == 1 && inc_y == 1) {
+ 
+ 		gvl = VSETVL(n);

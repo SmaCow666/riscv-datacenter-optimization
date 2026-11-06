@@ -1,0 +1,3 @@
+X86_AFFINITY thread=0 tid=12 mask=0
+X86_AFFINITY thread=1 tid=13 mask=1
+HANDOFF_CONTRACTS {"actual_team":2,"pairs":128,"nested_tasks":128,"errors":0,"library":"/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/llvm/core/install/lib/libomp.so"}

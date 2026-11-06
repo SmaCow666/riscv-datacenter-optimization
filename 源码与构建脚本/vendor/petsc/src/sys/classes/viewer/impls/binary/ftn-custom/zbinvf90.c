@@ -1,0 +1,63 @@
+#include <petsc/private/ftnimpl.h>
+#include <petscviewer.h>
+
+#if PetscDefined(HAVE_FORTRAN_CAPS)
+  #define petscviewerbinarywriteint_    PETSCVIEWERBINARYWRITEINT
+  #define petscviewerbinarywritescalar_ PETSCVIEWERBINARYWRITESCALAR
+  #define petscviewerbinarywritereal_   PETSCVIEWERBINARYWRITEREAL
+  #define petscviewerbinaryreadint_     PETSCVIEWERBINARYREADINT
+  #define petscviewerbinaryreadscalar_  PETSCVIEWERBINARYREADSCALAR
+  #define petscviewerbinaryreadreal_    PETSCVIEWERBINARYREADREAL
+#elif !PetscDefined(HAVE_FORTRAN_UNDERSCORE)
+  #define petscviewerbinarywriteint_    petscviewerbinarywriteint
+  #define petscviewerbinarywritescalar_ petscviewerbinarywritescalar
+  #define petscviewerbinarywritereal_   petscviewerbinarywritereal
+  #define petscviewerbinaryreadint_     petscviewerbinaryreadint
+  #define petscviewerbinaryreadscalar_  petscviewerbinaryreadscalar
+  #define petscviewerbinaryreadreal_    petscviewerbinaryreadreal
+#endif
+
+PETSC_EXTERN void petscviewerbinarywriteint_(PetscViewer *viewer, PetscInt *data, PetscInt *count, PetscErrorCode *ierr)
+{
+  PetscViewer v;
+  PetscPatchDefaultViewers_Fortran(viewer, v);
+  *ierr = PetscViewerBinaryWrite(v, data, *count, PETSC_INT);
+}
+
+PETSC_EXTERN void petscviewerbinarywritescalar_(PetscViewer *viewer, PetscScalar *data, PetscInt *count, PetscErrorCode *ierr)
+{
+  PetscViewer v;
+  PetscPatchDefaultViewers_Fortran(viewer, v);
+  *ierr = PetscViewerBinaryWrite(v, data, *count, PETSC_SCALAR);
+}
+
+PETSC_EXTERN void petscviewerbinarywritereal_(PetscViewer *viewer, PetscReal *data, PetscInt *count, PetscErrorCode *ierr)
+{
+  PetscViewer v;
+  PetscPatchDefaultViewers_Fortran(viewer, v);
+  *ierr = PetscViewerBinaryWrite(v, data, *count, PETSC_REAL);
+}
+
+PETSC_EXTERN void petscviewerbinaryreadint_(PetscViewer *viewer, PetscInt *data, PetscInt *num, PetscInt *count, PetscErrorCode *ierr)
+{
+  PetscViewer v;
+  PetscPatchDefaultViewers_Fortran(viewer, v);
+  CHKFORTRANNULLINTEGER(count);
+  *ierr = PetscViewerBinaryRead(v, data, *num, count, PETSC_INT);
+}
+
+PETSC_EXTERN void petscviewerbinaryreadscalar_(PetscViewer *viewer, PetscScalar *data, PetscInt *num, PetscInt *count, PetscErrorCode *ierr)
+{
+  PetscViewer v;
+  PetscPatchDefaultViewers_Fortran(viewer, v);
+  CHKFORTRANNULLINTEGER(count);
+  *ierr = PetscViewerBinaryRead(v, data, *num, count, PETSC_SCALAR);
+}
+
+PETSC_EXTERN void petscviewerbinaryreadreal_(PetscViewer *viewer, PetscReal *data, PetscInt *num, PetscInt *count, PetscErrorCode *ierr)
+{
+  PetscViewer v;
+  PetscPatchDefaultViewers_Fortran(viewer, v);
+  CHKFORTRANNULLINTEGER(count);
+  *ierr = PetscViewerBinaryRead(v, data, *num, count, PETSC_REAL);
+}

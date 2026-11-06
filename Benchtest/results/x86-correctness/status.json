@@ -1,0 +1,472 @@
+{
+  "status": "COMPLETE",
+  "commands": [
+    {
+      "name": "configure",
+      "argv": [
+        "cmake",
+        "-G",
+        "Ninja",
+        "-S",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/source/runtimes",
+        "-B",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/cmake",
+        "-DLLVM_ENABLE_RUNTIMES=openmp",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_C_COMPILER=/home/uiniu/CodeData/riscv-ai-platform/output/clang21-audit-r1/bin/clang",
+        "-DCMAKE_CXX_COMPILER=/home/uiniu/CodeData/riscv-ai-platform/output/clang21-audit-r1/bin/clang++",
+        "-DCMAKE_INSTALL_PREFIX=/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/install",
+        "-DOPENMP_ENABLE_LIBOMPTARGET=OFF",
+        "-DOPENMP_ENABLE_OMPT_TOOLS=OFF",
+        "-DLIBOMP_ENABLE_ASSERTIONS=OFF",
+        "-DLIBOMP_COPY_EXPORTS=FALSE",
+        "-DLIBOMP_FORTRAN_MODULES=OFF",
+        "-DLIBOMP_OMPD_SUPPORT=OFF"
+      ],
+      "environment": {},
+      "exit_code": 0
+    },
+    {
+      "name": "build",
+      "argv": [
+        "cmake",
+        "--build",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/cmake",
+        "-j",
+        "2"
+      ],
+      "environment": {},
+      "exit_code": 0
+    },
+    {
+      "name": "install",
+      "argv": [
+        "cmake",
+        "--install",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/cmake"
+      ],
+      "environment": {},
+      "exit_code": 0
+    },
+    {
+      "name": "compile-gcc",
+      "argv": [
+        "gcc",
+        "-O2",
+        "-frounding-math",
+        "-fno-builtin-nearbyint",
+        "-fopenmp",
+        "-I/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/install/include",
+        "-c",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/results/2026-11-04-correctness-r1/fp-control-probe.c",
+        "-o",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/gcc.o"
+      ],
+      "environment": {},
+      "exit_code": 0
+    },
+    {
+      "name": "link-gcc",
+      "argv": [
+        "gcc",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/gcc.o",
+        "-L/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/install/lib",
+        "-lomp",
+        "-lm",
+        "-ldl",
+        "-o",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/fp-gcc"
+      ],
+      "environment": {},
+      "exit_code": 0
+    },
+    {
+      "name": "run-fp-gcc",
+      "argv": [
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/fp-gcc",
+        "2",
+        "inherit"
+      ],
+      "environment": {
+        "LD_LIBRARY_PATH": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/install/lib",
+        "OPENMP_EXPECTED_LIBRARY": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/install/lib/libomp.so",
+        "OMP_NUM_THREADS": "2",
+        "OMP_DYNAMIC": "FALSE",
+        "OMP_PROC_BIND": "FALSE",
+        "OMP_TOOL": "disabled",
+        "KMP_INHERIT_FP_CONTROL": "TRUE"
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "compile-clang",
+      "argv": [
+        "/home/uiniu/CodeData/riscv-ai-platform/output/clang21-audit-r1/bin/clang",
+        "-O2",
+        "-frounding-math",
+        "-fno-builtin-nearbyint",
+        "-fopenmp",
+        "-I/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/install/include",
+        "-c",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/results/2026-11-04-correctness-r1/fp-control-probe.c",
+        "-o",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/clang.o"
+      ],
+      "environment": {},
+      "exit_code": 0
+    },
+    {
+      "name": "link-clang",
+      "argv": [
+        "/home/uiniu/CodeData/riscv-ai-platform/output/clang21-audit-r1/bin/clang",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/clang.o",
+        "-L/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/install/lib",
+        "-lomp",
+        "-lm",
+        "-ldl",
+        "-o",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/fp-clang"
+      ],
+      "environment": {},
+      "exit_code": 0
+    },
+    {
+      "name": "run-fp-clang",
+      "argv": [
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/fp-clang",
+        "2",
+        "inherit"
+      ],
+      "environment": {
+        "LD_LIBRARY_PATH": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/install/lib",
+        "OPENMP_EXPECTED_LIBRARY": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/install/lib/libomp.so",
+        "OMP_NUM_THREADS": "2",
+        "OMP_DYNAMIC": "FALSE",
+        "OMP_PROC_BIND": "FALSE",
+        "OMP_TOOL": "disabled",
+        "KMP_INHERIT_FP_CONTROL": "TRUE"
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "compile-zero",
+      "argv": [
+        "/home/uiniu/CodeData/riscv-ai-platform/output/clang21-audit-r1/bin/clang",
+        "-O2",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/results/2026-11-04-correctness-r1/zero-stride-x86.c",
+        "-ldl",
+        "-o",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/zero-stride"
+      ],
+      "environment": {},
+      "exit_code": 0
+    },
+    {
+      "name": "run-zero",
+      "argv": [
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/zero-stride",
+        "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so"
+      ],
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1"
+      },
+      "exit_code": 0
+    }
+  ],
+  "sources": {
+    "experiments/openmp-audit/research/fp-control-probe.c": "11ff2d07ceeb513a3a868e25df2c81f33da358ea5b3b962401973a51db1a97a2",
+    "experiments/component-consumers/petsc/short-axpy/zero-stride.c": "d9f3b787472030b9ef15f447fd811138126fa36a277f919d27295c6970b9cf02"
+  },
+  "results": [
+    {
+      "test": "rounding-inheritance",
+      "frontend": "gcc",
+      "mismatch_threads": 0,
+      "observations": [
+        {
+          "stage": 0,
+          "local": 0,
+          "expected_mode": 2048,
+          "actual_team": 2,
+          "expected_positive": 2,
+          "expected_negative": -1,
+          "threads": [
+            {
+              "tid": 0,
+              "mode": 2048,
+              "positive": 2,
+              "negative": -1,
+              "mismatch": 0
+            },
+            {
+              "tid": 1,
+              "mode": 2048,
+              "positive": 2,
+              "negative": -1,
+              "mismatch": 0
+            }
+          ]
+        },
+        {
+          "stage": 1,
+          "local": 0,
+          "expected_mode": 1024,
+          "actual_team": 2,
+          "expected_positive": 1,
+          "expected_negative": -2,
+          "threads": [
+            {
+              "tid": 0,
+              "mode": 1024,
+              "positive": 1,
+              "negative": -2,
+              "mismatch": 0
+            },
+            {
+              "tid": 1,
+              "mode": 1024,
+              "positive": 1,
+              "negative": -2,
+              "mismatch": 0
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "local": 0,
+          "expected_mode": 3072,
+          "actual_team": 2,
+          "expected_positive": 1,
+          "expected_negative": -1,
+          "threads": [
+            {
+              "tid": 0,
+              "mode": 3072,
+              "positive": 1,
+              "negative": -1,
+              "mismatch": 0
+            },
+            {
+              "tid": 1,
+              "mode": 3072,
+              "positive": 1,
+              "negative": -1,
+              "mismatch": 0
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "local": 0,
+          "expected_mode": 0,
+          "actual_team": 2,
+          "expected_positive": 2,
+          "expected_negative": -2,
+          "threads": [
+            {
+              "tid": 0,
+              "mode": 0,
+              "positive": 2,
+              "negative": -2,
+              "mismatch": 0
+            },
+            {
+              "tid": 1,
+              "mode": 0,
+              "positive": 2,
+              "negative": -2,
+              "mismatch": 0
+            }
+          ]
+        }
+      ],
+      "status": "PASS",
+      "binary_sha256": "3def863f3bf6325c1eb525825b188798ccfc7ba8860b195d3f3fd559ff3f2b9a"
+    },
+    {
+      "test": "rounding-inheritance",
+      "frontend": "clang",
+      "mismatch_threads": 0,
+      "observations": [
+        {
+          "stage": 0,
+          "local": 0,
+          "expected_mode": 2048,
+          "actual_team": 2,
+          "expected_positive": 2,
+          "expected_negative": -1,
+          "threads": [
+            {
+              "tid": 0,
+              "mode": 2048,
+              "positive": 2,
+              "negative": -1,
+              "mismatch": 0
+            },
+            {
+              "tid": 1,
+              "mode": 2048,
+              "positive": 2,
+              "negative": -1,
+              "mismatch": 0
+            }
+          ]
+        },
+        {
+          "stage": 1,
+          "local": 0,
+          "expected_mode": 1024,
+          "actual_team": 2,
+          "expected_positive": 1,
+          "expected_negative": -2,
+          "threads": [
+            {
+              "tid": 0,
+              "mode": 1024,
+              "positive": 1,
+              "negative": -2,
+              "mismatch": 0
+            },
+            {
+              "tid": 1,
+              "mode": 1024,
+              "positive": 1,
+              "negative": -2,
+              "mismatch": 0
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "local": 0,
+          "expected_mode": 3072,
+          "actual_team": 2,
+          "expected_positive": 1,
+          "expected_negative": -1,
+          "threads": [
+            {
+              "tid": 0,
+              "mode": 3072,
+              "positive": 1,
+              "negative": -1,
+              "mismatch": 0
+            },
+            {
+              "tid": 1,
+              "mode": 3072,
+              "positive": 1,
+              "negative": -1,
+              "mismatch": 0
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "local": 0,
+          "expected_mode": 0,
+          "actual_team": 2,
+          "expected_positive": 2,
+          "expected_negative": -2,
+          "threads": [
+            {
+              "tid": 0,
+              "mode": 0,
+              "positive": 2,
+              "negative": -2,
+              "mismatch": 0
+            },
+            {
+              "tid": 1,
+              "mode": 0,
+              "positive": 2,
+              "negative": -2,
+              "mismatch": 0
+            }
+          ]
+        }
+      ],
+      "status": "PASS",
+      "binary_sha256": "beceeb6a5a006c65ba6e11090c9149c7b8c9acd14ae23813ff2eec5297a3a27f"
+    },
+    {
+      "test": "zero-output-stride",
+      "status": "PASS",
+      "observations": [
+        {
+          "role": 1,
+          "provider": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so",
+          "n": 2,
+          "incx": 1,
+          "incy": 0,
+          "seed": 2,
+          "expected": 4,
+          "single": 4,
+          "double": 4,
+          "single_matches": true,
+          "double_matches": true
+        },
+        {
+          "role": 1,
+          "provider": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so",
+          "n": 9,
+          "incx": 1,
+          "incy": 0,
+          "seed": 2,
+          "expected": 11,
+          "single": 11,
+          "double": 11,
+          "single_matches": true,
+          "double_matches": true
+        },
+        {
+          "role": 1,
+          "provider": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so",
+          "n": 17,
+          "incx": 1,
+          "incy": 0,
+          "seed": 2,
+          "expected": 19,
+          "single": 19,
+          "double": 19,
+          "single_matches": true,
+          "double_matches": true
+        }
+      ],
+      "binary_sha256": "fc3fd4698e0e34cf8a5ba143ac0b66c4e71cc5e4eb64c3e65920eede11efef70"
+    }
+  ],
+  "performance_measured": false,
+  "official_libomp": {
+    "path": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/correctness-official/install/lib/libomp.so",
+    "sha256": "69495028a1e96d032097e2d99c6dc08c4850ef052fa4a7aa0a4db7c431626702",
+    "version": "LLVM23 original source, no project patches"
+  },
+  "official_openblas": {
+    "path": "/home/uiniu/CodeData/riscv-ai-platform/competition/x86-evidence/build/openblas/source/libopenblas_haswell-r0.3.34.so",
+    "sha256": "cd533f5edfe8a6f76ccad072ad38d9546c7d984e70762086c8bf95bbab6c4d9b",
+    "version": "OpenBLAS 0.3.34",
+    "target": "HASWELL",
+    "flags": [
+      "TARGET=HASWELL",
+      "HOSTCC=gcc",
+      "BINARY=64",
+      "NOFORTRAN=1",
+      "NO_LAPACK=1",
+      "BUILD_SINGLE=1",
+      "BUILD_DOUBLE=1",
+      "BUILD_COMPLEX=0",
+      "BUILD_COMPLEX16=0",
+      "USE_THREAD=0",
+      "NUM_THREADS=1",
+      "USE_OPENMP=0",
+      "DYNAMIC_ARCH=0",
+      "BUILD_BFLOAT16=0",
+      "BUILD_HFLOAT16=0",
+      "CFLAGS=-O2 -gdwarf-4",
+      "CC=/home/uiniu/CodeData/riscv-ai-platform/output/clang21-audit-r1/bin/clang",
+      "AR=ar",
+      "RANLIB=ranlib"
+    ]
+  },
+  "all_controls_pass": true
+}

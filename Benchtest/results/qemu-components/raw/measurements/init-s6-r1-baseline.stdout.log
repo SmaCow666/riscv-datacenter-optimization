@@ -1,0 +1,5 @@
+{"QMP": {"version": {"qemu": {"micro": 0, "minor": 1, "major": 9}, "package": ""}, "capabilities": ["oob"]}}
+{"return": {}, "id": "caps"}
+{"return": {"status": "prelaunch", "running": false}, "id": "status"}
+{"timestamp": {"seconds": 1737125068, "microseconds": 818173}, "event": "SHUTDOWN", "data": {"guest": false, "reason": "host-qmp-quit"}}
+{"return": {}, "id": "quit"}

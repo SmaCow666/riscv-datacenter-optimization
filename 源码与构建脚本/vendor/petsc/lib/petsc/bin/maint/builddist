@@ -1,0 +1,198 @@
+#!/bin/bash -ex
+#
+# This script builds the PETSc tar file distribution
+#
+# Usage: builddist petscrepo [branch/commit] [version-suffix]
+#
+# Notes:
+#  default for branch/commit is 'main'
+#  when version-suffix="SETVERSION", obtain it from include/petscversion.h
+#
+# example usages:
+#   builddist /sandbox/petsc/petsc.clone balay/foo [creates petsc-HASH.tar.gz]
+#   builddist /sandbox/petsc/petsc.clone main ver-suffix [creates petsc-ver-suffix.tar.gz]
+#   builddist /sandbox/petsc/petsc.clone release SETVERSION [creates petsc-3.24.5.tar.gz]
+#
+echo "Starting date: `date +'%a, %d %b %Y %H:%M:%S %z'`"
+#
+# ignore command line options in CI mode - and build tarball from current state setup by CI
+if [ ! -z "${CI_PIPELINE_ID+x}" ]; then
+  petscrepo=`pwd -P`
+elif [ $# = 3 ]; then
+  petscrepo=$1
+  branch=$2
+  version=-$3
+elif [ $# = 2 ]; then
+  petscrepo=$1
+  branch=$2
+elif [ $# = 1 ]; then
+  petscrepo=$1
+  branch='main'
+else
+  echo 'Error: petscrepo not specified. Usge: builddist petscrepo'
+  exit
+fi
+
+# check petscrepo to be valid
+if [ ! -d $petscrepo ]; then
+  echo 'Error: dir $petscrepo does not exist'
+  exit
+fi
+
+if [ ! -d $petscrepo/.git ]; then
+  echo 'Error: dir $petscrepo is not a git repo'
+  exit
+fi
+
+# Initialize vars
+ODIR=`pwd -P`
+PETSC_ARCH=arch-docs; export PETSC_ARCH
+PETSC_DIR=`cd $petscrepo;pwd -P`; export PETSC_DIR
+
+
+# Clean and Update the git repository and check for branch [when not in CI]
+if [ -z "${CI_PIPELINE_ID+x}" ]; then
+  cd $PETSC_DIR
+  /bin/rm -rf $PETSC_DIR/$PETSC_ARCH
+  git clean -q -f -d -x
+  git fetch -q --tags origin $branch
+  if [ "$?" != "0" ]; then
+    echo 'Error: branch: $branch does not exist in $PETSC_DIR'
+    exit
+  fi
+  git checkout -f FETCH_HEAD
+fi
+
+pdir=`basename $PETSC_DIR`
+# Create a tmp dir
+tmpdir=$(mktemp -d -t petsc-dist.$USER.XXXXXX)
+
+# check petscversion.h and set the version string
+version_release=`grep '^#define PETSC_VERSION_RELEASE ' include/petscversion.h |tr -s ' ' | cut -d ' ' -f 3`
+version_major=`grep '^#define PETSC_VERSION_MAJOR ' include/petscversion.h |tr -s ' ' | cut -d ' ' -f 3`
+version_minor=`grep '^#define PETSC_VERSION_MINOR ' include/petscversion.h |tr -s ' ' | cut -d ' ' -f 3`
+version_subminor=`grep '^#define PETSC_VERSION_SUBMINOR ' include/petscversion.h |tr -s ' ' | cut -d ' ' -f 3`
+
+#generated a couple of more values
+version_date=`date +"%b %d, %Y"`
+version_git=`git describe --match "v*"`
+version_date_git=`git log -1 --pretty=format:%ci`
+if [ ${version}foo = foo ]; then
+    version=-`git rev-parse --short HEAD`
+elif [ ${version} = -SETVERSION ]; then
+  if  [ ${version_release} = 0 ]; then
+    version=-${version_major}.$((version_minor+1)).dev0
+  elif [ ${version_release} = 1 ]; then
+    version=-${version_major}.${version_minor}.${version_subminor}
+  else
+    echo "Unknown PETSC_VERSION_RELEASE: ${version_release}"
+    exit
+  fi
+fi
+echo "Building $ODIR/petsc$version.tar.gz, $ODIR/petsc-with-docs$version.tar.gz, and $ODIR/petsc4py$version.tar.gz"
+
+# build PETSc docs (and include petsc4py docs within).
+VENV=$PETSC_DIR/venv-petsc-docs
+python3 -m venv $VENV
+source $VENV/bin/activate
+cd $PETSC_DIR/doc
+python3 -m pip install -r requirements.txt
+PETSCBUIDTARBALL=1 make html BUILDDIR="../docs" SPHINXOPTS_EXTRA="-j 1"
+mv ../docs/html/* ../docs/html/.[!.]* ../docs
+make latexpdf BUILDDIR="_build" SPHINXOPTS_EXTRA="-j 1" && cp _build/latex/manual.pdf ../docs/manual/
+
+# build petsc4py tarball (docs are no longer built here)
+cd $PETSC_DIR/src/binding/petsc4py
+  rm -rf petsc-doc-env # remove python2 env created when building petsc+petsc4py docs
+  make srcclean docsclean
+  make sdist PYTHON=python3 SHELL=/bin/bash
+  cp dist/petsc4py-*.tar.gz $tmpdir/
+  make srcclean docsclean
+
+# Cleanup
+cd $PETSC_DIR
+  git clean -q -f -d -x config doc
+  rm -rf docs/doctrees doc/images
+
+# now tar up the PETSc tree
+cd $PETSC_DIR/..
+cat ${PETSC_DIR}/lib/petsc/bin/maint/xclude | sed -e s/petsc-dist/$pdir/ > $tmpdir/xclude
+/bin/tar --create --file $tmpdir/petsc.tar --exclude-from  $tmpdir/xclude $pdir
+cd $tmpdir
+/bin/tar xf $tmpdir/petsc.tar
+# just make sure we are not doing 'mv petsc petsc'
+if [ ! -d petsc$version ]; then
+  /bin/mv $pdir petsc$version
+fi
+#
+# Before Creating the final tarfile, make changes to the bmakefiles/makefiles,
+# create tagfiles etc. permissions etc.
+#
+# Eliminate chmods in the makefile & conf/rules
+cd $tmpdir/petsc$version
+/bin/mv makefile makefile.bak
+/bin/grep -v 'chmod' makefile.bak > makefile
+/bin/rm -f makefile.bak
+
+/bin/mv lib/petsc/conf/rules lib/petsc/conf/rules.bak
+/bin/grep -v 'chmod' lib/petsc/conf/rules.bak > lib/petsc/conf/rules
+/bin/rm -f  lib/petsc/conf/rules.bak
+
+#add in PETSC_VERSION_DATE, PETSC_VERSION_GIT, PETSC_VERSION_DATE_GIT
+echo Using PETSC_VERSION_DATE: ${version_date}
+echo Using PETSC_VERSION_GIT: ${version_git}
+echo Using PETSC_VERSION_DATE_GIT: ${version_date_git}
+/bin/mv include/petscversion.h include/petscversion.h.bak
+cat include/petscversion.h.bak | \
+  sed -e "s/#define PETSC_VERSION_DATE\ .*/#define PETSC_VERSION_DATE       \"${version_date}\"/" | \
+  sed -e "s/#define PETSC_VERSION_GIT\ .*/#define PETSC_VERSION_GIT        \"${version_git}\"/" | \
+  sed -e "s/#define PETSC_VERSION_DATE_GIT\ .*/#define PETSC_VERSION_DATE_GIT   \"${version_date_git}\"/" \
+  > include/petscversion.h
+/bin/rm -f include/petscversion.h.bak
+
+# just to be sure
+/bin/rm -rf make.log* configure.log* RDict.* RESYNC PENDING
+# eliminate .pyc files if any
+/usr/bin/find . -type f -name "*.pyc" -exec /bin/rm -f {} \;
+# eliminate misc files mercurial leaves
+/usr/bin/find . -type f -name "*.orig" -exec /bin/rm -f {} \;
+# Create EMACS-TAGS
+cd $tmpdir/petsc$version; ${PETSC_DIR}/lib/petsc/bin/maint/generateetags.py
+
+# Set the correct file permissions.
+cd $tmpdir
+chmod -R a-w petsc$version
+chmod -R u+w petsc$version
+chmod -R a+r petsc$version
+find petsc$version -type d -name "*" -exec chmod a+x {} \;
+
+# Now create the tar files
+cd $tmpdir
+/bin/tar -czf $ODIR/petsc-with-docs$version.tar.gz petsc$version
+
+# create lite version
+/bin/rm -rf $tmpdir/petsc$version/docs $tmpdir/petsc$version/zope $tmpdir/petsc$version/config/BuildSystem/docs $tmpdir/petsc$version/config/examples/old
+find $tmpdir/petsc$version -type f -name "*.html" -exec rm {} \;
+# recreate EMACS-TAGS [after deletion]
+cd $tmpdir/petsc$version; ${PETSC_DIR}/lib/petsc/bin/maint/generateetags.py
+# generate PKG-INFO for updating PETSc version at pypi
+cd $tmpdir/petsc$version && python setup.py egg_info && /bin/cp petsc.egg-info/PKG-INFO . && /bin/rm -rf petsc.egg-info config/pypi
+
+cd $tmpdir
+/bin/tar -czf $ODIR/petsc$version.tar.gz petsc$version
+
+# process petsc4py tarball
+if [ -f petsc4py$version.tar.gz ]; then
+  cp petsc4py$version.tar.gz $ODIR/
+else
+  echo "Renaming petsc4py tarball to match petsc!"
+  dname=$(tar -tzf petsc4py-*.tar.gz | head -1)
+  /bin/tar -xzf petsc4py-*.tar.gz
+  /bin/mv $dname petsc4py$version
+  /bin/tar -czf $ODIR/petsc4py$version.tar.gz petsc4py$version
+fi
+
+#cleanup
+/bin/rm -rf $tmpdir
+
+echo "Ending date: `date +'%a, %d %b %Y %H:%M:%S %z'`"

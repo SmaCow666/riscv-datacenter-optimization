@@ -1,0 +1,362 @@
+{
+  "source": "E:\\riscv\\mywork\\real_test\\results\\returns\\board-qemu-real-r1\\board-20230923T234043Z-378",
+  "verification_passed": true,
+  "result_archive_sha256_passed": true,
+  "config": {
+    "protocol": "real-board-paired-v1",
+    "sessions": 3,
+    "blocks": 10,
+    "warmups": 2,
+    "cpu": "unbound"
+  },
+  "formal_samples": 180,
+  "warmups": 36,
+  "checked_result_files": 1311,
+  "arms": {
+    "0": {
+      "variant": "baseline",
+      "ELF_sha256": "4278c797ccb7f1149634405de64f8ea9cb348cefbd0fea7329332953107d8de1"
+    },
+    "1": {
+      "variant": "composite",
+      "ELF_sha256": "2b2b44bd24d5ab9f66e6b21127d9f423c56dac10bce723033f8916d47bfff843"
+    }
+  },
+  "metrics": [
+    {
+      "mode": "init",
+      "metric": "ready_ms",
+      "baseline": 268.5615517307977,
+      "composite": 213.75712287751855,
+      "reduction_pct": 20.406654824594728,
+      "cpu_efficiency_pct": null,
+      "independent_bootstrap_ci95_reduction_pct": [
+        20.234612900062377,
+        20.584519802062275
+      ]
+    },
+    {
+      "mode": "init",
+      "metric": "total_ms",
+      "baseline": 283.47899668619925,
+      "composite": 227.95469669783049,
+      "reduction_pct": 19.586742099920773,
+      "cpu_efficiency_pct": null,
+      "independent_bootstrap_ci95_reduction_pct": [
+        19.277973774243662,
+        19.878746091055454
+      ]
+    },
+    {
+      "mode": "init",
+      "metric": "cpu_ms",
+      "baseline": 284.4072764045599,
+      "composite": 228.68076994637755,
+      "reduction_pct": 19.59391024121102,
+      "cpu_efficiency_pct": 24.368689361702558,
+      "independent_bootstrap_ci95_reduction_pct": [
+        19.41238199110522,
+        19.780465419107596
+      ]
+    },
+    {
+      "mode": "init",
+      "metric": "maxrss_kib",
+      "baseline": 23770.097259024114,
+      "composite": 21495.70892327945,
+      "reduction_pct": 9.568275261815462,
+      "cpu_efficiency_pct": null,
+      "independent_bootstrap_ci95_reduction_pct": [
+        9.32832882168524,
+        9.793269510228619
+      ]
+    },
+    {
+      "mode": "rvv",
+      "metric": "ready_ms",
+      "baseline": 286.31327820493095,
+      "composite": 225.3554363487727,
+      "reduction_pct": 21.29060944652632,
+      "cpu_efficiency_pct": null,
+      "independent_bootstrap_ci95_reduction_pct": [
+        20.862133200542697,
+        21.739095437811972
+      ]
+    },
+    {
+      "mode": "rvv",
+      "metric": "total_ms",
+      "baseline": 527.4154658423122,
+      "composite": 287.6818150374749,
+      "reduction_pct": 45.454421861135415,
+      "cpu_efficiency_pct": null,
+      "independent_bootstrap_ci95_reduction_pct": [
+        45.13194090585952,
+        45.76938331667081
+      ]
+    },
+    {
+      "mode": "rvv",
+      "metric": "cpu_ms",
+      "baseline": 522.8330114966392,
+      "composite": 284.9605487650952,
+      "reduction_pct": 45.49683311897628,
+      "cpu_efficiency_pct": 83.4755771500258,
+      "independent_bootstrap_ci95_reduction_pct": [
+        45.35179791847934,
+        45.652389087060705
+      ]
+    },
+    {
+      "mode": "rvv",
+      "metric": "maxrss_kib",
+      "baseline": 23954.52468156448,
+      "composite": 21669.007641192144,
+      "reduction_pct": 9.541066127399688,
+      "cpu_efficiency_pct": null,
+      "independent_bootstrap_ci95_reduction_pct": [
+        9.178798791425603,
+        9.908806676693505
+      ]
+    },
+    {
+      "mode": "rvv",
+      "metric": "region_wall_ms",
+      "baseline": 223.39098714499494,
+      "composite": 47.136977580968995,
+      "reduction_pct": 78.89933780077972,
+      "cpu_efficiency_pct": null,
+      "independent_bootstrap_ci95_reduction_pct": [
+        78.69635912229556,
+        79.08808476893874
+      ]
+    },
+    {
+      "mode": "rvv",
+      "metric": "region_cpu_ms",
+      "baseline": 222.76723138352673,
+      "composite": 47.31349534468384,
+      "reduction_pct": 78.76101657733194,
+      "cpu_efficiency_pct": 370.8323275645646,
+      "independent_bootstrap_ci95_reduction_pct": [
+        78.7207305119877,
+        78.800821867395
+      ]
+    },
+    {
+      "mode": "avl",
+      "metric": "ready_ms",
+      "baseline": 289.78484288535003,
+      "composite": 233.5390156571218,
+      "reduction_pct": 19.40951316438635,
+      "cpu_efficiency_pct": null,
+      "independent_bootstrap_ci95_reduction_pct": [
+        19.030934004348488,
+        19.8415030649572
+      ]
+    },
+    {
+      "mode": "avl",
+      "metric": "total_ms",
+      "baseline": 673.7691014257589,
+      "composite": 589.1296929552942,
+      "reduction_pct": 12.56207924812216,
+      "cpu_efficiency_pct": null,
+      "independent_bootstrap_ci95_reduction_pct": [
+        12.232898845474994,
+        12.883005334253772
+      ]
+    },
+    {
+      "mode": "avl",
+      "metric": "cpu_ms",
+      "baseline": 670.4773180426246,
+      "composite": 587.1239799607041,
+      "reduction_pct": 12.431940028226485,
+      "cpu_efficiency_pct": 14.19688871973841,
+      "independent_bootstrap_ci95_reduction_pct": [
+        12.253958848562407,
+        12.594018808686336
+      ]
+    },
+    {
+      "mode": "avl",
+      "metric": "maxrss_kib",
+      "baseline": 24012.858131522058,
+      "composite": 21758.305478218022,
+      "reduction_pct": 9.388939213131241,
+      "cpu_efficiency_pct": null,
+      "independent_bootstrap_ci95_reduction_pct": [
+        9.185585674089447,
+        9.576278360548962
+      ]
+    },
+    {
+      "mode": "avl",
+      "metric": "region_wall_ms",
+      "baseline": 365.9615113871176,
+      "composite": 340.23279252577237,
+      "reduction_pct": 7.0304439294243455,
+      "cpu_efficiency_pct": null,
+      "independent_bootstrap_ci95_reduction_pct": [
+        6.7266381667985815,
+        7.308839050315308
+      ]
+    },
+    {
+      "mode": "avl",
+      "metric": "region_cpu_ms",
+      "baseline": 365.5654563439643,
+      "composite": 340.2860703781321,
+      "reduction_pct": 6.915146255516746,
+      "cpu_efficiency_pct": 7.428862996872443,
+      "independent_bootstrap_ci95_reduction_pct": [
+        6.710862913716231,
+        7.104294534654887
+      ]
+    }
+  ],
+  "session_results": [
+    {
+      "session": 1,
+      "mode": "init",
+      "metric": "ready_ms",
+      "reduction_pct": 20.471992372139102,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 1,
+      "mode": "rvv",
+      "metric": "cpu_ms",
+      "reduction_pct": 45.640345689447926,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 1,
+      "mode": "rvv",
+      "metric": "region_cpu_ms",
+      "reduction_pct": 78.77016784304229,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 1,
+      "mode": "avl",
+      "metric": "cpu_ms",
+      "reduction_pct": 12.471894136895012,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 1,
+      "mode": "avl",
+      "metric": "region_cpu_ms",
+      "reduction_pct": 6.962556424071709,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 2,
+      "mode": "init",
+      "metric": "ready_ms",
+      "reduction_pct": 20.310704728013018,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 2,
+      "mode": "rvv",
+      "metric": "cpu_ms",
+      "reduction_pct": 45.44070371865242,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 2,
+      "mode": "rvv",
+      "metric": "region_cpu_ms",
+      "reduction_pct": 78.76383988826558,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 2,
+      "mode": "avl",
+      "metric": "cpu_ms",
+      "reduction_pct": 12.51495761428102,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 2,
+      "mode": "avl",
+      "metric": "region_cpu_ms",
+      "reduction_pct": 7.004013914180652,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 3,
+      "mode": "init",
+      "metric": "ready_ms",
+      "reduction_pct": 20.437176900007024,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 3,
+      "mode": "rvv",
+      "metric": "cpu_ms",
+      "reduction_pct": 45.40916135516525,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 3,
+      "mode": "rvv",
+      "metric": "region_cpu_ms",
+      "reduction_pct": 78.74903646344792,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 3,
+      "mode": "avl",
+      "metric": "cpu_ms",
+      "reduction_pct": 12.308833386175221,
+      "wins": 10,
+      "pairs": 10
+    },
+    {
+      "session": 3,
+      "mode": "avl",
+      "metric": "region_cpu_ms",
+      "reduction_pct": 6.7787140177526855,
+      "wins": 10,
+      "pairs": 10
+    }
+  ],
+  "max_report_difference": 1.127773430198431e-10,
+  "stop_delay_ms": {
+    "init": {
+      "median": 0.16,
+      "max": 0.362
+    },
+    "rvv": {
+      "median": 0.1675,
+      "max": 0.218
+    },
+    "avl": {
+      "median": 0.177,
+      "max": 0.24
+    }
+  },
+  "all_samples_successful": true,
+  "review_notes": {
+    "time_source": "CLOCK_MONOTONIC and child CPU clocks; board wall date uncalibrated",
+    "bootstrap": "10000 session/block paired draws, seed 20261025",
+    "limits": "One board boot, consecutive sessions, no CPU pinning; only two targeted RVV workloads"
+  }
+}

@@ -1,0 +1,93 @@
+--- a/driver/level2/trsv_L.c
++++ b/driver/level2/trsv_L.c
+@@ -39,6 +39,7 @@
+ #include <stdio.h>
+ #include <ctype.h>
+ #include "common.h"
++#include "trsv_rvv_update.h"
+ 
+ const static FLOAT dm1 = -1.;
+ 
+@@ -84,8 +85,12 @@
+ 
+ #ifndef TRANSA
+       if (i < min_i - 1) {
+-	AXPYU_K(min_i - i  - 1 , 0, 0, - BB[i],
++	#ifdef TRSV_INLINE_RVV_UPDATE
++        trsv_rvv_update(min_i - i - 1, -BB[i], AA + i + 1, BB + i + 1);
++#else
++        AXPYU_K(min_i - i  - 1 , 0, 0, - BB[i],
+ 	       AA + i + 1, 1, BB + i + 1, 1, NULL, 0);
++#endif
+       }
+ #endif
+     }
+--- a/driver/level2/trsv_U.c
++++ b/driver/level2/trsv_U.c
+@@ -39,6 +39,7 @@
+ #include <stdio.h>
+ #include <ctype.h>
+ #include "common.h"
++#include "trsv_rvv_update.h"
+ 
+ const static FLOAT dm1 = -1.;
+ 
+@@ -80,7 +81,13 @@
+ #endif
+ 
+ #ifndef TRANSA
+-      if (i < min_i - 1) AXPYU_K(min_i - i - 1, 0, 0, -BB[0], AA - (min_i - i - 1), 1, BB - (min_i - i - 1), 1, NULL, 0);
++      if (i < min_i - 1) {
++#ifdef TRSV_INLINE_RVV_UPDATE
++        trsv_rvv_update(min_i - i - 1, -BB[0], AA - (min_i - i - 1), BB - (min_i - i - 1));
++#else
++        AXPYU_K(min_i - i - 1, 0, 0, -BB[0], AA - (min_i - i - 1), 1, BB - (min_i - i - 1), 1, NULL, 0);
++#endif
++      }
+ #endif
+     }
+ 
+--- /dev/null
++++ b/driver/level2/trsv_rvv_update.h
+@@ -0,0 +1,41 @@
++/* Experimental integration into OpenBLAS' existing Level-2 drivers.
++ * See LICENSE.OpenBLAS and provenance.json in the experiment directory. */
++#if defined(RISCV64_ZVL256B) && defined(__riscv_vector) && !defined(TRANSA) && !defined(COMPLEX)
++#include <riscv_vector.h>
++
++/* Preserve the original column order, the alpha-zero skip, and one fused
++ * update per element. Only the call boundary and redundant loop setup go away.
++ * No vector value is kept live across the diagonal divide or a BLAS call. */
++static __inline__ __attribute__((__always_inline__)) void
++trsv_rvv_update(BLASLONG n, FLOAT alpha, const FLOAT *a, FLOAT *b) {
++  if (alpha == 0 || n <= 0)
++    return;
++  if (n == 1) {
++#ifdef DOUBLE
++    b[0] = __builtin_fma(alpha, a[0], b[0]);
++#else
++    b[0] = __builtin_fmaf(alpha, a[0], b[0]);
++#endif
++    return;
++  }
++  while (n > 0) {
++#ifdef DOUBLE
++    size_t vl = __riscv_vsetvl_e64m2(n);
++    vfloat64m2_t av = __riscv_vle64_v_f64m2(a, vl);
++    vfloat64m2_t bv = __riscv_vle64_v_f64m2(b, vl);
++    bv = __riscv_vfmacc_vf_f64m2(bv, alpha, av, vl);
++    __riscv_vse64_v_f64m2(b, bv, vl);
++#else
++    size_t vl = __riscv_vsetvl_e32m2(n);
++    vfloat32m2_t av = __riscv_vle32_v_f32m2(a, vl);
++    vfloat32m2_t bv = __riscv_vle32_v_f32m2(b, vl);
++    bv = __riscv_vfmacc_vf_f32m2(bv, alpha, av, vl);
++    __riscv_vse32_v_f32m2(b, bv, vl);
++#endif
++    a += vl;
++    b += vl;
++    n -= vl;
++  }
++}
++#define TRSV_INLINE_RVV_UPDATE 1
++#endif

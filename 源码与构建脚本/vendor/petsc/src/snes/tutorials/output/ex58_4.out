@@ -1,0 +1,87 @@
+  0 SNES VI Function norm 0.0946221 Active lower constraints 202/7417 upper constraints 0/0 Percent of total 0.0214688 Percent of bounded 0.
+    0 KSP Residual norm 2.455791652278e+00
+    1 KSP Residual norm 1.116928880525e-03
+    2 KSP Residual norm 1.915568535968e-05
+        Line search: sign of fty does not change in step interval, accepting full step
+  1 SNES VI Function norm 0.0749539 Active lower constraints 1671/4490 upper constraints 0/0 Percent of total 0.177596 Percent of bounded 0.
+    0 KSP Residual norm 1.789412601977e+00
+    1 KSP Residual norm 1.172982427779e-03
+    2 KSP Residual norm 4.118630563127e-05
+    3 KSP Residual norm 3.184058360116e-06
+          0 Line search: fty/||y|| = 0.0106239, lambda = 0.5
+          1 Line search: fty/||y|| = -0.0262441, lambda = 0.75
+          2 Line search: fty/||y|| = 0.000212591, lambda = 0.625
+          3 Line search: fty/||y|| = -0.0104791, lambda = 0.6875
+          4 Line search: fty/||y|| = -0.0044817, lambda = 0.65625
+          5 Line search: fty/||y|| = -0.0019843, lambda = 0.640625
+          6 Line search: fty/||y|| = -0.000850272, lambda = 0.632812
+          7 Line search: fty/||y|| = -0.000310204, lambda = 0.628906
+          8 Line search: fty/||y|| = -4.66799e-05, lambda = 0.626953
+          9 Line search: fty/||y|| = 8.3483e-05, lambda = 0.625977
+         10 Line search: fty/||y|| = 1.85339e-05, lambda = 0.626465
+         11 Line search: fty/||y|| = -1.40398e-05, lambda = 0.626709
+         12 Line search: fty/||y|| = 2.25533e-06, lambda = 0.626587
+         13 Line search: fty/||y|| = -5.89018e-06, lambda = 0.626648
+         14 Line search: fty/||y|| = -1.81691e-06, lambda = 0.626617
+         15 Line search: fty/||y|| = 2.1934e-07, lambda = 0.626602
+        Line search: abs(fty)/||y|| = 2.1934e-07 <= atol = 1e-06
+  2 SNES VI Function norm 0.0640087 Active lower constraints 591/3369 upper constraints 0/0 Percent of total 0.0628122 Percent of bounded 0.
+    0 KSP Residual norm 1.367348623341e+00
+    1 KSP Residual norm 1.516308761797e-03
+    2 KSP Residual norm 1.078485898026e-04
+    3 KSP Residual norm 7.679461549009e-06
+        Line search: sign of fty does not change in step interval, accepting full step
+  3 SNES VI Function norm 0.0579942 Active lower constraints 275/2063 upper constraints 0/0 Percent of total 0.0292273 Percent of bounded 0.
+    0 KSP Residual norm 1.702373474106e+00
+    1 KSP Residual norm 9.912914183251e-04
+    2 KSP Residual norm 6.123181682460e-05
+    3 KSP Residual norm 3.638080727095e-06
+        Line search: sign of fty does not change in step interval, accepting full step
+  4 SNES VI Function norm 0.038688 Active lower constraints 193/921 upper constraints 0/0 Percent of total 0.0205123 Percent of bounded 0.
+    0 KSP Residual norm 1.023888209342e+00
+    1 KSP Residual norm 4.167511019121e-04
+    2 KSP Residual norm 2.483968028168e-05
+    3 KSP Residual norm 1.636457569080e-06
+        Line search: sign of fty does not change in step interval, accepting full step
+  5 SNES VI Function norm 0.0255821 Active lower constraints 193/377 upper constraints 0/0 Percent of total 0.0205123 Percent of bounded 0.
+    0 KSP Residual norm 8.924583938625e-01
+    1 KSP Residual norm 2.662363541153e-04
+    2 KSP Residual norm 1.337424585654e-05
+    3 KSP Residual norm 1.089071439496e-06
+        Line search: sign of fty does not change in step interval, accepting full step
+  6 SNES VI Function norm 0.0211848 Active lower constraints 195/199 upper constraints 0/0 Percent of total 0.0207248 Percent of bounded 0.
+    0 KSP Residual norm 1.392972002645e+00
+    1 KSP Residual norm 1.730824196166e-04
+    2 KSP Residual norm 9.192707292966e-06
+        Line search: sign of fty does not change in step interval, accepting full step
+  7 SNES VI Function norm 0.0510013 Active lower constraints 165/165 upper constraints 0/0 Percent of total 0.0175364 Percent of bounded 0.
+    0 KSP Residual norm 2.059964479652e+00
+    1 KSP Residual norm 2.288167861428e-04
+    2 KSP Residual norm 1.471199360200e-05
+        Line search: sign of fty does not change in step interval, accepting full step
+  8 SNES VI Function norm 0.0376119 Active lower constraints 175/175 upper constraints 0/0 Percent of total 0.0185992 Percent of bounded 0.
+    0 KSP Residual norm 6.803593696643e-01
+    1 KSP Residual norm 1.387430771288e-04
+    2 KSP Residual norm 8.099670705189e-06
+    3 KSP Residual norm 1.634125774935e-07
+        Line search: sign of fty does not change in step interval, accepting full step
+  9 SNES VI Function norm 0.00782779 Active lower constraints 197/197 upper constraints 0/0 Percent of total 0.0209374 Percent of bounded 0.
+    0 KSP Residual norm 6.635844112558e-02
+    1 KSP Residual norm 2.927649393950e-05
+    2 KSP Residual norm 1.545627330983e-06
+    3 KSP Residual norm 4.312648690918e-08
+        Line search: sign of fty does not change in step interval, accepting full step
+ 10 SNES VI Function norm 3.00252e-05 Active lower constraints 198/198 upper constraints 0/0 Percent of total 0.0210437 Percent of bounded 0.
+    0 KSP Residual norm 9.983252838749e-04
+    1 KSP Residual norm 5.355025115426e-07
+    2 KSP Residual norm 3.634351019187e-08
+    3 KSP Residual norm 1.193912174599e-09
+        Line search: sign of fty does not change in step interval, accepting full step
+ 11 SNES VI Function norm 1.38931e-08 Active lower constraints 198/198 upper constraints 0/0 Percent of total 0.0210437 Percent of bounded 0.
+    0 KSP Residual norm 2.672171289983e-07
+    1 KSP Residual norm 4.243642502411e-10
+    2 KSP Residual norm 2.136207131257e-11
+    3 KSP Residual norm 1.099371021900e-12
+        Line search: abs(fty)/||y|| = 3.66496e-15 <= atol = 1e-06
+ 12 SNES VI Function norm 1.94053e-12 Active lower constraints 198/198 upper constraints 0/0 Percent of total 0.0210437 Percent of bounded 0.
+  Nonlinear solve converged due to CONVERGED_FNORM_RELATIVE iterations 12

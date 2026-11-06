@@ -1,0 +1,22 @@
+{
+  "name": "RISC-V host QEMU startup A/B",
+  "version": 1,
+  "host": "Linux riscv64",
+  "machine": "virt",
+  "cpu": "rv64,v=true,vlen=128,elen=64",
+  "memory": "128M",
+  "default_vcpus": [1, 2],
+  "default_blocks": 3,
+  "timeout_seconds": 90,
+  "warmup_order": ["A", "B"],
+  "orders": ["ABBABAAB", "BAABABBA"],
+  "arms": {"A": "baseline", "B": "selected optimized QEMU profile"},
+  "primary_metric": "process spawn to QMP greeting elapsed nanoseconds",
+  "optional_guest_metric": "process spawn to guest success marker elapsed nanoseconds",
+  "optional_guest_elf_metric": "process spawn to bare-metal RVWORK_DONE checksum elapsed nanoseconds",
+  "correctness_gate": ["QMP greeting", "qmp_capabilities", "query-status remains paused", "query-machines includes virt", "qom-list-types matches between arms"],
+  "guest_gate": "Optional Linux kernel plus initrd must emit QEMU_GUEST_TEST_PASS and must not emit QEMU_GUEST_TEST_FAIL on both arms.",
+  "guest_elf_gate": "Optional bare-metal guest ELF must complete the RVWORK serial handshake (RVWORK_READY -> g -> RVWORK_DONE <checksum> -> e), report the expected checksum, and exit 0 on both arms.",
+  "guest_sources": "Benchtest/qemu/guest/ sources with guest/build.sh; manifest feeds run.py --guest-programs",
+  "build_entry": "../源码与构建脚本/scripts/build.py --component qemu"
+}
