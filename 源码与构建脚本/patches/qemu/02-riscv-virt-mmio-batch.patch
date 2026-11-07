@@ -1,6 +1,6 @@
 --- a/hw/riscv/virt.c
 +++ b/hw/riscv/virt.c
-@@ -1590,10 +1590,16 @@
+@@ -1590,11 +1590,17 @@
      sifive_test_create(memmap[VIRT_TEST].base);
  
      /* VirtIO MMIO devices */
@@ -17,3 +17,4 @@
 +    memory_region_transaction_commit();
  
      gpex_pcie_init(system_memory, pcie_irqchip, s);
+ 

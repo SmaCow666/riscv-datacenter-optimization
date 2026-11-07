@@ -39,7 +39,7 @@ for patch_rel in "${PATCHES[@]}"; do
     fi
 done
 
-for tool in gcc g++ python3 pkg-config ninja git sha256sum; do
+for tool in gcc g++ python3 pkg-config ninja patch sha256sum; do
     command -v "$tool" >/dev/null 2>&1 || {
         printf 'Error: required build tool not found: %s\n' "$tool" >&2
         exit 2
@@ -126,8 +126,11 @@ cp -a "$SOURCE/." "$worktree/"
 for patch_rel in "${PATCHES[@]}"; do
     patch="$PROJECT_ROOT/$patch_rel"
     printf 'Applying %s\n' "$patch_rel"
-    git -C "$worktree" apply --check "$patch"
-    git -C "$worktree" apply "$patch"
+    (
+        cd "$worktree"
+        patch --batch --fuzz=0 --dry-run -p1 -i "$patch"
+        patch --batch --fuzz=0 -p1 -i "$patch"
+    )
 done
 
 printf '\nBuilding optimized QEMU from the same baseline and configure options.\n'

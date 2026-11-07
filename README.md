@@ -1,6 +1,6 @@
 # RISC-V 基础软件优化
 
-仓库包含 LLVM OpenMP/libomp、OpenBLAS RVV、QEMU 及 PETSc—PCSHELL—STRUMPACK 应用的源码、构建脚本和对照测试。
+源码包包含 LLVM OpenMP/libomp、OpenBLAS RVV、QEMU 及 PETSc—PCSHELL—STRUMPACK 应用的源码、构建脚本和对照测试。
 
 ```text
 源码与构建脚本/
@@ -10,7 +10,7 @@
   application/     PCSHELL 适配与热传导程序
   bench/           测试前端源码
   qemu/            QEMU 9.1.0 源码及构建脚本
-  scripts/         构建与 GitHub 上传入口
+  scripts/         离线构建入口
 Benchtest/
   scripts/         测试与统计程序
   configs/         公共 API 测试参数
@@ -22,9 +22,9 @@ Benchtest/
 
 ## 环境
 
-组件和应用使用 riscv64 Linux、LP64D、RVV 1.0；数学优化与应用测试使用 VLEN=256。准备 Clang/Clang++ 21、GCC、gfortran、Python 3.10 以上、CMake 3.21–3.x、Ninja、GNU Make、patch、Git 和 binutils。QEMU 另需 pkg-config、GLib 2 与 zlib 开发库。建议可用磁盘不少于 12 GB、内存不少于 8 GB。
+组件和应用使用 riscv64 Linux、LP64D、RVV 1.0；数学优化与应用测试使用 VLEN=256。准备 Clang/Clang++ 21、GCC、gfortran、Python 3.10 以上、CMake 3.21–3.x、Ninja、GNU Make、patch 和 binutils。QEMU 另需 pkg-config、GLib 2 与 zlib 开发库。建议可用磁盘不少于 12 GB、内存不少于 8 GB。
 
-源码随仓库提供，构建脚本使用包内依赖。系统、编译器及开发工具由运行环境提供；内核、固件、rootfs 和磁盘镜像不在仓库内。各上游目录中的许可证和版权声明随源码保留。
+源码随包提供，构建脚本使用包内依赖。系统、编译器及开发工具由运行环境提供；内核、固件、rootfs 和磁盘镜像不在仓库内。各上游目录中的许可证和版权声明随源码保留。
 
 ## 构建组件与应用
 
@@ -151,25 +151,10 @@ RISCV_GCC=gcc bash qemu/guest/build.sh
 
 原始结果记录当时的版本、环境与命令；重新构建后的性能由实际运行结果确定。QEMU 测量与原生硬件测量分别统计。
 
-## 上传 GitHub 仓库
+## 文件校验与复现范围
 
-仓库名称：`riscv-datacenter-optimization`。
+在解压目录执行 `sha256sum -c SHA256SUMS` 可核对全部源码、补丁、测试及保存结果的内容。请在支持符号链接的 Linux 文件系统上使用 `unzip` 解压，保留脚本权限与源码链接。
 
-仓库地址：<https://github.com/SmaCow666/riscv-datacenter-optimization>。
+包内仅含源码、构建入口和 Benchtest，不含版本控制元数据、提交/上传入口或仓库发布说明。全部配置使用随包源码及补丁，源版本标识、版权与许可证保持。构建工具、编译器和系统开发库仍由所列运行环境提供；Python 3.10 环境还需 tomli。QEMU 随附 Meson 1.2.3 wheel，使用禁止自动下载的构建配置。
 
-先在 GitHub 手动创建该名称的空仓库，不初始化 README、许可证或 .gitignore。在仓库根目录执行：
-
-```bash
-bash 源码与构建脚本/scripts/publish_github.sh
-```
-
-脚本仅使用 Git 和 Python，初始化本地 `main` 分支，将源码和 Benchtest 提交后直接推送到上述仓库，不创建远端仓库，也不依赖 GitHub CLI。认证沿用系统 Git 的 HTTPS 凭据；如有提示，使用 GitHub 用户名和个人访问令牌，不使用网页登录密码。
-
-尚未设置 Git 署名时，先执行：
-
-```bash
-git config --global user.name "你的姓名"
-git config --global user.email "你的邮箱"
-```
-
-网络中断后可重试同一命令；脚本不强制推送、不覆盖远端历史。构建和新测试的输出目录不会加入提交。
+本批次只整理交付内容和补丁应用工具。已保存原生/x86/QEMU结果对应其记录的原始执行；本次没有重新编译组件或执行目标负载，不承诺新机器获得相同的性能数值。
